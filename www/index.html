@@ -11,16 +11,14 @@
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
-
+    <script src="lib/jquery/jquery.js"></script>
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-		<script src="lib/angular-translate/angular-translate.min.js"></script>
-	  <script src="lib/angular-translate-loader/angular-translate-loader-static-files.min.js"></script>
-	  <script src="js/core/language.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
-
-    <!-- your app's js -->
+		<script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <!-- 初始化Js -->
+    <script src="lib/ocLazyLoad/dist/ocLazyLoad.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
     <script src="js/services.js"></script>
@@ -29,8 +27,28 @@
     <script src="js/function/chartscontroller.js"></script>
     <script src="js/function/devicecontroller.js"></script>
     <script src="js/function/functioncontroller.js"></script>
-
-
+		<!--
+        	作者：157595075@qq.com
+        	时间：2015-09-16
+        	描述：国际化js
+        -->
+    <script src="lib/angular-translate/angular-translate.min.js"></script>
+	  <script src="lib/angular-translate-loader/angular-translate-loader-static-files.min.js"></script>
+	  <script src="js/core/language.js"></script>
+	  <!--
+      	作者：157595075@qq.com
+      	时间：2015-09-16
+      	描述：echarts
+      -->
+		<script src="lib/iu-echarts/example/libs/echarts.min.js"></script>
+		<script src="lib/iu-echarts/src/iuChart.js"></script>
+		<!--
+        	作者：157595075@qq.com
+        	时间：2015-09-16
+        	描述：highcharts
+        -->
+		<script src="lib/highcharts-ng/dist/highcharts-ng.js"></script>
+  	<script src="lib/highcharts-ng/dist/highstock.js"></script>
   </head>
   <body ng-app="starter">
     <!--
@@ -46,9 +64,5 @@
       have templates inline in this html file if you'd like).
     -->
     <ion-nav-view></ion-nav-view>
-    <script src="lib/iu-echarts/example/libs/jquery.min.js"></script>
-		<script src="lib/iu-echarts/example/libs/angular.js"></script>
-		<script src="lib/iu-echarts/example/libs/echarts.min.js"></script>
-		<script src="lib/iu-echarts/src/iuChart.js"></script>
   </body>
 </html>

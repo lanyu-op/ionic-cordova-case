@@ -1,22 +1,7 @@
-<ion-view view-title="{{title | translate}}" cache-view="false">
-	<!--
-    	作者：157595075@qq.com
-    	时间：2015-09-16
-    	描述：页面控制器
-    	  <ion-content ng-controller="ChartslistCtrl">
-    -->
+<ion-view view-title="{{title}}" cache-view="false">
   <ion-content>
-    <ion-list>
-      <ion-item class="item-icon-right"  type="item-text-wrap" href="#/app/ble">
-        {{"Highcharts_Lang"|translate}}
-
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
-      <ion-item class="item-icon-right" type="item-text-wrap" href="#/app/languageSet">
-        {{"Echarts_Lang"|translate}}
-
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
-    </ion-list>
+     <div ng-controller="HighchartsCtrl">
+    <highchart id="chart1" config="chartConfig"></highchart>
+    </div>
   </ion-content>
 </ion-view>
