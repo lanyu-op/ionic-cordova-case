@@ -4,6 +4,7 @@ angular.module('starter.controllers', [
 'starter.core.frameworkcontroller',
 'starter.function.chartscontroller',
 'starter.function.devicecontroller',
-'starter.function.functioncontroller'
+'starter.function.functioncontroller',
+
 ]);
 
