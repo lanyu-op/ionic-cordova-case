@@ -1,0 +1,25 @@
+{
+  "name": "iu-echarts",
+  "version": "1.0.0",
+  "authors": [
+    "huk <ihuke@126.com>"
+  ],
+  "description": "eCharts for Angular.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "angular",
+    "baidu",
+    "echarts"
+  ],
+  "dependencies": {
+    "angular": "1.3.x",
+    "jquery": "2.x.x",
+	 "echarts": "~2.1.10"
+  },
+  "devDependencies": {
+  },
+  "resolutions": {
+  }
+}

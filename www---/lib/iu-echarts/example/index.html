@@ -1,0 +1,88 @@
+<!doctype html>
+<html data-ng-app="example">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>chart example</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./libs/bootstrap.min.css"/>
+    <link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div data-ng-controller="ChartController">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>Over All</h5>
+                    <div class="ibox-tools"></div>
+                </div>
+                <div class="ibox-content">
+                    <div data-iu-chart="chartProvinceOption" class="iuChart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>City</h5>
+
+                    <div class="ibox-tools"></div>
+                </div>
+                <div class="ibox-content">
+                    <div data-iu-chart="chartCityOption" class="iuChart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>2G</h5>
+
+                    <div class="ibox-tools"></div>
+                </div>
+                <div class="ibox-content">
+                    <div data-iu-chart="chart2GOption" class="iuChart"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="ibox">
+                <div class="ibox-title">
+                    <h5>3G</h5>
+
+                    <div class="ibox-tools"></div>
+                </div>
+                <div class="ibox-content">
+                    <div data-iu-chart="chart3GOption" class="iuChart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="./libs/jquery.min.js"></script>
+<script src="./libs/angular.js"></script>
+<script src="./libs/echarts.min.js"></script>
+<script src="../src/iuChart.js"></script>
+<script src="app.js"></script>
+<script>
+//$(function(){
+    function initPage() {
+        var wHeight = $(window).height();
+        var cHeight =( wHeight-170)/2;
+        if(cHeight > 0) {
+            $(".iuChart").height(cHeight);
+        }
+    }
+
+    initPage();
+    $(window).resize(function () {
+        initPage()
+    });
+//});
+</script>
+</body>
+</html>

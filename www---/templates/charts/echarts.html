@@ -1,0 +1,26 @@
+<ion-view view-title="{{title}}" cache-view="false">
+  <ion-content>
+
+
+     <div>
+    <div data-iu-chart="chartCityOption" class="iuChart"></div>
+    </div>
+
+
+  </ion-content>
+</ion-view>
+<script>
+$(function(){
+    function initPage() {
+        var wHeight = $(window).height();
+        var cHeight =( wHeight-10)/2;
+        if(cHeight > 0) {
+            $(".iuChart").height(cHeight);
+        }
+    }
+
+    initPage();
+    $(window).resize(function () {
+        initPage()
+    });
+});
