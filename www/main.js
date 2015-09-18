@@ -1,4 +1,4 @@
-var require = {
+require.config({
   baseUrl: 'app',
   paths: {
     'ionic': '../lib/ionic/js/ionic.bundle',
@@ -9,20 +9,39 @@ var require = {
     'iuChart':"../lib/iu-echarts/src/iuChart",
     'echarts':"../lib/iu-echarts/example/libs/echarts.min",
     'jquery': '../lib/jquery/jquery',
-    //'angular':'../lib/angular/angular',
+    //
+    'angularAMD':'../lib/angularAMD/angularAMD.min', //for lazy load
+    'ngload':'../lib/angularAMD/ngload.min', //for lazy load
+    'angularUiRouterExtra':'../lib/ui-router-extra/release/ct-ui-router-extras.min', //for lazy load
+    'ui-router':'../lib/ionic/js/angular-ui/angular-ui-router',
+    //'angular-route': '../lib/angular-ui-router',
+    'angular':'../lib/ionic/js/angular/angular',
+    'OtherCtrl':"../app/controllers/frameworkcontroller.js",
   },
   // if you are using jquery you have to add a shim for ionic and add jquery as deps
   shim: {
-     'ionic': {deps: ['jquery']},
+    //'ionic': {deps: ['jquery']},
+    //'ngCordova':['ionic'],//需要依赖ionic中的angularjs
+		//'ocLazyLoad': ['ionic'],//需要依赖ionic中的angularjs
+		//'angular-translate':['ionic'],//需要依赖ionic中的angularjs
+		//'iuChart':{deps: ['jquery','ionic']},
+		//'echarts':{deps: ['jquery','ionic']},
+		 "angular": {exports: "angular" },
+		'angularAMD':["ionic"],
+    'ui-router':  ["ionic"],
+    //'ngload':{
+    //    deps:['angularAMD']
+    //},
     'ngCordova':['ionic'],//需要依赖ionic中的angularjs
-		'ocLazyLoad': ['ionic'],//需要依赖ionic中的angularjs
-		'angular-translate':['ionic'],//需要依赖ionic中的angularjs
-		'iuChart':{deps: ['jquery','ionic']},
-		'echarts':{deps: ['jquery','ionic']}
-  }
+    'angular-translate':['ionic'],//需要依赖ionic中的angularjs
+    //'angularUiRouterExtra':{
+    //    deps:['ionic']
+   // }
+  },
+  deps:['app']
   // sometimes you need to set the loading priority especially
   // priority: [
   //   'jquery',
   //   'ionic'
   // ]
-};
+});

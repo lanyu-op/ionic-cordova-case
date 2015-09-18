@@ -1,15 +1,13 @@
-define([
-  'app',
-  'services/service'
-], function (app) {
-  'use strict';
-		app.controller('HomeCtrl', function($scope, $ionicModal, $timeout) {
-		  // Form data for the login modal
+define(['app'], function (app) {
+    // controller
+    app.controller('OtherCtrl', function ($scope,$ionicModal, $timeout) {
+  // properties
 
-		  $scope.loginData = {};
+			$scope.loginData = {};
 
 		  // Create the login modal that we will use later
-		  $ionicModal.fromTemplateUrl('app/templates/user/login.html', {
+
+		  $ionicModal.fromTemplateUrl('../../app/templates/user/login.html', {
 		    scope: $scope
 		  }).then(function(modal) {
 		    $scope.modal = modal;
@@ -35,13 +33,5 @@ define([
 		      $scope.closeLogin();
 		    }, 1000);
 		  };
-		})
-		//国际化
-		.controller('LanguageCtrl', function ($scope, $translate) {
-				$scope.title="SelectLanguage_Lang";
-			  $scope.changeLanguage = function (key) {
-			    $translate.use(key);
-			  };
-
-		});
+     });
 });

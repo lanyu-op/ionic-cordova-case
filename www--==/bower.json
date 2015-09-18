@@ -1,0 +1,36 @@
+{
+  "name": "[application-name]",
+  "version": "0.0.1",
+  "description": "[application-description]",
+  "main": "app/run.js",
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "authors": [
+    "A.A. Grapsas"
+  ],
+  "license": "Private, All Rights Reserved [owner]",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "agCore": "https://github.com/centaur2048/agCore.git#master",
+    "requirejs": "~2.1.16",
+    "angular": "~1.3.14",
+    "angular-route": "~1.3.14",
+    "when": "2.7.1",
+    "angularAMD": "~0.2",
+    "socket.io-client": "~0.9.16",
+    "ionic": "~1.0.0-rc.4",
+    "lodash" : "~3.7.0"
+  },
+  "resolutions": {
+    "angular": "1.3.15"
+  }
+}

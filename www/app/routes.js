@@ -2,7 +2,7 @@ define([
   'app',
   // Load Controllers here
   //'controllers/dashboard',
-  'controllers/frameworkcontroller',
+  //'controllers/frameworkcontroller',
   'controllers/chartscontroller',
   'controllers/functioncontroller',
   'controllers/devicecontroller'
@@ -13,7 +13,8 @@ define([
     '$stateProvider',
     '$urlRouterProvider',
     '$translateProvider',
-    function ($stateProvider, $urlRouterProvider,$translateProvider) {
+		'$controllerProvider',
+    function ($stateProvider, $urlRouterProvider,$translateProvider,$controllerProvider) {
       // url routes/states
       $urlRouterProvider.otherwise('/app/index');
 			//加载各个视图文件
@@ -29,8 +30,25 @@ define([
 		    url: '/app',
 		    abstract: true,
 		    templateUrl: 'app/templates/main.html',
-				controller: 'HomeCtrl',
-
+				//controller: 'HomeCtrl',
+				resolve: {
+				                        /*
+				                        这个key值会被注入到controller中，对应的是后边这个function返回的值，或者promise最终resolve的值。函数的参数是所需的服务，angular会根据参数名自动注入
+				                         对应controller写法（注意keyName）：
+				                         controllers.controller('module2Controller', ['$scope', '$http', 'keyName',
+				                             function($scope, $http, keyName) {
+				                         }]);
+				                         */
+	        'HomeCtrl': function ($q) {
+	            var deferred = $q.defer();
+	            require(['/app/controllers/frameworkcontroller.js'], function (controller) {
+	               // $urlRouterProvider.registerState('HomeCtrl', controller);      //由于是动态加载的controller，所以要先注册，再使用
+	                deferred.resolve();
+	              // alert(4);
+	            });
+	            return deferred.promise;
+	        }
+				}
 
 		  })
 			  //首页
@@ -142,7 +160,19 @@ define([
 			        views: {
 			            'menuContent': {
 			                templateUrl: 'app/templates/function/language-setting.html',
-			                controller: 'LanguageCtrl'
+			                //controller: 'LanguageCtrl',
+            				resolve: {
+								        'LanguageCtrl': function ($q) {
+								            var deferred = $q.defer();
+								            require(['/app/controllers/frameworkcontroller.js'], function (controller) {
+								                $urlRouterProvider.registerState('LanguageCtrl', controller);      //由于是动态加载的controller，所以要先注册，再使用
+
+								                deferred.resolve();
+								               //alert(4);
+								            });
+								            return deferred.promise;
+								        }
+											}
 			            }
 			        }
 			});

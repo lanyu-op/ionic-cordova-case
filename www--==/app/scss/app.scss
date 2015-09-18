@@ -1,0 +1,11 @@
+/*
+  @SEE: _variables.scss for overrides.
+*/
+
+// Relative path from css folder for ionic fonts.
+$ionicons-font-path: "../../lib/ionic/release/fonts" !default;
+
+// @TODO: custom colors should be defined after this and before the bottom include
+
+// Include for ionic.
+@import "../../lib/ionic/scss/ionic";
