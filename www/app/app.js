@@ -4,18 +4,13 @@
 define([
 	'angular',
 	'angularAMD',
-
-	"ui-router",
-
-//	'angularUiRouter',
-
+	'ngCordova',
+	//'angularUiRouter',
 	'angular-translate',
-	'../app/services/language',
-		'ionic',
+	'angular-translate-languager',
+	'ionic',
+	'jquery'
 	//'angularUiRouterExtra',
-
-
-  //'angular-translate-languager'
 ], function (angular,angularAMD) {
   'use strict';
 
@@ -39,8 +34,7 @@ define([
   // route
   $stateProvider
     // home
-
-  				  .state('app', angularAMD.route({
+ 			.state('app', angularAMD.route({
 				    url: '/app',
 				    abstract: true,
 				    templateUrl: 'app/templates/main.html',
@@ -65,17 +59,17 @@ define([
                 return "OtherCtrl";
             },
 
-				  }))
-			  //首页
-				  .state('app.index', angularAMD.route({
-				    url: '/index',
-				    views: {
-				      'menuContent': {
-				        templateUrl: 'app/templates/firstindex.html',
+			}))
+		  //首页
+		  .state('app.index', angularAMD.route({
+		    url: '/index',
+		    views: {
+		      'menuContent': {
+		        templateUrl: 'app/templates/firstindex.html',
 
-				      }
-				    }
-				  }))
+		      }
+		    }
+		  }))
 		  //图表列表
 		  .state('app.chartslist', angularAMD.route({
 		    url: '/chartslist',
@@ -98,8 +92,31 @@ define([
                         return deferred.promise;
                     }]
             },
+		  }))
+		  //highchart图
+		  .state('app.highchart', angularAMD.route({
+			url: '/highchart',
+			views: {
+			  'menuContent': {
+				templateUrl: 'app/templates/charts/highcharts.html',
+				controller: 'HighchartChart'
+			  }
+			},
+			resolve: {
+			    loadController: ['$q', '$stateParams',
+			    function ($q, $stateParams)
+			    {
+			        // get the controller name === here as a path to Controller_Name.js
+			        // which is set in main.js path {}
+			        var load1 = "lib/highcharts-ng/dist/highcharts-ng.js";
+			        var load2 = "lib/highcharts-ng/dist/highstock.js";
+			        var load3 = "app/controllers/HighchartController.js";
 
-
+		            var deferred = $q.defer();
+		            require([load1,load2,load3], function () { deferred.resolve(); });
+		            return deferred.promise;
+			    }]
+			    },
 		  }))
 		  //设备列表
 		  .state('app.devicelist', angularAMD.route({
@@ -122,27 +139,42 @@ define([
 		    }
 		  }));
 
-			//国际化配置
-			$translateProvider.translations('en', translationsEN);
-			$translateProvider.translations('zh', translationZH);
-			//$translateProvider.preferredLanguage('en');
-			//$translateProvider.fallbackLanguage('en');
-			$translateProvider.determinePreferredLanguage();//这个方法是获取手机默认语言设置
-			$translateProvider.registerAvailableLanguageKeys(['en','zh'],{
-				'en-*':'en',
-				'zh-*':'zh'
-			}
-			);
+		//国际化配置
+		$translateProvider.useSanitizeValueStrategy('escaped');
+		$translateProvider.translations('en', translationsEN);
+		$translateProvider.translations('zh', translationZH);
+		//$translateProvider.preferredLanguage('en');
+		//$translateProvider.fallbackLanguage('en');
+		$translateProvider.determinePreferredLanguage();//这个方法是获取手机默认语言设置
+		$translateProvider.registerAvailableLanguageKeys(['en','zh'],{
+			'en-*':'en',
+			'zh-*':'zh'
+		}
+		);
 
 };
   // the app with its used plugins
   var app = angular.module('app', [
-    'ionic','pascalprecht.translate',"ui.router"
+    'ionic', 'ngCordova','pascalprecht.translate', 'ngCordova.plugins.ble'
   ]);
 // config
 app.config(["$stateProvider", "$urlRouterProvider", '$translateProvider',registerRoutes]);
 app.run(function($ionicPlatform,$rootScope, $location,$timeout, $ionicHistory) {
-
+	function showConfirm() {
+    var confirmPopup = $ionicPopup.confirm({
+        title: '<strong>退出应用?</strong>',
+        template: '你确定要退出应用吗?',
+        okText: '退出',
+        cancelText: '取消'
+    });
+    confirmPopup.then(function (res) {
+        if (res) {
+            ionic.Platform.exitApp();
+        } else {
+            // Don't close
+        }
+    });
+  }
 	//注意：$cordovaToast是消息提示框，若要使用需要安装才支持。命令cordova plugin add https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -158,7 +190,20 @@ app.run(function($ionicPlatform,$rootScope, $location,$timeout, $ionicHistory) {
       StatusBar.styleLightContent();
     }
   });
+	//双击退出
+	$ionicPlatform.registerBackButtonAction(function (e) {
+			e.preventDefault();
+	    //判断处于哪个页面时退出
+	  	if($location.path()=='/app/index'){
+	  		showConfirm();
+	  	}else if($rootScope.$viewHistory.backView){
+				$rootScope.$viewHistory.backView.go();
+	  	}else{
+	  		showConfirm();
+	  	}
 
+	    return false;
+	}, 101);
 });
 
   //app.init = function() {

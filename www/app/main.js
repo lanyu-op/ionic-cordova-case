@@ -16,7 +16,7 @@ require.config({
     'ui-router':'../lib/ionic/js/angular-ui/angular-ui-router',
     //'angular-route': '../lib/angular-ui-router',
     'angular':'../lib/ionic/js/angular/angular',
-    'OtherCtrl':"../app/controllers/frameworkcontroller.js",
+
   },
   // if you are using jquery you have to add a shim for ionic and add jquery as deps
   shim: {
@@ -27,8 +27,8 @@ require.config({
 		//'iuChart':{deps: ['jquery','ionic']},
 		//'echarts':{deps: ['jquery','ionic']},
 		 "angular": {exports: "angular" },
-		'angularAMD':["ionic"],
-    'ui-router':  ["ionic"],
+		//'angularAMD':["ionic"],
+    //'ui-router':  ["ionic"],
     //'ngload':{
     //    deps:['angularAMD']
     //},
