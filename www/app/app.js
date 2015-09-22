@@ -5,30 +5,21 @@ define([
 	'angular',
 	'angularAMD',
 	'ngCordova',
-	//"ui-router",
-
-//	'angularUiRouter',
-
 	'angular-translate',
 	'angular-translate-languager',
 	'ionic',
 	'jquery'
 	//'angularUiRouterExtra',
-
-
-  //'angular-translate-languager'
 ], function (angular,angularAMD) {
   'use strict';
 
-  // the app with its used plugins
+// the app with its used plugins
 var app = angular.module('app', [
 'ionic', 'ngCordova', 'ngCordova.plugins.ble','pascalprecht.translate'
 	//'ionic','pascalprecht.translate','ui.router', 'ngCordova','ngCordova.plugins.ble'
-	  ]);
+]);
 // config
-	//app.config(["$stateProvider", "$urlRouterProvider", '$translateProvider',registerRoutes]);
-app.config(
-	function($stateProvider, $urlRouterProvider, $translateProvider){
+app.config(function($stateProvider, $urlRouterProvider, $translateProvider){
 		  // default
   $urlRouterProvider.otherwise("/app/index");
 	$stateProvider
@@ -151,15 +142,24 @@ app.config(
 	'en-*':'en',
 	'zh-*':'zh'
 	});
-
-	}
-);
-
-
-
+});
 
 app.run(function($ionicPlatform,$rootScope, $location,$timeout, $ionicHistory) {
-
+	function showConfirm() {
+    var confirmPopup = $ionicPopup.confirm({
+        title: '<strong>退出应用?</strong>',
+        template: '你确定要退出应用吗?',
+        okText: '退出',
+        cancelText: '取消'
+    });
+    confirmPopup.then(function (res) {
+        if (res) {
+            ionic.Platform.exitApp();
+        } else {
+            // Don't close
+        }
+    });
+  	}
 	//注意：$cordovaToast是消息提示框，若要使用需要安装才支持。命令cordova plugin add https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git
 	$ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -174,13 +174,26 @@ app.run(function($ionicPlatform,$rootScope, $location,$timeout, $ionicHistory) {
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
-  	});
+
+
 
 	});
+	//双击退出
+	$ionicPlatform.registerBackButtonAction(function (e) {
+			e.preventDefault();
+	    //判断处于哪个页面时退出
+	  	if($location.path()=='/app/index'){
+	  		showConfirm();
+	  	}else if($rootScope.$viewHistory.backView){
+				$rootScope.$viewHistory.backView.go();
+	  	}else{
+	  		showConfirm();
+	  	}
 
-  //app.init = function() {
+	    return false;
+	}, 101);
+  });
+
   return  angularAMD.bootstrap(app);     //replace angular.bootstrap(document, ['app']);
- // };
-  // return the app so you can require it in other components
-  //return app;
+
 });
