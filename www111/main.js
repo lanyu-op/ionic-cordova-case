@@ -5,7 +5,7 @@ require.config({
     'ngCordova':'../lib/ngCordova/dist/ng-cordova',
     'ocLazyLoad':'../lib/ocLazyLoad/dist/ocLazyLoad',
     'angular-translate':'../lib/angular-translate/angular-translate',
-    'angular-translate-languager':'../app/services/language',
+    'angular-translate-languager':'common/language',
     'iuChart':"../lib/iu-echarts/src/iuChart",
     'echarts':"../lib/iu-echarts/example/libs/echarts.min",
     'jquery': '../lib/jquery/jquery',
@@ -16,7 +16,9 @@ require.config({
     'ui-router':'../lib/ionic/js/angular-ui/angular-ui-router',
     //'angular-route': '../lib/angular-ui-router',
     'angular':'../lib/ionic/js/angular/angular',
-    'OtherCtrl':"../app/controllers/frameworkcontroller.js",
+
+    //'cordova':'../cordova'
+    //'OtherCtrl':"../app/controllers/frameworkcontroller.js",
   },
   // if you are using jquery you have to add a shim for ionic and add jquery as deps
   shim: {
@@ -26,9 +28,9 @@ require.config({
 		//'angular-translate':['ionic'],//需要依赖ionic中的angularjs
 		//'iuChart':{deps: ['jquery','ionic']},
 		//'echarts':{deps: ['jquery','ionic']},
-		 "angular": {exports: "angular" },
-		'angularAMD':["ionic"],
-    'ui-router':  ["ionic"],
+		"angular": {exports: "angular" },
+		//'angularAMD':["ionic"],
+    //'ui-router':  ["ionic"],
     //'ngload':{
     //    deps:['angularAMD']
     //},

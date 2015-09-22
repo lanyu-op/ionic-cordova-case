@@ -1,0 +1,14 @@
+{
+  "name": "iu-echarts",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.6.0",
+	"gulp-rename": "~1.2.0",
+    "gulp-uglify": "^0.3
+    "gulp-util": "~2.2.14"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

@@ -1,0 +1,15 @@
+<ion-view view-title="{{title}}" cache-view="false">
+  <ion-content>
+    <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="onRefresh()">
+    </ion-refresher>
+    <ion-list>
+      <ion-item class="item-icon-right" ng-click="onRecordBluetoothId(device.id, device.rssi, device.name)"  ng-repeat="device in devices"  type="item-text-wrap">
+        <p>{{device.name}}</p>
+        <p>{{device.id}} &nbsp; RSSI: {{device.rssi}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

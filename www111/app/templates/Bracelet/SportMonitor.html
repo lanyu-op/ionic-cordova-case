@@ -1,0 +1,53 @@
+
+<ion-view view-title="{{title| translate}}" cache-view="false">
+  <ion-content class="gw-main-box"  style="overflow: hidden">
+    <ion-slide-box on-slide-changed="slideHasChanged($index)" overflow-scroll="false" class="gw-main-box-head">
+      <ion-slide>
+        <div class="pieSeat">
+          <easypiechart  percent="50">
+          	<span>
+             <div class="smallfont">{{TodayNumber_Lang| translate}}</div>
+             <div>{{steps}}</div>
+             <div class="smallfont">3.37{{Km_Lang| translate}}</div>
+             <div class="smallfont">165{{Kcal_Lang| translate}}</div>
+            </span>
+          </easypiechart>
+        </div>
+
+      </ion-slide>
+      <ion-slide>
+        <div class="gw-slide-box">
+        	<div class="circle">
+
+          <div style="line-height: 210px;text-align: center;">
+
+          	<span style="font-size: 70px;">{{heart}}</span>
+          	<span style="font-size: 10px;color: #DAEAE7;">
+          		<i class="icon ion-heart" style="font-size: 35px;color: #ED7274;"></i>
+          		BPM</span>
+          </div>
+
+        	</div>
+
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+    <ul class="list" ng-hide="halee">
+			<!--<button class="button" ng-click="insert(model)">Save</button>-->
+      <li class="item" ng-repeat="sportListDatas in sportListData">
+        <span class="playlist-list-font">
+          {{sportListDatas.startTime}} - {{sportListDatas.endTime}}
+          &nbsp活动了{{sportListDatas.sportTime}}分钟,
+          &nbsp&nbsp共{{sportListDatas.distance}}米
+        </span>
+        <br>
+        <span class="playlist-list-calorie">消耗了{{sportListDatas.calorie}}千卡</span>
+        <!--{{sportListDatas.sportType}}-->
+      </li>
+    </ul>
+    <div ng-hide="!halee" style="height:400px;background-color: white;" >
+        <div dynamic-chart cr-heart="heart" style="height:200px;width: auto;"></div>
+    </div>
+  </ion-content>
+</ion-view>
+

@@ -10,6 +10,7 @@ var translationsEN = {
 "ChartsList_Lang":"charts Case",
 "Highcharts_Lang":"Highcharts Sample",
 "Echarts_Lang":"charts Sample",
+"Sqlite_Lang":"charts Sample",
 };
 
 var translationZH = {
@@ -24,4 +25,5 @@ var translationZH = {
 "ChartsList_Lang":"图表案例",
 "Highcharts_Lang":"Highcharts 示例",
 "Echarts_Lang":"charts 示例",
+"Sqlite_Lang":"sqlite 示例",
 };
