@@ -1,6 +1,4 @@
-// The main app definition
-// --> where you should load other module depdendencies
-//define是引入main.js的paths
+
 define([
 	'angular',
 	'angularAMD',
@@ -11,8 +9,7 @@ define([
 	'jquery'
 	//'angularUiRouterExtra',
 ], function (angular,angularAMD) {
-  'use strict';
-
+'use strict';
 // the app with its used plugins
 var app = angular.module('app', [
 'ionic', 'ngCordova', 'ngCordova.plugins.ble','pascalprecht.translate'
@@ -25,88 +22,103 @@ $urlRouterProvider.otherwise("/app/index");
 $stateProvider
 //入口
 .state('app', angularAMD.route({
-	    url: '/app',
-	    abstract: true,
-	    templateUrl: 'app/templates/main.html',
-	}))
-  //首页
+	url: '/app',
+	abstract: true,
+	templateUrl: 'app/templates/main.html',
+	resolve: {
+	loadController: ['$q', '$stateParams',
+	function ($q, $stateParams)
+	{
+	    // get the controller name === here as a path to Controller_Name.js
+	    // which is set in main.js path {}
+	    var load1 = "app/controllers/MainController.js";
+	    var deferred = $q.defer();
+	    require([load1], function () { deferred.resolve(); });
+	    return deferred.promise;
+	    }]
+	},
+	controllerProvider: function ($stateParams)
+	{
+	    // get the controller name === here as a dynamic controller Name
+	   // var controllerName = controllerNameByParams($stateParams);
+	    return "MainCtrl";
+	}
+}))
+//首页
 .state('app.index', angularAMD.route({
-url: '/index',
-views: {
-  'menuContent': {
-    templateUrl: 'app/templates/firstindex.html',
-
-      }
-    }
-  }))
-  //图表列表
+	url: '/index',
+	views: {
+	  'menuContent': {
+	  	templateUrl: 'app/templates/firstindex.html'
+	  }
+	}
+}))
+//图表列表
 .state('app.chartslist', angularAMD.route({
-url: '/chartslist',
-views: {
-  'menuContent': {
-    templateUrl: 'app/templates/charts/chartslist.html',
-	controller: 'ChartslistCtrl'
-  }
-},
-resolve: {
-    loadController: ['$q', '$stateParams',
+	url: '/chartslist',
+	views: {
+	  'menuContent': {
+	    templateUrl: 'app/templates/charts/chartslist.html',
+		controller: 'ChartslistCtrl'
+	  }
+	},
+	resolve: {
+	    loadController: ['$q', '$stateParams',
         function ($q, $stateParams)
         {
             // get the controller name === here as a path to Controller_Name.js
             // which is set in main.js path {}
-            var controllerName = "../app/controllers/frameworkcontroller1.js";
-
-                var deferred = $q.defer();
-                require([controllerName], function () { deferred.resolve(); });
-                return deferred.promise;
-            }]
-    },
-  }))
-  //highchart图
+            var controllerName = "app/controllers/frameworkcontroller1.js";
+            var deferred = $q.defer();
+            require([controllerName], function () { deferred.resolve(); });
+            return deferred.promise;
+        }]
+	}
+}))
+//highchart图
 .state('app.highchart', angularAMD.route({
-url: '/highchart',
-views: {
-  'menuContent': {
-	templateUrl: 'app/templates/charts/highcharts.html',
-	controller: 'HighchartChart'
-  }
-},
-resolve: {
-    loadController: ['$q', '$stateParams',
-    function ($q, $stateParams)
-    {
-        // get the controller name === here as a path to Controller_Name.js
-        // which is set in main.js path {}
-        var load1 = "lib/highcharts-ng/dist/highcharts-ng.js";
-        var load2 = "lib/highcharts-ng/dist/highstock.js";
-        var load3 = "app/controllers/HighchartController.js";
-
+	url: '/highchart',
+	views: {
+	  'menuContent': {
+		templateUrl: 'app/templates/charts/highcharts.html',
+		controller: 'HighchartChart'
+		}
+	},
+	resolve: {
+	    loadController: ['$q', '$stateParams',
+	    function ($q, $stateParams)
+	    {
+	        // get the controller name === here as a path to Controller_Name.js
+	        // which is set in main.js path {}
+	        var load1 = "lib/highcharts-ng/dist/highcharts-ng.js";
+	        var load2 = "lib/highcharts-ng/dist/highstock.js";
+	        var load3 = "app/controllers/HighchartController.js";
             var deferred = $q.defer();
             require([load1,load2,load3], function () { deferred.resolve(); });
             return deferred.promise;
-	    }]
-	    },
-  }))
-  //设备列表
+		}]
+	}
+}))
+//设备列表
 .state('app.devicelist', angularAMD.route({
-url: '/devicelist',
-views: {
-  'menuContent': {
-    templateUrl: 'app/templates/device/devicelist.html',
-	//controller: 'DevicelistCtrl'
-      }
-    }
-  }))
-  //功能列表
+	url: '/devicelist',
+	views: {
+	  'menuContent': {
+	    templateUrl: 'app/templates/device/devicelist.html'
+		//controller: 'DevicelistCtrl'
+	   }
+	}
+}))
+//功能列表
 .state('app.functionlist', angularAMD.route({
-url: '/functionlist',
-views: {
-  'menuContent': {
-    templateUrl: 'app/templates/function/functionlist.html',
-	//controller: 'FunctionlistCtrl'
-      }
-    }
-  }))
+	url: '/functionlist',
+	views: {
+	  'menuContent': {
+	    templateUrl: 'app/templates/function/functionlist.html'
+		//controller: 'FunctionlistCtrl'
+	   }
+	}
+}))
 //sqlite示例sqlite
 .state('app.sqlite', angularAMD.route({
 	    url: '/sqlite',
@@ -123,27 +135,46 @@ views: {
 		        // get the controller name === here as a path to Controller_Name.js
 		        // which is set in main.js path {}
 		        var load1 = "app/controllers/SqliteController.js";
-
 	            var deferred = $q.defer();
 	            require([load1], function () { deferred.resolve(); });
 	            return deferred.promise;
 		    }]
 		}
-	  }));
-
+}))
+//选择语言
+.state('app.languageSet', angularAMD.route({
+	url: '/languageSet',
+	views: {
+	  'menuContent': {
+		templateUrl: 'app/templates/function/language-setting.html',
+		controller: 'LanguageCtrl'
+	  }
+	},
+	resolve: {
+	    loadController: ['$q', '$stateParams',
+	    function ($q, $stateParams)
+	    {
+	        // get the controller name === here as a path to Controller_Name.js
+	        // which is set in main.js path {}
+	        var load1 = "app/controllers/functioncontroller.js";
+            var deferred = $q.defer();
+            require([load1], function () { deferred.resolve(); });
+            return deferred.promise;
+	    }]
+	}
+}));
 //国际化配置
-$translateProvider.useSanitizeValueStrategy('escaped');
-$translateProvider.translations('en', translationsEN);
-$translateProvider.translations('zh', translationZH);
-//$translateProvider.preferredLanguage('en');
-//$translateProvider.fallbackLanguage('en');
-$translateProvider.determinePreferredLanguage();//这个方法是获取手机默认语言设置
-$translateProvider.registerAvailableLanguageKeys(['en','zh'],{
-'en-*':'en',
-'zh-*':'zh'
+	$translateProvider.useSanitizeValueStrategy('escaped');
+	$translateProvider.translations('en', translationsEN);
+	$translateProvider.translations('zh', translationZH);
+	//$translateProvider.preferredLanguage('en');
+	//$translateProvider.fallbackLanguage('en');
+	$translateProvider.determinePreferredLanguage();//这个方法是获取手机默认语言设置
+	$translateProvider.registerAvailableLanguageKeys(['en','zh'],{
+	'en-*':'en',
+	'zh-*':'zh'
+	});
 });
-});
-
 app.run(function($ionicPlatform, $ionicPopup,$rootScope, $location,$timeout, $ionicHistory) {
 	function showConfirm() {
     var confirmPopup = $ionicPopup.confirm({
@@ -182,18 +213,17 @@ app.run(function($ionicPlatform, $ionicPopup,$rootScope, $location,$timeout, $io
 	$ionicPlatform.registerBackButtonAction(function (e) {
 		e.preventDefault();
 	    //判断处于哪个页面时退出
-	  	if($location.path()=='/app/index'){
-	  		showConfirm();
-	  	}else if($rootScope.$viewHistory.backView){
-				$rootScope.$viewHistory.backView.go();
-	  	}else{
-	  		showConfirm();
-	  	}
-
+	  	//if($location.path()=='/app/index'){
+	  	showConfirm();
+	  	//}else
+	  	//if($rootScope.$viewHistory.backView){
+		//	$rootScope.$viewHistory.backView.go();
+	  	//}else{
+	  	//	showConfirm();
+	  	//}
 	    return false;
 	}, 101);
   });
-
   return  angularAMD.bootstrap(app);     //replace angular.bootstrap(document, ['app']);
 
 });

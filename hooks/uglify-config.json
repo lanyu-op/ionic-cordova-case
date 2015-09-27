@@ -1,8 +1,8 @@
 {
-    "alwaysRun": false,
+    "alwaysRun": true,
     "recursiveFolderSearch": true,
     "foldersToProcess": [
-        "js",
+        "app",
         "css"
     ],
     "uglifyJsOptions": {

@@ -1,13 +1,12 @@
 define(['app'], function (app) {
     // controller
-    app.controller('OtherCtrl', function ($scope,$ionicModal, $timeout) {
+    app.controller('MainCtrl', function ($scope,$ionicModal, $timeout) {
   // properties
-
-			$scope.loginData = {};
+		$scope.loginData = {};
 
 		  // Create the login modal that we will use later
 
-		  $ionicModal.fromTemplateUrl('../../app/templates/user/login.html', {
+		  $ionicModal.fromTemplateUrl('app/templates/user/login.html', {
 		    scope: $scope
 		  }).then(function(modal) {
 		    $scope.modal = modal;
