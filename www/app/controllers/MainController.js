@@ -1,6 +1,6 @@
 define(['app'], function (app) {
     // controller
-    app.controller('MainCtrl', function ($scope,$ionicModal,$http, $timeout) {
+    app.controller('MainCtrl', function ($scope,$ionicModal,$http, $timeout,$ionicPopup) {
   // properties
 		$scope.loginData = {};
 
@@ -24,10 +24,11 @@ define(['app'], function (app) {
 
 		  // Perform the login action when the user submits the login form
 		  $scope.doLogin = function() {
-		    console.log('Doing login', $scope.loginData);
+		    //console.log('Doing login', $scope.loginData);
 
 		    // Simulate a login delay. Remove this and replace with your login
 		    // code if using a login system
+            var shapassword=hex_sha1($scope.loginData.password);
 			$http({
 			   url:window.siteurl+'index/ValidateUser',
 			   method:"POST",
@@ -36,13 +37,21 @@ define(['app'], function (app) {
 			   },
                 params:{
                     'username':$scope.loginData.username,
-                    'password':$scope.loginData.password
+                    'password':shapassword
                 }
 			   //data: $scope.loginData
 			}).success(function(data){
 				//$scope.list=data.concat($scope.list);
 				//alert(data);
-				console.log(data);
+				console.log(data.code);
+                if(data.code==100){
+                    window.location.href = "#/app/chartslist";
+                }else{
+                    $ionicPopup.alert({
+                        title:'登录失败',
+                        template: "检查用户名密码"
+                    });
+                }
 				//alert(JSON.stringify(data));
 	            //window.location.href = "Gulugulus/subMenu";
 	        }).error(function(error){

@@ -33,8 +33,9 @@ $stateProvider
 	    // get the controller name === here as a path to Controller_Name.js
 	    // which is set in main.js path {}
 	    var load1 = "app/controllers/MainController.js";
+        var load2 = "app/common/sha1.js";
 	    var deferred = $q.defer();
-	    require([load1], function () { deferred.resolve(); });
+	    require([load1,load2], function () { deferred.resolve(); });
 	    return deferred.promise;
 	    }]
 	},
