@@ -22,7 +22,7 @@ require.config({
   shim: {
     //'ionic': {deps: ['jquery']},
     //'ngCordova':['ionic'],//需要依赖ionic中的angularjs
-		//'ocLazyLoad': ['ionic'],//需要依赖ionic中的angularjs
+		'ocLazyLoad': ['ionic'],//需要依赖ionic中的angularjs
 		//'angular-translate':['ionic'],//需要依赖ionic中的angularjs
 		//'iuChart':{deps: ['jquery','ionic']},
 		//'echarts':{deps: ['jquery','ionic']},

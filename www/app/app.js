@@ -6,13 +6,14 @@ define([
 	'angular-translate',
 	'angular-translate-languager',
 	'ionic',
-	'jquery'
+	'jquery',
+	'ocLazyLoad'
 	//'angularUiRouterExtra',
 ], function (angular,angularAMD) {
 'use strict';
 // the app with its used plugins
 var app = angular.module('app', [
-'ionic', 'ngCordova', 'ngCordova.plugins.ble','pascalprecht.translate'
+'ionic', 'ngCordova', 'ngCordova.plugins.ble','pascalprecht.translate','oc.lazyLoad'
 	//'ionic','pascalprecht.translate','ui.router', 'ngCordova','ngCordova.plugins.ble'
 ]);
 // config
@@ -153,14 +154,28 @@ $stateProvider
 	      }
 	    },
 		resolve: {
-		    loadController: ['$q', '$stateParams',
-		    function ($q, $stateParams)
+		    delay: ['$q', '$stateParams','$ocLazyLoad',
+		    function ($q, $stateParams,$ocLazyLoad)
 		    {
 		        // get the controller name === here as a path to Controller_Name.js
 		        // which is set in main.js path {}
+//加载样式,JS加载交给requirejs管理。
+				$ocLazyLoad.load(
+					[
+                        {
+                            name: 'css',
+                            insertBefore: '#app-level',
+                            files: [
+                                'vendors/bower_components/mediaelement/build/mediaelementplayer.css',
+                            ]
+                        }
+                    ]
+				);
+//requirejs加载js
 		        var load1 = "app/controllers/discuss/DsMainController.js";
 	            var deferred = $q.defer();
 	            require([load1], function () { deferred.resolve(); });
+
 	            return deferred.promise;
 		    }]
 		}
