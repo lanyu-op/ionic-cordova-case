@@ -1,4 +1,4 @@
-
+window.siteurl="http://www.360lzy.com/markethelper/lanyu_sport/";
 define([
 	'angular',
 	'angularAMD',
@@ -16,7 +16,8 @@ var app = angular.module('app', [
 	//'ionic','pascalprecht.translate','ui.router', 'ngCordova','ngCordova.plugins.ble'
 ]);
 // config
-app.config(function($stateProvider, $urlRouterProvider, $translateProvider){
+app.config(function($stateProvider, $urlRouterProvider, $translateProvider,$httpProvider){
+
 // default
 $urlRouterProvider.otherwise("/app/index");
 $stateProvider
@@ -141,6 +142,29 @@ $stateProvider
 		    }]
 		}
 }))
+//圈子
+.state('app.discuss', angularAMD.route({
+	    url: '/discuss',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'app/templates/discuss/dsindex.html',
+			controller: 'DiscussCtrl'
+	      }
+	    },
+		resolve: {
+		    loadController: ['$q', '$stateParams',
+		    function ($q, $stateParams)
+		    {
+		        // get the controller name === here as a path to Controller_Name.js
+		        // which is set in main.js path {}
+		        var load1 = "app/controllers/discuss/DsMainController.js";
+	            var deferred = $q.defer();
+	            require([load1], function () { deferred.resolve(); });
+	            return deferred.promise;
+		    }]
+		}
+}))
+
 //选择语言
 .state('app.languageSet', angularAMD.route({
 	url: '/languageSet',

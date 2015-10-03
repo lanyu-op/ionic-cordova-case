@@ -1,6 +1,6 @@
 define(['app'], function (app) {
     // controller
-    app.controller('MainCtrl', function ($scope,$ionicModal, $timeout) {
+    app.controller('MainCtrl', function ($scope,$ionicModal,$http, $timeout) {
   // properties
 		$scope.loginData = {};
 
@@ -28,6 +28,28 @@ define(['app'], function (app) {
 
 		    // Simulate a login delay. Remove this and replace with your login
 		    // code if using a login system
+			$http({
+			   url:window.siteurl+'index/ValidateUser',
+			   method:"POST",
+			   headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+			   },
+                params:{
+                    'username':$scope.loginData.username,
+                    'password':$scope.loginData.password
+                }
+			   //data: $scope.loginData
+			}).success(function(data){
+				//$scope.list=data.concat($scope.list);
+				//alert(data);
+				console.log(data);
+				//alert(JSON.stringify(data));
+	            //window.location.href = "Gulugulus/subMenu";
+	        }).error(function(error){
+				alert(error);
+	        }).finally(function() {
+	                    //$scope.$broadcast('scroll.refreshComplete');
+	        })
 		    $timeout(function() {
 		      $scope.closeLogin();
 		    }, 1000);

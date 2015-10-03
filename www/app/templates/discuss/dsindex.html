@@ -1,0 +1,32 @@
+<style>
+		img{
+		border-radius: 60px;
+		max-width: 18px;
+		max-height: 18px;
+		float: left;
+	}
+	.titl{
+		float: left;
+		margin-left: 20px;
+		line-height: 50px;
+	}
+</style>
+<ion-view view-title={{title}}>
+  <ion-content class="padding">
+    <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="onRefresh()">
+    </ion-refresher>
+    <ion-list>
+      <ion-item class="item-icon-right" ng-click="onRecordBluetoothId(device.id, device.rssi, device.name)"  ng-repeat="item in list"  type="item-text-wrap">
+        <div><img src="img/userlogo.png" style="max-width: 65px;max-height: 65px;left: 20px;top: initial;">
+        </div>
+				<div class="titl">
+					{{item.st}}
+				</div>
+				<div style="clear:both">{{item.manid}}</div>
+       	<!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
