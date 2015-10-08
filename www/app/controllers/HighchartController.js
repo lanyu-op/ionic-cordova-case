@@ -1,5 +1,7 @@
 define(['app'], function (app) {
-app.controller('HighchartChart', function($scope) {
+app.controller('HighchartChart', function($scope,$stateParams) {
+    console.log($stateParams);
+    //alert($stateParams.params);
   $scope.title="Highchart官方图例";
   $scope.chartTypes = [
     {"id": "line", "title": "Line"},

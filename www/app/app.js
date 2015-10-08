@@ -16,6 +16,8 @@ var app = angular.module('app', [
 'ionic', 'ngCordova', 'ngCordova.plugins.ble','pascalprecht.translate','oc.lazyLoad'
 	//'ionic','pascalprecht.translate','ui.router', 'ngCordova','ngCordova.plugins.ble'
 ]);
+//全局常量
+app.constant('glables',{service: '1', measurement: '2'});
 // config
 app.config(function($stateProvider, $urlRouterProvider, $translateProvider,$httpProvider){
 
@@ -52,9 +54,22 @@ $stateProvider
 	url: '/index',
 	views: {
 	  'menuContent': {
-	  	templateUrl: 'app/templates/firstindex.html'
+	  	templateUrl: 'app/templates/firstindex.html',
+        controller: 'firstPageCtrl'
 	  }
-	}
+	},
+    resolve: {
+        loadController: ['$q', '$stateParams',
+            function ($q, $stateParams)
+            {
+                // get the controller name === here as a path to Controller_Name.js
+                // which is set in main.js path {}
+                var controllerName = "app/controllers/firstpagecontroller.js";
+                var deferred = $q.defer();
+                require([controllerName], function () { deferred.resolve(); });
+                return deferred.promise;
+            }]
+    }
 }))
 //图表列表
 .state('app.chartslist', angularAMD.route({
@@ -79,8 +94,8 @@ $stateProvider
 	}
 }))
 //highchart图
-.state('app.highchart', angularAMD.route({
-	url: '/highchart',
+.state('app.highchart',angularAMD.route({
+	url: '/highchart/:params:xxx:zzz',
 	views: {
 	  'menuContent': {
 		templateUrl: 'app/templates/charts/highcharts.html',
