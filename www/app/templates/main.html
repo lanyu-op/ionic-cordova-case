@@ -1,11 +1,87 @@
+<style>
+	.backcolor{
+		background-color: #444444;
+	}
+	.logofont{
+		position: absolute;
+		padding: 20px;
+		color: white;
+		float: left;
+		left: 90px;
+		font-size: 20px;
+	}
+		.logofont-r{
+		position: absolute;
+		padding: 20px;
+		color: white;
+		float: left;
+		right: 45px;
+		font-size: 20px;
+	}
+	.item-content{
+		background-color: #444444;
+	}
+
+	.backcolor-no{
+		background-color: #444444;
+		border-color: #444444;
+		padding-left: 50px;
+		min-height: 50px;
+	}
+	h2{
+		#padding: 8px;
+		color: white;
+	}
+	.menu-img{
+		border-radius: inherit;
+		max-width: 18px;
+		max-height: 18px;
+	}
+	.bottom-font{
+		position: absolute;
+		bottom: 0px;
+		font-size: 10px;
+		color: white;
+		width: 264px;
+		left: 50%;
+		margin-left: -132px;
+
+	}
+	.bar {
+	    background-color:#3074C1;
+
+	    color:#fff;
+		border-bottom: 0px solid #3074C1;
+	}
+	.bar-header {
+	top: 0;
+	border-top-width: 0;
+	border-bottom-width: 0px;
+	}
+	.bar .title {
+	background-color:#3074C1;
+	}
+	.bar.bar-stable {
+	background-color:#3074C1;
+	border-color: #3074C1;
+	background-color: #3074C1;
+	background-image: linear-gradient(0deg, #3074C1, #3074C1 50%, transparent 50%);
+	}
+	.bar.bar-stable .title {
+	color: #ffffff;
+	}
+</style>
 <ion-side-menus enable-menu-with-back-views="false">
   <ion-side-menu-content>
     <ion-nav-bar class="bar-stable">
       <ion-nav-back-button>
       </ion-nav-back-button>
-
       <ion-nav-buttons side="left">
         <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="right">
         </button>
       </ion-nav-buttons>
     </ion-nav-bar>
@@ -39,6 +115,17 @@
        <ion-item nav-clear menu-close href="#/app/discuss">
 				圈子
         </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+
+  <ion-side-menu side="right">
+    <!--<ion-header-bar class="bar-stable">
+      <h1 class="title">目录</h1>
+    </ion-header-bar>-->
+    <ion-content>
+      <ion-list>
+
       </ion-list>
     </ion-content>
   </ion-side-menu>

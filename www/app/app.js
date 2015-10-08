@@ -166,7 +166,7 @@ $stateProvider
                             name: 'css',
                             insertBefore: '#app-level',
                             files: [
-                                'vendors/bower_components/mediaelement/build/mediaelementplayer.css',
+                                'css/discuss.css',
                             ]
                         }
                     ]
