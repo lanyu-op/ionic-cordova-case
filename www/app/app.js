@@ -36,7 +36,7 @@ $stateProvider
 	{
 	    // get the controller name === here as a path to Controller_Name.js
 	    // which is set in main.js path {}
-	    var load1 = "app/controllers/MainController.js";
+	    var load1 = "app/controllers/demo/MainController.js";
         var load2 = "app/common/sha1.js";
 	    var deferred = $q.defer();
 	    require([load1,load2], function () { deferred.resolve(); });
@@ -65,7 +65,7 @@ $stateProvider
             {
                 // get the controller name === here as a path to Controller_Name.js
                 // which is set in main.js path {}
-                var controllerName = "app/controllers/firstpagecontroller.js";
+                var controllerName = "app/controllers/demo/IndexController.js";
                 var deferred = $q.defer();
                 require([controllerName], function () { deferred.resolve(); });
                 return deferred.promise;
@@ -87,7 +87,7 @@ $stateProvider
         {
             // get the controller name === here as a path to Controller_Name.js
             // which is set in main.js path {}
-            var controllerName = "app/controllers/frameworkcontroller1.js";
+            var controllerName = "app/controllers/demo/ChartController.js";
             var deferred = $q.defer();
             require([controllerName], function () { deferred.resolve(); });
             return deferred.promise;
@@ -111,7 +111,7 @@ $stateProvider
 	        // which is set in main.js path {}
 	        var load1 = "lib/highcharts-ng/dist/highcharts-ng.js";
 	        var load2 = "lib/highcharts-ng/dist/highstock.js";
-	        var load3 = "app/controllers/HighchartController.js";
+	        var load3 = "app/controllers/demo/HighchartController.js";
             var deferred = $q.defer();
             require([load1,load2,load3], function () { deferred.resolve(); });
             return deferred.promise;
@@ -153,7 +153,7 @@ $stateProvider
 		    {
 		        // get the controller name === here as a path to Controller_Name.js
 		        // which is set in main.js path {}
-		        var load1 = "app/controllers/SqliteController.js";
+		        var load1 = "app/controllers/demo/SqliteController.js";
 	            var deferred = $q.defer();
 	            require([load1], function () { deferred.resolve(); });
 	            return deferred.promise;
@@ -169,30 +169,39 @@ $stateProvider
 			controller: 'DiscussCtrl'
 	      }
 	    },
+	    //路由前执行如下
 		resolve: {
-		    delay: ['$q', '$stateParams','$ocLazyLoad',
-		    function ($q, $stateParams,$ocLazyLoad)
+		    loadcss: ['$q','$ocLazyLoad',
+		    function ($q,$ocLazyLoad)
 		    {
 		        // get the controller name === here as a path to Controller_Name.js
 		        // which is set in main.js path {}
-//加载样式,JS加载交给requirejs管理。
-				$ocLazyLoad.load(
-					[
-                        {
-                            name: 'css',
-                            insertBefore: '#app-level',
-                            files: [
-                                'lib/angular-lazy-image/lazy-image-style.css',
-                            ]
-                        }
-                    ]
-				);
-//requirejs加载js
+				//JS加载交给requirejs管理。ionic框架底层对route进行了绑定，不能oclazyload来加载页面。
+				//angularAMD：它的作用把angularjs和requirejs结合在一起。
+				//requirejs+angularAMD可以整合ionic框架，所以按需加载都用requestjs。
+				//由于不能加载js以外文件，$ocLazyLoad来加载其他。
 		        var load1 = "app/controllers/discuss/DsMainController.js";
 	            var deferred = $q.defer();
-	            require([load1], function () { deferred.resolve(); });
-
+	            require([load1], function () {
+	            	//加载css,requirejs,html等。
+	            	$ocLazyLoad.load(
+						[
+	                        {
+	                            name: 'css',
+	                            //insertBefore: '#xxx',
+	                            files: [
+	                                'lib/angular-lazy-image/lazy-image-style.css',
+	                                //'app/controllers/discuss/DsMainController.js'
+	                            ]
+	                        }
+	                    ]
+					);
+	            	deferred.resolve();
+	            });
 	            return deferred.promise;
+
+
+
 		    }]
 		}
 }))
@@ -212,7 +221,7 @@ $stateProvider
 	    {
 	        // get the controller name === here as a path to Controller_Name.js
 	        // which is set in main.js path {}
-	        var load1 = "app/controllers/functioncontroller.js";
+	        var load1 = "app/controllers/demo/FunctionController.js";
             var deferred = $q.defer();
             require([load1], function () { deferred.resolve(); });
             return deferred.promise;
