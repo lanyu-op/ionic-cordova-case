@@ -46,6 +46,7 @@ app.controller('DiscussCtrl', function($scope,$ionicPopup,$http,$cordovaSQLite) 
 	                    "outconunt":1,
 	                    "saylink":'imgurl'
 	                }];
+	    $scope.runtimeImageSrc="img/userlogo.png";
 	    var arr1=[{"manid":12,"st":23,"spu":3,"svu":4,"ssu":5,"sbj":6,"zan":0,"random":0.505913405213505}];
         $scope.title   = "圈子动态";
         $scope.list = arr1;

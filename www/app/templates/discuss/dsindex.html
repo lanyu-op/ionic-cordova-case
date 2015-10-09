@@ -1,9 +1,11 @@
 <style>
-		img{
+	img{
 		border-radius: 60px;
-		max-width: 18px;
-		max-height: 18px;
+		max-width: 65px;
+		max-height: 65px;
 		float: left;
+		left: 20px;
+		top: initial;
 	}
 	.titl{
 		float: left;
@@ -19,7 +21,7 @@
     </ion-refresher>
     <ion-list>
       <ion-item class="item-icon-right" ng-click="onRecordBluetoothId(device.id, device.rssi, device.name)"  ng-repeat="item in list"  type="item-text-wrap">
-        <div><img src="img/userlogo.png" style="max-width: 65px;max-height: 65px;left: 20px;top: initial;">
+        <div><div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
         </div>
 				<div class="titl">
 					{{item.st}}

@@ -7,13 +7,14 @@ define([
 	'angular-translate-languager',
 	'ionic',
 	'jquery',
-	'ocLazyLoad'
+	'ocLazyLoad',
+	'lazy-image'
 	//'angularUiRouterExtra',
 ], function (angular,angularAMD) {
 'use strict';
 // the app with its used plugins
 var app = angular.module('app', [
-'ionic', 'ngCordova', 'ngCordova.plugins.ble','pascalprecht.translate','oc.lazyLoad'
+'ionic', 'ngCordova', 'ngCordova.plugins.ble','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage'
 	//'ionic','pascalprecht.translate','ui.router', 'ngCordova','ngCordova.plugins.ble'
 ]);
 //全局常量
@@ -181,7 +182,7 @@ $stateProvider
                             name: 'css',
                             insertBefore: '#app-level',
                             files: [
-                                'css/discuss.css',
+                                'lib/angular-lazy-image/lazy-image-style.css',
                             ]
                         }
                     ]

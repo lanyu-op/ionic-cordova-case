@@ -16,6 +16,7 @@ require.config({
     'ui-router':'../lib/ionic/js/angular-ui/angular-ui-router',
     //'angular-route': '../lib/angular-ui-router',
     'angular':'../lib/ionic/js/angular/angular',
+    'lazy-image':'../lib/angular-lazy-image/lazy-image'
 
   },
   // if you are using jquery you have to add a shim for ionic and add jquery as deps
@@ -34,6 +35,7 @@ require.config({
     //},
     'ngCordova':['ionic'],//需要依赖ionic中的angularjs
     'angular-translate':['ionic'],//需要依赖ionic中的angularjs
+    'lazy-image':['ionic']
     //'angularUiRouterExtra':{
     //    deps:['ionic']
    // }
