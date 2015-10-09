@@ -23,7 +23,7 @@ app.constant('glables',{service: '1', measurement: '2'});
 app.config(function($stateProvider, $urlRouterProvider, $translateProvider,$httpProvider){
 
 // default
-$urlRouterProvider.otherwise("/app/index");
+$urlRouterProvider.otherwise("boot");
 $stateProvider
 //入口
 .state('app', angularAMD.route({
@@ -50,6 +50,33 @@ $stateProvider
 	    return "MainCtrl";
 	}
 }))
+.state('boot', angularAMD.route({
+url: '/boot',
+resolve: {
+    loadController: ['$q', '$stateParams',
+        function ($q, $stateParams)
+        {
+            // get the controller name === here as a path to Controller_Name.js
+            // which is set in main.js path {}
+            var load1 = "app/controllers/common/BootController.js";
+            var deferred = $q.defer();
+            require([load1], function () { deferred.resolve(); });
+            return deferred.promise;
+        }]
+},
+controllerProvider: function ($stateParams)
+{
+
+    // get the controller name === here as a dynamic controller Name
+    // var controllerName = controllerNameByParams($stateParams);
+    return "MainCtrl";
+    }
+}))
+  .state('first', angularAMD.route({
+  url: '/first',
+  templateUrl: 'app/templates/first.html'
+
+  }))
 //首页
 .state('app.index', angularAMD.route({
 	url: '/index',
