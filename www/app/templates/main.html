@@ -73,20 +73,8 @@
 	}
 </style>
 <ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
 
-    <ion-nav-bar class="bar-stable" >
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-      <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
-      </ion-nav-buttons>
-      <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="right">
-        </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
+  <ion-side-menu-content >
 
 	<ion-nav-view name="menuContent" >
 
@@ -103,20 +91,9 @@
         <ion-item nav-clear menu-close href="#/app/index">
 				首页
         </ion-item>
-        <ion-item nav-clear menu-close ng-click="login()">
-				登录
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/chartslist">
-				图表
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/devicelist">
-				设备
-        </ion-item>
-        <ion-item nav-clear menu-close href="#/app/functionlist">
-				功能
-        </ion-item>
-       <ion-item nav-clear menu-close href="#/app/discuss">
-				圈子
+
+       <ion-item nav-clear menu-close href="#/app/newTask">
+			工作任务
         </ion-item>
       </ion-list>
     </ion-content>
