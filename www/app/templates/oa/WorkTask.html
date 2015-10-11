@@ -1,0 +1,56 @@
+<style>
+	img{
+		border-radius: 60px;
+		max-width: 65px;
+		max-height: 65px;
+		float: left;
+		left: 20px;
+		top: initial;
+	}
+	.titl{
+		float: left;
+		margin-left: 20px;
+		line-height: 50px;
+	}
+</style>
+
+
+<ion-view >
+<ion-nav-bar class="bar-stable" >
+  <ion-nav-back-button>
+  </ion-nav-back-button>
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+
+  </ion-nav-buttons>
+    	<ion-nav-title>
+      	工作交办
+    </ion-nav-title>
+  <ion-nav-buttons side="right">
+
+  	<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: white;" href="#/app/newTask"></a>
+  	<!--<a class="ion-ios-compose-outline" style="font-size: 24px;color: white;"></a>
+-->
+  </ion-nav-buttons>
+</ion-nav-bar>
+  <ion-content class="padding">
+
+    <ion-refresher
+            pulling-text="Pull to refresh..."
+            on-refresh="onRefresh()">
+    </ion-refresher>
+    <ion-list>
+      <ion-item class="item-icon-right" ng-click="onRecordBluetoothId(device.id, device.rssi, device.name)"  ng-repeat="item in list"  type="item-text-wrap">
+        <div><div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
+        </div>
+				<div class="titl">
+					{{item.st}}
+				</div>
+				<div style="clear:both">{{item.manid}}</div>
+       	<!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

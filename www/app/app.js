@@ -8,13 +8,14 @@ define([
 	'ionic',
 	'jquery',
 	'ocLazyLoad',
-	'lazy-image'
+	'lazy-image',
+	'file-upload'
 	//'angularUiRouterExtra',
 ], function (angular,angularAMD) {
 'use strict';
 // the app with its used plugins
 var app = angular.module('app', [
-'ionic', 'ngCordova', 'ngCordova.plugins.ble','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage'
+'ionic', 'ngCordova', 'ngCordova.plugins.ble','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage', 'ngFileUpload'
 	//'ionic','pascalprecht.translate','ui.router', 'ngCordova','ngCordova.plugins.ble'
 ]);
 //全局常量
@@ -237,7 +238,56 @@ controllerProvider: function ($stateParams)
 		    return "NewTaskCtrl";
 		}
 }))
-
+//工作交办
+.state('app.workTask', angularAMD.route({
+	    url: '/workTask',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'app/templates/oa/WorkTask.html',
+			controller: 'WorkTaskCtrl'
+	      }
+	    },
+	    //templateUrl: 'app/templates/oa/NewTask.html',
+	    //controller: 'NewTaskCtrl',
+	    //路由前执行如下
+		resolve: {
+		    loadcss: ['$q','$ocLazyLoad',
+		    function ($q,$ocLazyLoad)
+		    {
+		        // get the controller name === here as a path to Controller_Name.js
+		        // which is set in main.js path {}
+				//JS加载交给requirejs管理。ionic框架底层对route进行了绑定，不能oclazyload来加载页面。
+				//angularAMD：它的作用把angularjs和requirejs结合在一起。
+				//requirejs+angularAMD可以整合ionic框架，所以按需加载都用requestjs。
+				//由于不能加载js以外文件，$ocLazyLoad来加载其他。
+		        var load1 = "app/controllers/oa/WorkTaskController.js";
+	            var deferred = $q.defer();
+	            require([load1], function () {
+	            	//加载css,requirejs,html等。
+	            	$ocLazyLoad.load(
+						[
+	                        {
+	                            name: 'css',
+	                            //insertBefore: '#xxx',
+	                            files: [
+	                                //'lib/angular-lazy-image/lazy-image-style.css',
+	                                //'app/controllers/discuss/DsMainController.js'
+	                            ]
+	                        }
+	                    ]
+					);
+	            	deferred.resolve();
+	            });
+	            return deferred.promise;
+		    }]
+		},
+		controllerProvider: function ($stateParams)
+		{
+		    // get the controller name === here as a dynamic controller Name
+		   // var controllerName = controllerNameByParams($stateParams);
+		    return "NewTaskCtrl";
+		}
+}))
 //圈子
 .state('app.discuss', angularAMD.route({
 	    url: '/discuss',

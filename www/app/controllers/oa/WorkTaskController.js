@@ -1,56 +1,5 @@
 define(['app'], function (app) {
-app.controller('NewTaskCtrl', function($scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload, $timeout) {
-
-//附件上传
-//提交附件
-    $scope.submit = function() {
-      if (form.file.$valid && $scope.file && !$scope.file.$error) {
-        $scope.upload($scope.file);
-      }
-    };
-    // upload on file select or drop
-    $scope.upload = function (file) {
-    	 if (files && files.length) {
-    	 	for (var i = 0; i < files.length; i++) {
-		        Upload.upload({
-		            url: 'upload/url',
-		            data: {file: file, 'username': $scope.username}
-		        }).then(function (resp) {
-		            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-		        }, function (resp) {
-		            console.log('Error status: ' + resp.status);
-		        }, function (evt) {
-		            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-		            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-		        });
-	        }
-        }
-    };
-    $scope.uploadFiles = function (files) {
-		console.log(files)
-        $scope.files = files;
-        /*
-        if (files && files.length) {
-            Upload.upload({
-                url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
-                data: {
-                    files: files
-                }
-            }).then(function (response) {
-                $timeout(function () {
-                    $scope.result = response.data;
-                });
-            }, function (response) {
-                if (response.status > 0) {
-                    $scope.errorMsg = response.status + ': ' + response.data;
-                }
-            }, function (evt) {
-                $scope.progress =
-                    Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
-            });
-        }
-        */
-    };
+app.controller('WorkTaskCtrl', function($scope,$ionicPopup,$http,$cordovaSQLite,$state) {
 	//页头跳转
     $scope.doSomething = function() {
 		$state.go('app');

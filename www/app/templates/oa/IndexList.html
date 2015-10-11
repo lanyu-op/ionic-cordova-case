@@ -1,29 +1,22 @@
-<style>
-.bar-stable .button.button-clear{
-	color: white;
-}
 
-
-
-</style>
+<ion-view  cache-view="false">
 <ion-nav-bar class="bar-stable" >
   <ion-nav-back-button>
   </ion-nav-back-button>
-  	<ion-nav-title>
-      	首页
-    </ion-nav-title>
+
   <ion-nav-buttons side="left">
     <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
     </button>
 
   </ion-nav-buttons>
+    	<ion-nav-title>
+      	首页
+    </ion-nav-title>
   <ion-nav-buttons side="right">
     <button class="button button-icon button-clear ion-android-sync" menu-toggle="right">
     </button>
   </ion-nav-buttons>
 </ion-nav-bar>
-
-<ion-view  cache-view="false" style="top:40px">
 
   <ion-content >
     <h1>{{SelectLanguage_Lang|translate}}</h1>

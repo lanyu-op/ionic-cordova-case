@@ -14,26 +14,67 @@
 	}
 </style>
 
-<ion-view view-title={{title}}>
+
+<ion-view >
+	<ion-nav-bar class="bar-stable">
+  <ion-nav-back-button>
+  </ion-nav-back-button>
+  	<ion-nav-title>
+      	新建工作
+    </ion-nav-title>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+
+  	<a class="button button-icon button-clear ion-android-done" style="font-size: 24px;color: white;"></a>
+
+
+  </ion-nav-buttons>
+</ion-nav-bar>
   <ion-content class="padding">
-  	<div style="text-align: right;">
-  	<a class="ion-ios-plus-outline" style="font-size: 24px;"></a>
-  	<a class="ion-ios-compose-outline" style="font-size: 24px;"></a>
-  	</div>
-    <ion-refresher
-            pulling-text="Pull to refresh..."
-            on-refresh="onRefresh()">
-    </ion-refresher>
-    <ion-list>
-      <ion-item class="item-icon-right" ng-click="onRecordBluetoothId(device.id, device.rssi, device.name)"  ng-repeat="item in list"  type="item-text-wrap">
-        <div><div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
+
+   <div class="card">
+        <div class="card-header">
+            <h2>Textarea <small>Form control which supports multiple lines of text. Change 'rows' attribute as necessary.</small></h2>
         </div>
-				<div class="titl">
-					{{item.st}}
-				</div>
-				<div style="clear:both">{{item.manid}}</div>
-       	<!--<i class="icon ion-chevron-right icon-accessory"></i>-->
-      </ion-item>
-    </ion-list>
+
+        <div class="card-body card-padding">
+            <div class="form-group">
+                <div class="fg-line">
+                    <textarea class="form-control" rows="5" placeholder="请输入文字..."></textarea>
+                </div>
+            </div>
+			<p class="c-black f-500 m-b-20">附件</p>
+			<!--
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <span class="btn btn-primary btn-file m-r-10">
+                            <span class="fileinput-new">Select file</span>
+                            <span class="fileinput-exists">Change</span>
+                            <input type="file" name="..." multiple >
+                        </span>
+                        <span class="fileinput-filename"></span>
+                        <a href="#" class="close fileinput-exists" data-dismiss="fileinput">&times;</a>
+                    </div>
+-->
+
+              	<!--<div class="button" ngf-select ng-model="files" ngf-multiple="true">Select</div>
+			   --->
+			    <button ngf-select="uploadFiles($files)" multiple >添加</button>
+			    <br>
+			    <br>Files:
+			    <ul>
+			        <li ng-repeat="f in files" style="font:smaller">
+			            {{f.name}}
+			        </li>
+			    </ul>
+			    <span class="progress" ng-show="progress >= 0">
+			        <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
+			    </span>
+			    {{errorMsg}}
+        </div>
+    </div>
   </ion-content>
 </ion-view>

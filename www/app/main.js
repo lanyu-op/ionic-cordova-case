@@ -16,7 +16,8 @@ require.config({
     'ui-router':'../lib/ionic/js/angular-ui/angular-ui-router',
     //'angular-route': '../lib/angular-ui-router',
     'angular':'../lib/ionic/js/angular/angular',
-    'lazy-image':'../lib/angular-lazy-image/lazy-image'
+    'lazy-image':'../lib/angular-lazy-image/lazy-image',
+    'file-upload':'../lib/ng-file-upload/ng-file-upload'
 
   },
   // if you are using jquery you have to add a shim for ionic and add jquery as deps
@@ -27,6 +28,7 @@ require.config({
 		//'angular-translate':['ionic'],//需要依赖ionic中的angularjs
 		//'iuChart':{deps: ['jquery','ionic']},
 		//'echarts':{deps: ['jquery','ionic']},
+		'file-upload': ['ionic'],
 		 "angular": {exports: "angular" },
 		//'angularAMD':["ionic"],
     //'ui-router':  ["ionic"],
