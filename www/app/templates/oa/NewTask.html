@@ -15,18 +15,20 @@
 </style>
 
 
-<ion-view >
-	<ion-nav-bar class="bar-stable">
-  <ion-nav-back-button>
+<ion-view cache-view="false">
+<ion-nav-bar class="bar-stable">
+	  <ion-nav-back-button>
   </ion-nav-back-button>
+<ion-nav-buttons side="left">
+  	<a class="button button-icon button-clear ion-chevron-left" menu-close href="#/app/workTask" style="font-size: 24px;color: white;"></a>
+</ion-nav-buttons>
+
+
+
   	<ion-nav-title>
       	新建工作
     </ion-nav-title>
-  <ion-nav-buttons side="left">
-    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-    </button>
 
-  </ion-nav-buttons>
   <ion-nav-buttons side="right">
 
   	<a class="button button-icon button-clear ion-android-done" style="font-size: 24px;color: white;"></a>
@@ -69,7 +71,7 @@
                     {{f.username}}
                 </li>
             </ul>
-			<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color:#00A000;" ng-click="GoPage('app.selectPerson','ooooo')"></a>
+			<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color:#00A000;" menu-close ng-click="GoPage('app.selectPerson','ooooo')"></a>
 			<p class="c-black f-500 m-b-20">参与人</p>
 			<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: #00A000;" href="#/app/newTask"></a>
         </div>

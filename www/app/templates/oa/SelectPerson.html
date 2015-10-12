@@ -21,21 +21,17 @@
 </style>
 
 
-<ion-view >
+<ion-view cache-view="false">
 	<ion-nav-bar class="bar-stable">
-	  <ion-nav-back-button>
-	  </ion-nav-back-button>
+  <ion-nav-back-button>
+  </ion-nav-back-button>
 	  	<ion-nav-title>
 	      	选择组织成员
 	    </ion-nav-title>
-	  <ion-nav-buttons side="left">
-	    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-	    </button>
 
-	  </ion-nav-buttons>
 	  <ion-nav-buttons side="right">
-	  	<a class="button button-icon button-clear ion-android-sync" href="#/app/newTask"></a>
-	  	<a class="button button-icon button-clear ion-android-done" style="font-size: 24px;color: white;"  ng-click="GoPage('app.newTask','ooooo')"></a>
+	  	<a class="button button-icon button-clear ion-android-sync" menu-close href="#/app/newTask"></a>
+	  	<a class="button button-icon button-clear ion-android-done" style="font-size: 24px;color: white;" menu-close  ng-click="GoPage('app.newTask','ooooo')"></a>
 	  </ion-nav-buttons>
 	</ion-nav-bar>
 
