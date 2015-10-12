@@ -37,31 +37,13 @@
   <ion-content class="padding">
 
    <div class="card">
-        <div class="card-header">
-            <h2>Textarea <small>Form control which supports multiple lines of text. Change 'rows' attribute as necessary.</small></h2>
-        </div>
-
         <div class="card-body card-padding">
             <div class="form-group">
                 <div class="fg-line">
-                    <textarea class="form-control" rows="5" placeholder="请输入文字..."></textarea>
+                    <textarea class="form-control" ng-model="xxx.tasktext" ng-change="checkText()"   rows="5" placeholder="请输入文字..."></textarea>
                 </div>
             </div>
 			<p class="c-black f-500 m-b-20">附件</p>
-			<!--
-                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                        <span class="btn btn-primary btn-file m-r-10">
-                            <span class="fileinput-new">Select file</span>
-                            <span class="fileinput-exists">Change</span>
-                            <input type="file" name="..." multiple >
-                        </span>
-                        <span class="fileinput-filename"></span>
-                        <a href="#" class="close fileinput-exists" data-dismiss="fileinput">&times;</a>
-                    </div>
--->
-
-              	<!--<div class="button" ngf-select ng-model="files" ngf-multiple="true">Select</div>
-			   --->
 			    <button ngf-select="uploadFiles($files)" multiple >添加</button>
 			    <br>
 			    <br>Files:
@@ -74,6 +56,22 @@
 			        <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
 			    </span>
 			    {{errorMsg}}
+
+        </div>
+    </div>
+  <div class="card">
+        <div class="card-body card-padding">
+
+			<p class="c-black f-500 m-b-20">截至日期</p>
+			<p class="c-black f-500 m-b-20">负责人</p>
+            <ul>
+                <li ng-repeat="f in personone" style="font:smaller">
+                    {{f.username}}
+                </li>
+            </ul>
+			<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color:#00A000;" ng-click="GoPage('app.selectPerson','ooooo')"></a>
+			<p class="c-black f-500 m-b-20">参与人</p>
+			<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: #00A000;" href="#/app/newTask"></a>
         </div>
     </div>
   </ion-content>

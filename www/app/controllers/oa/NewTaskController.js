@@ -1,6 +1,33 @@
 define(['app'], function (app) {
-app.controller('NewTaskCtrl', function($scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload, $timeout) {
+app.controller('NewTaskCtrl', function($scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
+$scope.xxx = $scope;
+//选择负责人完毕
+    console.log("----"+$stateParams.userid+$stateParams.username+$stateParams.img);
+    //alert($stateParams);
+    //负责指定完跳转
+    $scope.GoPage = function (target,param) {
+      	$rootScope.tasktext=$scope.tasktext;
+        $state.go(target,{});
+    }
+    $scope.checkText = function () {
+        //if ($scope.tasktext.length > 5) {
+         //   alert("text is too long");
+          //  $scope.tasktext = $scope.tasktext.substr(0, 5);
 
+        //}
+    }
+    var arr=new Array();
+
+		if(typeof($stateParams.userid)!='undefined'){
+			arr.push({"userid":$stateParams.userid,"username":$stateParams.username,"img":$stateParams.img});
+			console.log(arr);
+			$scope.personone = arr;
+		}else{
+			$scope.personone = arr;
+		}
+
+
+    ///$scope.personone="111";
 //附件上传
 //提交附件
     $scope.submit = function() {
@@ -27,8 +54,15 @@ app.controller('NewTaskCtrl', function($scope,$ionicPopup,$http,$cordovaSQLite,$
         }
     };
     $scope.uploadFiles = function (files) {
-		console.log(files)
-        $scope.files = files;
+		//console.log(files);
+		if(files!=null){
+		if(typeof($scope.files)!='undefined'){
+			$scope.files = $scope.files.concat(files);
+		}else{
+			$scope.files = (files);
+		}
+
+       }
         /*
         if (files && files.length) {
             Upload.upload({

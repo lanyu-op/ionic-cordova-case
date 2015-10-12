@@ -1,0 +1,86 @@
+<style>
+.button.button-icon.input-button {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  color: #bbb;
+}
+.item img {
+  height: 60px;
+  width: 60px;
+  float: left;
+  margin-top: 20px;
+  margin-right: 10px;
+}
+.list .my-item.item {
+  left: 0;
+  right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+</style>
+
+
+<ion-view >
+	<ion-nav-bar class="bar-stable">
+	  <ion-nav-back-button>
+	  </ion-nav-back-button>
+	  	<ion-nav-title>
+	      	选择组织成员
+	    </ion-nav-title>
+	  <ion-nav-buttons side="left">
+	    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+	    </button>
+
+	  </ion-nav-buttons>
+	  <ion-nav-buttons side="right">
+	  	<a class="button button-icon button-clear ion-android-sync" href="#/app/newTask"></a>
+	  	<a class="button button-icon button-clear ion-android-done" style="font-size: 24px;color: white;"  ng-click="GoPage('app.newTask','ooooo')"></a>
+	  </ion-nav-buttons>
+	</ion-nav-bar>
+
+  <ion-content>
+
+    <div class="list">
+    	    <input type="search"
+      placeholder="关键字"
+      ng-model="ctrlScope.search"
+      ng-focus="searchFocused = true"
+      ng-blur="searchFocused = false"
+      ng-change="scrollTop()">
+    <button ng-if="search.length"
+      class="button button-icon ion-android-close input-button"
+      ng-click="clearSearch()">
+    </button>
+    <ion-list>
+      <ion-item class="item item-radio"
+        collection-repeat="item in getContacts()"
+        collection-item-height="getItemHeight(item)"
+        collection-item-width="getItemWidth(item)"
+        ng-style="{'line-height': getItemHeight(item) + 'px'}"
+        ng-class="{'item-divider': item.isLetter}"
+        ng-click="selectitem(item.id,item.first_name,'/img/aaa.png')"
+        >
+
+          <img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}">
+          {{item.letter || (item.first_name+' '+item.last_name)}}
+          <i class="ion-checkmark" ng-show="item.id==isselect" ></i>
+          <!--
+          <label class="item item-radio">
+              <input type="radio" name="group">
+              <div class="item-content">
+                  <img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}">
+                  {{item.letter || (item.first_name+' '+item.last_name)}}
+              </div>
+              <i class="radio-icon ion-checkmark"></i>
+          </label>
+            -->
+      </ion-item>
+
+
+    </ion-list>
+
+    </div>
+  </ion-content>
+
+</ion-view>
