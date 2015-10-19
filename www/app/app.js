@@ -320,6 +320,50 @@ controllerProvider: function ($stateParams)
 		    }]
 		}
 }))
+//选择一个成员
+.state('app.selectMorePerson', angularAMD.route({
+	    url: '/selectMorePerson',
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'app/templates/oa/SelectMorePerson.html',
+			controller: 'SelectMorePersonCtrl'
+	      }
+	    },
+	    //templateUrl: 'app/templates/oa/NewTask.html',
+	    //controller: 'NewTaskCtrl',
+	    //路由前执行如下
+		resolve: {
+		    loadcss: ['$q','$ocLazyLoad',
+		    function ($q,$ocLazyLoad)
+		    {
+		        // get the controller name === here as a path to Controller_Name.js
+		        // which is set in main.js path {}
+				//JS加载交给requirejs管理。ionic框架底层对route进行了绑定，不能oclazyload来加载页面。
+				//angularAMD：它的作用把angularjs和requirejs结合在一起。
+				//requirejs+angularAMD可以整合ionic框架，所以按需加载都用requestjs。
+				//由于不能加载js以外文件，$ocLazyLoad来加载其他。
+		        var load1 = "app/controllers/oa/SelectMorePersonController.js";
+	            var deferred = $q.defer();
+	            require([load1], function () {
+	            	//加载css,requirejs,html等。
+	            	$ocLazyLoad.load(
+						[
+	                        {
+	                            name: 'css',
+	                            //insertBefore: '#xxx',
+	                            files: [
+	                                //'lib/angular-lazy-image/lazy-image-style.css',
+	                                //'app/controllers/discuss/DsMainController.js'
+	                            ]
+	                        }
+	                    ]
+					);
+	            	deferred.resolve();
+	            });
+	            return deferred.promise;
+		    }]
+		}
+}))
 //圈子
 .state('app.discuss', angularAMD.route({
 	    url: '/discuss',
