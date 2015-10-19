@@ -16,11 +16,26 @@
 
 
 <ion-view cache-view="false">
+	<div data-ng-init="load()" ></div>
+	<ion-header-bar align-title="center" class="bar-stable">
+  <div class="buttons">
+  	<a class="button button-icon button-clear ion-chevron-left" menu-close href="#/app/workTask" style="font-size: 18px;color: white;"></a>
+
+  </div>
+  <h1 class="title">新建工作</h1>
+  <div class="buttons">
+ 	<a class="button button-icon button-clear ion-android-done" style="font-size: 24px;color: white;"></a>
+ </div>
+</ion-header-bar>
+<!--
+	作者：157595075@qq.com
+	时间：2015-10-20
+	描述：
+
 <ion-nav-bar class="bar-stable">
-	  <ion-nav-back-button>
-  </ion-nav-back-button>
+
 <ion-nav-buttons side="left">
-  	<a class="button button-icon button-clear ion-chevron-left" menu-close href="#/app/workTask" style="font-size: 24px;color: white;"></a>
+  	<a class="button button-icon button-clear ion-chevron-left" menu-close  href="#/app/workTask" style="font-size: 24px;color: white;"></a>
 </ion-nav-buttons>
 
 
@@ -36,6 +51,7 @@
 
   </ion-nav-buttons>
 </ion-nav-bar>
+-->
   <ion-content class="padding">
 
    <div class="card">
@@ -50,7 +66,7 @@
 			    <br>
 			    <br>Files:
 			    <ul>
-			        <li ng-repeat="f in files" style="font:smaller">
+			        <li ng-repeat="f in files" style="font:smaller" >
 			            {{f.name}}
 			        </li>
 			    </ul>
@@ -71,7 +87,7 @@
                     {{f.username}}
                 </li>
             </ul>
-			<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color:#00A000;" menu-close ng-click="GoPage('app.selectPerson','ooooo')"></a>
+			<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color:#00A000;" ng-click="GoPage('app.selectPerson','ooooo')"></a>
 			<p class="c-black f-500 m-b-20">参与人</p>
 			<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: #00A000;" menu-close ng-click="GoPage('app.selectMorePerson','ooooo')"></a>
         </div>

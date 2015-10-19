@@ -79,6 +79,8 @@ app.controller('SelectPersonCtrl', function($scope,$rootScope,$ionicPopup,$http,
 		  };
         //负责指定完跳转
         $scope.GoPage = function (target,param) {
+        	//console.log($rootScope.tasktext);
+
             $state.go(target,{userid:$scope.isselect,username:$rootScope.username,img:$rootScope.img});
         }
     //选择

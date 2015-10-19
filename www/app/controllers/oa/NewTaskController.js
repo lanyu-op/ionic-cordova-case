@@ -1,11 +1,21 @@
 define(['app'], function (app) {
 app.controller('NewTaskCtrl', function($scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
 $scope.xxx = $scope;
+
 //选择负责人完毕
-    console.log("----"+$stateParams.userid+$stateParams.username+$stateParams.img);
+    //console.log("----"+$stateParams.userid+$stateParams.username+$stateParams.img);
     //alert($stateParams);
+    $scope.GoPageClear = function (target,param) {
+    	//$rootScope.files=;
+
+      	$scope.tasktext='';
+      	//$scope.files={};
+        $state.go(target,{});
+    }
+
     //负责指定完跳转
     $scope.GoPage = function (target,param) {
+    	$rootScope.files=$scope.files;
       	$rootScope.tasktext=$scope.tasktext;
         $state.go(target,{});
     }
@@ -25,7 +35,14 @@ $scope.xxx = $scope;
 		}else{
 			$scope.personone = arr;
 		}
-
+		if(typeof($stateParams.isclear)!='undefined'){
+			$scope.tasktext='';
+			$scope.files=arr;
+			console.log($stateParams.isclear);
+		}else{
+			//$scope.tasktext='';
+			console.log($stateParams.isclear);
+		}
 
     ///$scope.personone="111";
 //附件上传

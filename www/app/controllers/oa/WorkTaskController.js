@@ -1,6 +1,19 @@
 define(['app'], function (app) {
-app.controller('WorkTaskCtrl', function($scope,$ionicPopup,$http,$cordovaSQLite,$state) {
+app.controller('WorkTaskCtrl', function($scope,$rootScope,$ionicPopup,$http,$cordovaSQLite,$state) {
 	//页头跳转
+
+    $scope.GoPage = function (target,param) {
+    	//$rootScope.files=;
+
+      	//$rootScope.tasktext='';
+      	//$scope.files={};
+      	//console.log('===='+$rootScope.tasktext)
+        $state.go(target,{isclear:Math.random()});
+    }
+	//var appElement = document.querySelector('[ng-controller=NewTaskCtrl]');//获得绑定controllerdom节点
+	//var $scope = angular.element(appElement).scope(); //获得$scope对象
+	//$scope.apply();//刷新数据
+
     $scope.doSomething = function() {
 		$state.go('app');
     }

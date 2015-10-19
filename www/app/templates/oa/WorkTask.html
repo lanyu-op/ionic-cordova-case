@@ -16,9 +16,19 @@
 
 
 <ion-view cache-view="false">
+	<ion-header-bar align-title="center" class="bar-stable">
+  <div class="buttons">
+     <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </div>
+  <h1 class="title">工作交办</h1>
+  <div class="buttons">
+  	<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: white;" 000;" ng-click="GoPage('app.newTask','')"></a>
+  </div>
+</ion-header-bar>
+<!--
 <ion-nav-bar class="bar-stable" >
-  <ion-nav-back-button>
-  </ion-nav-back-button>
+
   <ion-nav-buttons side="left">
     <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
     </button>
@@ -29,11 +39,11 @@
     </ion-nav-title>
   <ion-nav-buttons side="right">
 
-  	<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: white;" menu-close href="#/app/newTask"></a>
-  	<!--<a class="ion-ios-compose-outline" style="font-size: 24px;color: white;"></a>
--->
+  	<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: white;" href="#/app/newTask"></a>
+
   </ion-nav-buttons>
 </ion-nav-bar>
+-->
   <ion-content class="padding">
 
     <ion-refresher

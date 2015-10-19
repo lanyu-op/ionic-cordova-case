@@ -190,7 +190,8 @@ controllerProvider: function ($stateParams)
 }))
 //新建工作任务
 .state('app.newTask', angularAMD.route({
-	    url: '/newTask:userid:username:img',
+	    url: '/newTask?:userid:username:img:isclear',
+	    //cache:'false',
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/NewTask.html',
