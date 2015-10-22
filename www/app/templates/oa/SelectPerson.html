@@ -53,7 +53,7 @@
   <ion-content>
 
     <div class="list">
-    	    <input type="search"
+    <input type="search"
       placeholder="关键字"
       ng-model="ctrlScope.search"
       ng-focus="searchFocused = true"
@@ -64,7 +64,7 @@
       ng-click="clearSearch()">
     </button>
     <ion-list>
-      <ion-item class="item item-radio"
+      <ion-item
         collection-repeat="item in getContacts()"
         collection-item-height="getItemHeight(item)"
         collection-item-width="getItemWidth(item)"

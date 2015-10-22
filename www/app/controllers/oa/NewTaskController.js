@@ -27,7 +27,7 @@ $scope.xxx = $scope;
         //}
     }
     var arr=new Array();
-
+		//回调负责人信息
 		if(typeof($stateParams.userid)!='undefined'){
 			arr.push({"userid":$stateParams.userid,"username":$stateParams.username,"img":$stateParams.img});
 			console.log(arr);
@@ -35,6 +35,7 @@ $scope.xxx = $scope;
 		}else{
 			$scope.personone = arr;
 		}
+		//新建清空信息
 		if(typeof($stateParams.isclear)!='undefined'){
 			$scope.tasktext='';
 			$scope.files=arr;
@@ -42,6 +43,14 @@ $scope.xxx = $scope;
 		}else{
 			//$scope.tasktext='';
 			console.log($stateParams.isclear);
+		}
+		//回调分派人信息
+		if(typeof($rootScope.arr1)!='undefined'){
+			console.log($rootScope.arr1);
+			$scope.personmore=$rootScope.arr1;
+
+		}else{
+			//$scope.personmore=arr;
 		}
 
     ///$scope.personone="111";

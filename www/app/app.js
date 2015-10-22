@@ -188,9 +188,10 @@ controllerProvider: function ($stateParams)
 		    }]
 		}
 }))
+
 //新建工作任务
 .state('app.newTask', angularAMD.route({
-	    url: '/newTask?:userid:username:img:isclear',
+	    url: '/newTask?:userid:username:img:isclear:arr1:arr2:arr3',
 	    //cache:'false',
 	    views: {
 	      'menuContent': {
@@ -321,7 +322,7 @@ controllerProvider: function ($stateParams)
 		    }]
 		}
 }))
-//选择一个成员
+//选择多个成员
 .state('app.selectMorePerson', angularAMD.route({
 	    url: '/selectMorePerson',
 	    views: {

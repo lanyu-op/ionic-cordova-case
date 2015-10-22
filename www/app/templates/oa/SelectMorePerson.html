@@ -22,18 +22,16 @@
 
 
 <ion-view cache-view="false">
-	<ion-nav-bar class="bar-stable">
-  <ion-nav-back-button>
-  </ion-nav-back-button>
-	  	<ion-nav-title>
-	      	选择组织成员
-	    </ion-nav-title>
+<ion-header-bar align-title="center" class="bar-stable">
+  <div class="buttons">
 
-	  <ion-nav-buttons side="right">
-	  	<a class="button button-icon button-clear ion-android-sync" menu-close href="#/app/newTask"></a>
-	  	<a class="button button-icon button-clear ion-android-done" style="font-size: 24px;color: white;" menu-close  ng-click="GoPage('app.newTask','ooooo')"></a>
-	  </ion-nav-buttons>
-	</ion-nav-bar>
+  </div>
+  <h1 class="title">选择组织成员</h1>
+  <div class="buttons">
+	  	<a class="button button-icon button-clear ion-android-sync" menu-close href="#"></a>
+	  	<a class="button button-icon button-clear ion-android-done" style="font-size: 24px;color: white;"  ng-click="GoPage('app.newTask','ooooo')"></a>
+</div>
+</ion-header-bar>
 
   <ion-content>
 
@@ -49,18 +47,19 @@
       ng-click="clearSearch()">
     </button>
     <ion-list>
-      <ion-item class="item item-radio"
+      <ion-item class="item item-checkbox"
         collection-repeat="item in getContacts()"
         collection-item-height="getItemHeight(item)"
         collection-item-width="getItemWidth(item)"
         ng-style="{'line-height': getItemHeight(item) + 'px'}"
         ng-class="{'item-divider': item.isLetter}"
-        ng-click="selectitem(item.id,item.first_name,'/img/aaa.png')"
         >
-
+    <label class="checkbox">
+       <input type="checkbox" id={{item.id}} name="{{item.first_name}}" ng-checked="isSelected(item.id)" ng-click="updateSelection($event,item.id)">
+     </label>
           <img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}">
           {{item.letter || (item.first_name+' '+item.last_name)}}
-          <i class="ion-checkmark" ng-show="item.id==isselect" ></i>
+
           <!--
           <label class="item item-radio">
               <input type="radio" name="group">

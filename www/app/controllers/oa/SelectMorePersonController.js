@@ -1,5 +1,48 @@
 define(['app'], function (app) {
 app.controller('SelectMorePersonCtrl', function($scope,$rootScope,$ionicPopup,$http,$ionicScrollDelegate,$state, filterFilter) {
+		  //复选框处理
+ 		 $scope.selected = [];//选择的用户id
+     $scope.selectedTags = [];//选择的用户名称
+     $scope.selectedImgs = [];//选择的用户头像
+
+     var updateSelected = function(action,id,name){
+         if(action == 'add'){
+             $scope.selected.push({'userid':id,'username':name,'img':name});
+             console.log("添加："+$scope.selected.length);
+             console.log($scope.selected);
+             //$scope.selectedTags.push(name);
+         }
+
+         if(action == 'remove' ){
+         	  for (var i = 0; i < $scope.selected.length; i++) {
+							if($scope.selected[i].userid==id){
+								//console.log("删除："+$scope.selected[i].userid+"="+id);
+
+								$scope.selected.splice(i,1);
+								console.log($scope.selected);
+							}
+         		}
+
+
+         }
+     }
+
+     $scope.updateSelection = function($event, id){
+
+         var checkbox = $event.target;
+         var action = (checkbox.checked?'add':'remove');
+         updateSelected(action,id,checkbox.name);
+				//console.log($scope.selected);
+
+     }
+
+     $scope.isSelected = function(id){
+         return $scope.selected.indexOf(id)>=0;
+     }
+
+		  ////
+
+
 		  var letters = $scope.letters = [];
 		  var contacts = $scope.contacts = [];
 
@@ -79,7 +122,14 @@ app.controller('SelectMorePersonCtrl', function($scope,$rootScope,$ionicPopup,$h
 		  };
         //负责指定完跳转
         $scope.GoPage = function (target,param) {
-            $state.go(target,{userid:$scope.isselect,username:$rootScope.username,img:$rootScope.img});
+        	  //$scope.selected;
+            //$scope.selectedTags;
+						$rootScope.arr1=$scope.selected;
+						console.log("传递参数："+$scope.selected);
+
+						//$rootScope.arr2=$scope.selectedTags;
+						//$rootScope.arr3=$scope.selectedTags;
+            $state.go(target,{arr1:$scope.selected});
         }
     //选择
              $scope.selectitem = function(id,username,img) {
