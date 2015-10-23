@@ -17,7 +17,8 @@ $scope.xxx = $scope;
     $scope.GoPage = function (target,param) {
     	$rootScope.files=$scope.files;
       	$rootScope.tasktext=$scope.tasktext;
-        $state.go(target,{});
+
+        $state.go(target,{a:Math.random()});
     }
     $scope.checkText = function () {
         //if ($scope.tasktext.length > 5) {
@@ -30,23 +31,29 @@ $scope.xxx = $scope;
 		//回调负责人信息
 		if(typeof($stateParams.userid)!='undefined'){
 			arr.push({"userid":$stateParams.userid,"username":$stateParams.username,"img":$stateParams.img});
-			console.log(arr);
-			$scope.personone = arr;
+			//console.log(arr);
+			$rootScope.personone=arr;
+			$scope.personone = $rootScope.personone;
+
 		}else{
-			$scope.personone = arr;
+			//$scope.personone = $rootScope.personone;
 		}
 		//新建清空信息
 		if(typeof($stateParams.isclear)!='undefined'){
 			$scope.tasktext='';
 			$scope.files=arr;
-			console.log($stateParams.isclear);
+			$rootScope.personone=arr;
+			$rootScope.arr1=arr;
+
+			//console.log($stateParams.isclear);
 		}else{
 			//$scope.tasktext='';
-			console.log($stateParams.isclear);
+			//console.log($stateParams.isclear);
 		}
 		//回调分派人信息
+		console.log($rootScope.arr1);
 		if(typeof($rootScope.arr1)!='undefined'){
-			console.log($rootScope.arr1);
+			console.log("---------------"+$rootScope.arr1);
 			$scope.personmore=$rootScope.arr1;
 
 		}else{

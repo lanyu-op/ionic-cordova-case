@@ -324,7 +324,7 @@ controllerProvider: function ($stateParams)
 }))
 //选择多个成员
 .state('app.selectMorePerson', angularAMD.route({
-	    url: '/selectMorePerson',
+	    url: '/selectMorePerson?:a',
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/SelectMorePerson.html',

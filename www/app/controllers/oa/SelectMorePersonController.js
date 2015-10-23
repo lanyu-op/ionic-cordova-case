@@ -129,7 +129,7 @@ app.controller('SelectMorePersonCtrl', function($scope,$rootScope,$ionicPopup,$h
 
 						//$rootScope.arr2=$scope.selectedTags;
 						//$rootScope.arr3=$scope.selectedTags;
-            $state.go(target,{arr1:$scope.selected});
+            $state.go(target,{arr1:Math.random()});
         }
     //选择
              $scope.selectitem = function(id,username,img) {
