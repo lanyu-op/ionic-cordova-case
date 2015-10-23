@@ -73,7 +73,7 @@
         ng-click="selectitem(item.id,item.first_name,'/img/aaa.png')"
         >
 
-          <img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}">
+          <div ng-if="!item.isLetter" afkl-lazy-image="http://placekitten.com/60/{{55 + ($index % 10)}}">
           {{item.letter || (item.first_name+' '+item.last_name)}}
           <i class="ion-checkmark" ng-show="item.id==isselect" ></i>
           <!--

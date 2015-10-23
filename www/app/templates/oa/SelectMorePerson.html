@@ -54,10 +54,10 @@
         ng-style="{'line-height': getItemHeight(item) + 'px'}"
         ng-class="{'item-divider': item.isLetter}"
         >
-    <label class="checkbox">
+     <label ng-if="!item.isLetter" class="checkbox">
        <input type="checkbox" id={{item.id}} name="{{item.first_name}}" ng-checked="isSelected(item.id)" ng-click="updateSelection($event,item.id)">
      </label>
-          <img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}">
+          <div ng-if="!item.isLetter" afkl-lazy-image="http://placekitten.com/60/{{55 + ($index % 10)}}">
           {{item.letter || (item.first_name+' '+item.last_name)}}
 
           <!--
