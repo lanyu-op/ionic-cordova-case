@@ -1,6 +1,17 @@
 define(['app'], function (app) {
-app.controller('SelectMorePersonCtrl', function($scope,$rootScope,$ionicPopup,$http,$ionicScrollDelegate,$state, filterFilter) {
-		  //复选框处理
+app.controller('SelectMorePersonCtrl', function($ionicLoading,$timeout,$scope,$rootScope,$ionicPopup,$http,$ionicScrollDelegate,$state, filterFilter) {
+  $ionicLoading.show({
+    content: 'Loading',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
+  $timeout(function () {
+    $ionicLoading.hide();
+
+  }, 1000);
+  //复选框处理
  		 $scope.selected = [];//选择的用户id
      $scope.selectedTags = [];//选择的用户名称
      $scope.selectedImgs = [];//选择的用户头像

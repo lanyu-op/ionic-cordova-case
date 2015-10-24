@@ -1,5 +1,14 @@
 define(['app'], function (app) {
-app.controller('WorkTaskCtrl', function($scope,$rootScope,$ionicPopup,$http,$cordovaSQLite,$state) {
+app.controller('WorkTaskCtrl', function($ionicLoading,$scope,$rootScope,$ionicPopup,$http,$cordovaSQLite,$state) {
+  $ionicLoading.show({
+    content: 'Loading',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
+
+
 	//页头跳转
 
     $scope.GoPage = function (target,param) {
@@ -82,6 +91,7 @@ app.controller('WorkTaskCtrl', function($scope,$rootScope,$ionicPopup,$http,$cor
 			   }
 			}).success(function(data){
 				//$scope.list=data.concat($scope.list);
+        $ionicLoading.hide();
 				$scope.list=data;
 				//alert(data);
 				//console.log($scope.list);

@@ -1,6 +1,7 @@
 define(['app'], function (app) {
-app.controller('NewTaskCtrl', function($scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
+app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
 $scope.xxx = $scope;
+
 
 //选择负责人完毕
     //console.log("----"+$stateParams.userid+$stateParams.username+$stateParams.img);

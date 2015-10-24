@@ -16,6 +16,7 @@
 
 
 <ion-view cache-view="false">
+  <div data-ng-init="onRefresh()" ></div>
 	<ion-header-bar align-title="center" class="bar-stable">
   <div class="buttons">
      <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
@@ -50,9 +51,9 @@
             pulling-text="Pull to refresh..."
             on-refresh="onRefresh()">
     </ion-refresher>
-    <ion-list>
+    <ion-list >
       <ion-item class="item-icon-right" ng-click="onRecordBluetoothId(device.id, device.rssi, device.name)"  ng-repeat="item in list"  type="item-text-wrap">
-        <div><div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
+        <div afkl-image-container><div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
         </div>
 				<div class="titl">
 					{{item.tasktxt}}

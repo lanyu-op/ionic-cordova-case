@@ -1,6 +1,17 @@
 define(['app'], function (app) {
-app.controller('SelectPersonCtrl', function($scope,$rootScope,$ionicPopup,$http,$ionicScrollDelegate,$state, filterFilter) {
-		  var letters = $scope.letters = [];
+app.controller('SelectPersonCtrl', function($ionicLoading,$timeout,$scope,$rootScope,$ionicPopup,$http,$ionicScrollDelegate,$state, filterFilter) {
+  $ionicLoading.show({
+    content: 'Loading',
+    animation: 'fade-in',
+    showBackdrop: true,
+    maxWidth: 200,
+    showDelay: 0
+  });
+  $timeout(function () {
+    $ionicLoading.hide();
+
+  }, 2000);
+  var letters = $scope.letters = [];
 		  var contacts = $scope.contacts = [];
 
 		  var currentCharCode = 'A'.charCodeAt(0) - 1;
