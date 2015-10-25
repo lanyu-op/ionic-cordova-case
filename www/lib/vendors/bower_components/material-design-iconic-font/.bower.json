@@ -1,0 +1,41 @@
+{
+  "name": "material-design-iconic-font",
+  "description": "Material Design Iconic Font",
+  "version": "1.1.1",
+  "keywords": [
+    "material",
+    "design",
+    "icons",
+    "font"
+  ],
+  "authors": [
+    "Sergey Kupletsky <s.kupletsky@gmail.com>"
+  ],
+  "license": [
+    "OFL-1.1",
+    "MIT",
+    "CC-BY-3.0"
+  ],
+  "main": [
+    "./css/material-design-iconic-font.css",
+    "./fonts/*"
+  ],
+  "ignore": [
+    "*/.*",
+    "*.json",
+    "*.md"
+  ],
+  "homepage": "http://zavoloklom.github.io/material-design-iconic-font/",
+  "dependencies": {},
+  "devDependencies": {},
+  "_release": "1.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.1",
+    "commit": "b8362ba2d040e329ea1e4c5ad8e77acd5ff3bdd6"
+  },
+  "_source": "git://github.com/zavoloklom/material-design-iconic-font.git",
+  "_target": "~1.1.1",
+  "_originalSource": "material-design-iconic-font",
+  "_direct": true
+}

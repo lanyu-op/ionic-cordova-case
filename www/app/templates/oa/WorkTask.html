@@ -22,7 +22,7 @@
      <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
     </button>
   </div>
-  <h1 class="title">工作交办</h1>
+  <h1 class="title">工作交办(18)</h1>
   <div class="buttons">
   	<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: white;" 000;" ng-click="GoPage('app.newTask','')"></a>
   </div>
@@ -51,6 +51,9 @@
             pulling-text="Pull to refresh..."
             on-refresh="onRefresh()">
     </ion-refresher>
+    <div class="item item-divider">
+      我关注
+    </div>
     <ion-list >
       <ion-item class="item-icon-right" ng-click="onRecordBluetoothId(device.id, device.rssi, device.name)"  ng-repeat="item in list"  type="item-text-wrap">
         <div afkl-image-container><div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
@@ -62,5 +65,17 @@
        	<!--<i class="icon ion-chevron-right icon-accessory"></i>-->
       </ion-item>
     </ion-list>
+    <div class="item item-divider">
+      我负责
+    </div>
+    <div class="item item-divider">
+      我参与
+    </div>
+    <div class="item item-divider">
+      我委托
+    </div>
+    <div class="item item-divider">
+      已关闭
+    </div>
   </ion-content>
 </ion-view>

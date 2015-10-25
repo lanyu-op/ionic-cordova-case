@@ -1,0 +1,64 @@
+{
+  "name": "jquery.bootgrid",
+  "description": "Nice, sleek and intuitive. A grid control especially designed for bootstrap.",
+  "keywords": [
+    "grid",
+    "table",
+    "data",
+    "sorting",
+    "filtering",
+    "UI",
+    "component",
+    "HTML5",
+    "accessibility",
+    "bootstrap"
+  ],
+  "version": "1.2.0",
+  "authors": [
+    {
+      "name": "Rafael Staib",
+      "email": "me@rafaelstaib.com",
+      "url": "http://www.rafaelstaib.com"
+    }
+  ],
+  "homepage": "http://www.jquery-bootgrid.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rstaib/jquery-bootgrid.git"
+  },
+  "license": "MIT",
+  "main": [
+    "dist/jquery.bootgrid.js",
+    "dist/jquery.bootgrid.css"
+  ],
+  "ignore": [
+    "build",
+    "demo",
+    "dist/*.nupkg",
+    "dist/*.zip",
+    "docs",
+    "lib",
+    "test",
+    "*.nuspec",
+    ".gitattributes",
+    ".gitignore",
+    ".travis.yml",
+    "bootgrid.jquery.json",
+    "Gruntfile.js",
+    "package.json"
+  ],
+  "dependencies": {
+    "jquery": ">=1.9.0",
+    "bootstrap": ">=3.1.1"
+  },
+  "_release": "1.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.2.0",
+    "commit": "62bcb53571a179bb4b9cbfae5ccc16d6576289bd"
+  },
+  "_source": "git://github.com/rstaib/jquery-bootgrid.git",
+  "_target": "~1.2.0",
+  "_originalSource": "jquery.bootgrid",
+  "_direct": true
+}

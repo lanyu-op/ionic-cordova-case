@@ -29,7 +29,7 @@
   <h1 class="title">选择组织成员</h1>
   <div class="buttons">
 	  	<a class="button button-icon button-clear ion-android-sync" menu-close href="#"></a>
-	  	<a class="button button-icon button-clear ion-android-done" style="font-size: 24px;color: white;"  ng-click="GoPage('app.newTask','ooooo')"></a>
+	  	<a class="button button-icon button-clear ion-android-done" style="font-size: 24px;color: white;"  menu-close ng-click="GoPage('app.newTask','ooooo')"></a>
 </div>
 </ion-header-bar>
 <!--
@@ -73,7 +73,7 @@
         ng-click="selectitem(item.id,item.first_name,'/img/aaa.png')"
         >
 
-          <div ng-if="!item.isLetter" afkl-lazy-image="http://placekitten.com/60/{{55 + ($index % 10)}}">
+          <div ng-if="!item.isLetter" afkl-lazy-image="http://placekitten.com/60/{{55 + ($index % 10)}}"></div>
           {{item.letter || (item.first_name+' '+item.last_name)}}
           <i class="ion-checkmark" ng-show="item.id==isselect" ></i>
           <!--
@@ -86,6 +86,7 @@
               <i class="radio-icon ion-checkmark"></i>
           </label>
             -->
+
       </ion-item>
 
 

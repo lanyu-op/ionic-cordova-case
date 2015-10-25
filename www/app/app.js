@@ -329,7 +329,7 @@ controllerProvider: function ($stateParams)
 }))
 //选择一个成员
 .state('app.selectPerson', angularAMD.route({
-	    url: '/selectPerson',
+	    url: '/selectPerson?:a',
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/SelectPerson.html',

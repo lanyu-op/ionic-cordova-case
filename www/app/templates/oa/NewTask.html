@@ -55,16 +55,17 @@
   <ion-content class="padding">
 
    <div class="card">
-        <div class="card-body card-padding">
+        <div class="item item-text-wrap">
             <div class="form-group">
                 <div class="fg-line">
                     <textarea class="form-control" ng-model="xxx.tasktext" ng-change="checkText()"   rows="5" placeholder="请输入文字..."></textarea>
                 </div>
             </div>
-			<p class="c-black f-500 m-b-20">附件</p>
-			    <button ngf-select="uploadFiles($files)" multiple >添加</button>
-			    <br>
-			    <br>Files:
+        </div>
+     <div class="item item-text-wrap">
+
+			    <a class="button button-icon button-clear ion-android-add"  ngf-select="uploadFiles($files)" multiple >附件</a>
+
 			    <ul>
 			        <li ng-repeat="f in files" style="font:smaller" >
 			            {{f.name}}
@@ -76,27 +77,36 @@
 			    {{errorMsg}}
 
         </div>
-    </div>
+   </div>
   <div class="card">
-        <div class="card-body card-padding">
 
-			<p class="c-black f-500 m-b-20">截至日期</p>
-			<p class="c-black f-500 m-b-20">负责人</p>
+
+			<div class="item item-divider">截至日期</div>
+			<div class="item item-divider">负责人</div>
+
+      <div class="item item-text-wrap">
+            <a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color:#00A000;" ng-click="GoPage('app.selectPerson','ooooo')"></a>
+
             <ul>
                 <li ng-repeat="f in personone" style="font:smaller">
                     {{f.username}}
                 </li>
             </ul>
-			<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color:#00A000;" ng-click="GoPage('app.selectPerson','ooooo')"></a>
-			<p class="c-black f-500 m-b-20">参与人</p>
-            <ul>
-                <li ng-repeat="f in personmore" style="font:smaller">
+      </div>
+
+     <div class="item item-divider">参与人</div>
+
+    <div class="item item-text-wrap">
+            <a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: #00A000;" menu-close ng-click="GoPage('app.selectMorePerson','')"></a>
+
+          <ul >
+                <li  ng-repeat="f in personmore" style="font:smaller">
                     {{f.username}}
                 </li>
             </ul>
 
-			<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: #00A000;" menu-close ng-click="GoPage('app.selectMorePerson','')"></a>
-        </div>
+
     </div>
+
   </ion-content>
 </ion-view>
