@@ -1,5 +1,12 @@
 define(['app'], function (app) {
 app.controller('SelectMorePersonCtrl', function($ionicLoading,$timeout,$scope,$rootScope,$ionicPopup,$http,$ionicScrollDelegate,$state, filterFilter) {
+  /*
+  $ionicHistory.nextViewOptions({
+    historyRoot: true,
+    disableAnimate: true,
+    expire: 300
+   });
+   */
   $ionicLoading.show({
     content: 'Loading',
     animation: 'fade-in',

@@ -17,11 +17,18 @@ require.config({
     //'angular-route': '../lib/angular-ui-router',
     'angular':'../lib/ionic/js/angular/angular',
     'lazy-image':'../lib/angular-lazy-image/lazy-image',
-    'file-upload':'../lib/ng-file-upload/ng-file-upload'
-
+    'file-upload':'../lib/ng-file-upload/ng-file-upload',
+    'moment':'../lib/moment/min/moment.min',
+    'angular-ui-calendar':'../lib/angular-ui-calendar/src/calendar',
+    'fullcalendar':'../lib/fullcalendar/dist/fullcalendar.min',
+    'gcal':'../lib/fullcalendar/dist/gcal',
+    'angular-bootstrap':'../lib/angular-bootstrap/ui-bootstrap-tpls'
   },
   // if you are using jquery you have to add a shim for ionic and add jquery as deps
   shim: {
+    'angular-ui-calendar':['ionic'],
+    'angular-bootstrap':['ionic'],
+    'gcal':['fullcalendar'],
     //'ionic': {deps: ['jquery']},
     //'ngCordova':['ionic'],//需要依赖ionic中的angularjs
 		'ocLazyLoad': ['ionic'],//需要依赖ionic中的angularjs

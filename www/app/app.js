@@ -9,13 +9,18 @@ define([
 	'jquery',
 	'ocLazyLoad',
 	'lazy-image',
-	'file-upload'
+	'file-upload',
+  'moment',
+  'angular-ui-calendar',
+  'fullcalendar',
+  'gcal',
+  'angular-bootstrap'
 	//'angularUiRouterExtra',
 ], function (angular,angularAMD) {
 'use strict';
 // the app with its used plugins
 var app = angular.module('app', [
-'ionic', 'ngCordova', 'ngCordova.plugins.ble','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage', 'ngFileUpload'
+'ionic', 'ngCordova', 'ngCordova.plugins.ble','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage', 'ngFileUpload','ui.calendar','ui.bootstrap'
 	//'ionic','pascalprecht.translate','ui.router', 'ngCordova','ngCordova.plugins.ble'
 ]);
 
@@ -271,11 +276,17 @@ controllerProvider: function ($stateParams)
 	                            name: 'css',
 	                            //insertBefore: '#xxx',
 	                            files: [
-	                                //'lib/angular-lazy-image/lazy-image-style.css',
-	                                //'app/controllers/discuss/DsMainController.js'
+                                //'lib/fullcalendar/dist/fullcalendar.css',
+                                'lib/angular-bootstrap/bootstrap.min.css'
 	                            ]
-	                        }
-	                    ]
+	                        },
+              {
+                name: 'vendors',
+                files: [
+
+                ]
+              }
+            ]
 					);
 	            	deferred.resolve();
 	            });
