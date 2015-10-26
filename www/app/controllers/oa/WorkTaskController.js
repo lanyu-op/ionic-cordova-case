@@ -8,7 +8,15 @@ app.controller('WorkTaskCtrl', function($ionicLoading,$scope,$rootScope,$ionicPo
     showDelay: 0
   });
 
+  //每次进入页面执行
+  $scope.$on('$ionicView.enter',function(){
 
+    var arr=new Array();
+    $rootScope.tasktext='';
+    $rootScope.files=arr;
+    $rootScope.personone=arr;
+    $rootScope.personmore=arr;
+  });
 	//页头跳转
 
     $scope.GoPage = function (target,param) {
@@ -17,7 +25,7 @@ app.controller('WorkTaskCtrl', function($ionicLoading,$scope,$rootScope,$ionicPo
       	//$rootScope.tasktext='';
       	//$scope.files={};
       	//console.log('===='+$rootScope.tasktext)
-        $state.go(target,{isclear:Math.random()});
+        $state.go(target,{});
     }
 	//var appElement = document.querySelector('[ng-controller=NewTaskCtrl]');//获得绑定controllerdom节点
 	//var $scope = angular.element(appElement).scope(); //获得$scope对象

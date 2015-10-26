@@ -95,9 +95,9 @@
 
       <div class="item item-text-wrap">
             <a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color:#00A000;" ng-click="GoPage('app.selectPerson','ooooo')"></a>
-
-            <ul>
-                <li ng-repeat="f in personone" style="font:smaller">
+        {{message}}
+        <ul>
+                <li  ng-repeat="f in personone" style="font:smaller">
                     {{f.username}}
                 </li>
             </ul>

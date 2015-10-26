@@ -11,6 +11,10 @@ app.controller('SelectPersonCtrl', function($ionicLoading,$timeout,$scope,$rootS
     $ionicLoading.hide();
 
   }, 2000);
+  $scope.$on('$ionicView.beforeEnter',function(){
+    //$scope.isselect=-1;
+
+  });
   var letters = $scope.letters = [];
 		  var contacts = $scope.contacts = [];
 
@@ -92,13 +96,16 @@ app.controller('SelectPersonCtrl', function($ionicLoading,$timeout,$scope,$rootS
         $scope.GoPage = function (target,param) {
         	//console.log($rootScope.tasktext);
 
-            $state.go(target,{userid:$scope.isselect,username:$rootScope.username,img:$rootScope.img});
+          $state.go(target,{});
+           // $state.go(target,{userid:$scope.isselect,username:$rootScope.username,img:$rootScope.img});
         }
     //选择
              $scope.selectitem = function(id,username,img) {
+               var arr=new Array();
                  $scope.isselect= id;
-                 $rootScope.username=username;
-                 $rootScope.img=img;
+
+               arr.push({"userid":id,"username":username,"img":img});
+               $rootScope.personone=arr;
                  //alert(id);
              };
 		  $scope.clearSearch = function() {

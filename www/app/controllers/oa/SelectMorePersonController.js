@@ -7,6 +7,11 @@ app.controller('SelectMorePersonCtrl', function($ionicLoading,$timeout,$scope,$r
     expire: 300
    });
    */
+  $scope.$on('$ionicView.enter',function(){
+    //$scope.selected = [];
+
+  });
+
   $ionicLoading.show({
     content: 'Loading',
     animation: 'fade-in',
@@ -24,6 +29,7 @@ app.controller('SelectMorePersonCtrl', function($ionicLoading,$timeout,$scope,$r
      $scope.selectedImgs = [];//选择的用户头像
 
      var updateSelected = function(action,id,name){
+
          if(action == 'add'){
              $scope.selected.push({'userid':id,'username':name,'img':name});
              console.log("添加："+$scope.selected.length);
@@ -43,6 +49,7 @@ app.controller('SelectMorePersonCtrl', function($ionicLoading,$timeout,$scope,$r
 
 
          }
+       $rootScope.personmore=$scope.selected;
      }
 
      $scope.updateSelection = function($event, id){
@@ -140,22 +147,10 @@ app.controller('SelectMorePersonCtrl', function($ionicLoading,$timeout,$scope,$r
 		  };
         //负责指定完跳转
         $scope.GoPage = function (target,param) {
-        	  //$scope.selected;
-            //$scope.selectedTags;
-						$rootScope.arr1=$scope.selected;
-						console.log("传递参数："+$scope.selected);
 
-						//$rootScope.arr2=$scope.selectedTags;
-						//$rootScope.arr3=$scope.selectedTags;
-            $state.go(target,{arr1:Math.random()});
+            $state.go(target,{});
         }
-    //选择
-             $scope.selectitem = function(id,username,img) {
-                 $scope.isselect= id;
-                 $rootScope.username=username;
-                 $rootScope.img=img;
-                 //alert(id);
-             };
+
 		  $scope.clearSearch = function() {
 
 		    $scope.search = '';

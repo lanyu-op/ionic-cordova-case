@@ -2,6 +2,13 @@ define(['app'], function (app) {
 app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
   //2级域定义
   $scope.xxx = $scope;
+  //每次进入页面执行
+  $scope.$on('$ionicView.enter',function(){
+    $scope.tasktext=$rootScope.tasktext;
+    $scope.personone = $rootScope.personone;
+    $scope.personmore=$rootScope.personmore;
+    $scope.files=$rootScope.files;
+  });
 //bootstrap日历
   $scope.today = function() {
     $scope.dt = new Date();
@@ -119,9 +126,9 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
     //负责指定完跳转
     $scope.GoPage = function (target,param) {
     	$rootScope.files=$scope.files;
-      	$rootScope.tasktext=$scope.tasktext;
+      $rootScope.tasktext=$scope.tasktext;
 
-        $state.go(target,{a:Math.random()});
+        $state.go(target,{});
     }
     $scope.checkText = function () {
         //if ($scope.tasktext.length > 5) {
@@ -132,6 +139,7 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
     }
     var arr=new Array();
 		//回调负责人信息
+  /*
 		if(typeof($stateParams.userid)!='undefined'){
 			arr.push({"userid":$stateParams.userid,"username":$stateParams.username,"img":$stateParams.img});
 			//console.log(arr);
@@ -141,27 +149,43 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
 		}else{
 			//$scope.personone = $rootScope.personone;
 		}
+		*/
+    //绑定负责人信息
+    //$scope.$watch('username', function() {
+   //   $scope.username = $rootScope.username;
+    //  console.log($rootScope.username);
+   // });
+  //setTimeout(function() {
+    //$scope.message = $rootScope.username;
+    //$scope.$apply();
+  //}, 2000);
+
+
+    //do sth later, such as log
+
+
+
 		//新建清空信息
-		if(typeof($stateParams.isclear)!='undefined'){
-			$scope.tasktext='';
-			$scope.files=arr;
-			$rootScope.personone=arr;
-			$rootScope.arr1=arr;
+		//if(typeof($stateParams.isclear)!='undefined'){
+			//$scope.tasktext='';
+			//$scope.files=arr;
+			//$rootScope.personone=arr;
+			//$rootScope.arr1=arr;
 
 			//console.log($stateParams.isclear);
-		}else{
+		//}else{
 			//$scope.tasktext='';
 			//console.log($stateParams.isclear);
-		}
+		//}
 		//回调分派人信息
-		console.log($rootScope.arr1);
-		if(typeof($rootScope.arr1)!='undefined'){
-			console.log("---------------"+$rootScope.arr1);
-			$scope.personmore=$rootScope.arr1;
+		//console.log($rootScope.arr1);
+		//if(typeof($rootScope.arr1)!='undefined'){
+		//	console.log("---------------"+$rootScope.arr1);
+		//	$scope.personmore=$rootScope.arr1;
 
-		}else{
+		//}else{
 			//$scope.personmore=arr;
-		}
+		//}
 
     ///$scope.personone="111";
 //附件上传
