@@ -9,7 +9,7 @@
   height: 60px;
   width: 60px;
   float: left;
-  margin-top: 20px;
+  margin-top: 0px;
   margin-right: 10px;
 }
 .list .my-item.item {
@@ -53,14 +53,17 @@
         collection-item-width="getItemWidth(item)"
         ng-style="{'line-height': getItemHeight(item) + 'px'}"
         ng-class="{'item-divider': item.isLetter}"
-        >
 
+        >
+        {{item.letter }}
      <label ng-if="!item.isLetter" class="checkbox">
        <input type="checkbox" id={{item.id}} name="{{item.first_name}}" ng-checked="isSelected(item.id)" ng-click="updateSelection($event,item.id)">
      </label>
 
-          <div ng-if="!item.isLetter" afkl-lazy-image="http://placekitten.com/60/{{55 + ($index % 10)}}"></div>
-          {{item.letter || (item.first_name+' '+item.last_name)}}
+          <div ng-if="!item.isLetter" afkl-lazy-image="http://placekitten.com/60/{{55 + ($index % 10)}}">
+            {{(item.first_name+' '+item.last_name)}}
+          </div>
+
 
           <!--
           <label class="item item-radio">
