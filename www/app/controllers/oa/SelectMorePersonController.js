@@ -58,12 +58,22 @@ app.controller('SelectMorePersonCtrl', function($ionicLoading,$timeout,$scope,$r
          var checkbox = $event.target;
          var action = (checkbox.checked?'add':'remove');
          updateSelected(action,id,checkbox.name);
-				//console.log($scope.selected);
+				console.log(id);
 
      }
 
      $scope.isSelected = function(id){
-         return $scope.selected.indexOf(id)>=0;
+       //现在遍历已有的checkbox
+       //console.log(id);
+       //对比已经选中的selected数组，范围唯一值
+       for (var i = 0; i < $scope.selected.length; i++) {
+         if($scope.selected[i].userid==id){
+           //console.log("删除："+$scope.selected[i].userid+"="+id);
+           return 'check'+id;
+
+         }
+       }
+
      }
 
 		  ////
