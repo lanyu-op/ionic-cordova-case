@@ -9,7 +9,7 @@
   height: 60px;
   width: 60px;
   float: left;
-  margin-top: 20px;
+
   margin-right: 10px;
 }
 .list .my-item.item {
@@ -33,24 +33,7 @@
 
 </div>
 </ion-header-bar>
-<!--
-	作者：157595075@qq.com
-	时间：2015-10-20
-	描述：
 
-	<ion-nav-bar class="bar-stable">
-  <ion-nav-back-button>
-  </ion-nav-back-button>
-	  	<ion-nav-title>
-	      	选择组织成员
-	    </ion-nav-title>
-
-	  <ion-nav-buttons side="right">
-	  	<a class="button button-icon button-clear ion-android-sync" menu-close href="#"></a>
-	  	<a class="button button-icon button-clear ion-android-done" style="font-size: 24px;color: white;" menu-close ng-click="GoPage('app.newTask','ooooo')"></a>
-	  </ion-nav-buttons>
-	</ion-nav-bar>
--->
   <ion-content>
 
     <div class="list">
@@ -69,14 +52,15 @@
         collection-repeat="item in getContacts()"
         collection-item-height="getItemHeight(item)"
         collection-item-width="getItemWidth(item)"
-        ng-style="{'line-height': getItemHeight(item) + 'px'}"
+        ng-style="{'line-height': getItemLHeight(item) + 'px'}"
         ng-class="{'item-divider': item.isLetter}"
         ng-click="selectitem(item.id,item.first_name,'/img/aaa.png')"
         >
-
-          <div ng-if="!item.isLetter" afkl-lazy-image="http://placekitten.com/60/{{55 + ($index % 10)}}"></div>
-          {{item.letter || (item.first_name+' '+item.last_name)}}
+          {{item.letter}}
+          <div ng-if="!item.isLetter" afkl-lazy-image="http://placekitten.com/60/{{55 + ($index % 10)}}" style="padding: 5px;">
+          {{(item.first_name+' '+item.last_name)}}
           <i class="ion-checkmark" ng-show="item.id==isselect" ></i>
+          </div>
           <!--
           <label class="item item-radio">
               <input type="radio" name="group">

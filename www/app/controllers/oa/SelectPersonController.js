@@ -53,7 +53,9 @@ app.controller('SelectPersonCtrl', function($ionicLoading,$timeout,$scope,$rootS
 		    });
 		    letters.push(letter);
 		  }
-
+      $scope.getItemLHeight = function(item) {
+        return item.isLetter ? 40 : 60;
+      };
 		  //Letters are shorter, everything else is 52 pixels
 		  $scope.getItemHeight = function(item) {
 		    return item.isLetter ? 40 : 100;
