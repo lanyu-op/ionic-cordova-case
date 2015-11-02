@@ -5,6 +5,7 @@ android安装方式：
 2、运行以下命令：
 $ npm install -g cordova ionic
 $ ionic platform add android
+$ ionic serve（调试命令）
 $ ionic build android
 在以下目录生成apk安装包,在手机安装运行：
 D:\ionic_jg\ionic-cordova-case\ionic-cordova-case\platforms\android\build\outputs\apk
