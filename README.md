@@ -16,6 +16,8 @@ ios安装方式：
 3. 编译成功后，在当前目录下的platform/ios/xxx.xcodeproj，确认一下xxx的名字是什么。执行open platform/ios/xxx.xcodeproj
 4. 此时xcode会打开，然后连接手机，运行项目在手机上就可以了。
 
+二维码插件:
+cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
 ---------------------------------------------------------------------
           v0.0.1：（2015-9-16）
           1、增加左侧滑动ui
@@ -54,6 +56,6 @@ ios安装方式：
 -------------------------------------------------------------------------------
         v0.0213-OA分支：(2015-11月02号)
         1、增加二维码扫描demo。
-        
+
 -------------------------------------------------------------------------------
 As AngularJS itself, this module is released under the permissive MIT license.
