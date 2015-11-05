@@ -23,13 +23,15 @@ require.config({
     'fullcalendar':'../lib/fullcalendar/dist/fullcalendar.min',
     'gcal':'../lib/fullcalendar/dist/gcal',
     'angular-bootstrap':'../lib/angular-bootstrap/ui-bootstrap-tpls',
-    'httpostService':'services/httpostService'
+    'angularCss':'../lib/angular-css/angular-css.min'
+
   },
   // if you are using jquery you have to add a shim for ionic and add jquery as deps
   shim: {
     'angular-ui-calendar':['ionic'],
     'angular-bootstrap':['ionic'],
     'gcal':['fullcalendar'],
+    'angularCss':['ionic'],
     //'ionic': {deps: ['jquery']},
     //'ngCordova':['ionic'],//需要依赖ionic中的angularjs
 		'ocLazyLoad': ['ionic'],//需要依赖ionic中的angularjs

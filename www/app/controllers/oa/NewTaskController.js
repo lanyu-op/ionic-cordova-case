@@ -1,5 +1,6 @@
 define(['app'], function (app) {
 app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
+  //document.getElementById('global-css').setAttribute('href',themeFile);
   //2级域定义
   $scope.xxx = $scope;
   //每次进入页面执行

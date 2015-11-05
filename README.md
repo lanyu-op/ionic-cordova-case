@@ -58,4 +58,12 @@ cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
         1、增加二维码扫描demo。
 
 -------------------------------------------------------------------------------
+
+        v0.0213-OA分支：(2015-11月06号)
+        1、增加angularcss动态加载CSS文件,实现每个单页单独的CSS样式。
+        2.工作交办页面下拉列表,更改为后台访问服务器.
+        3.$scope.list=items.data;注入会造成UI锁导致下拉图标动画卡顿,去掉下拉图标.
+
+-------------------------------------------------------------------------------
 As AngularJS itself, this module is released under the permissive MIT license.
+by lanyu bsui.

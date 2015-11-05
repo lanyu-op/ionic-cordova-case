@@ -5,6 +5,7 @@ define([
 	'ngCordova',
 	'angular-translate',
 	'angular-translate-languager',
+  'angularCss',
 	'ionic',
 	'jquery',
 	'ocLazyLoad',
@@ -20,7 +21,7 @@ define([
 'use strict';
 // the app with its used plugins
 var app = angular.module('app', [
-'ionic', 'ngCordova', 'ngCordova.plugins.ble','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage', 'ngFileUpload','ui.calendar','ui.bootstrap'
+'ionic', 'ngCordova', 'ngCordova.plugins.ble','door3.css','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage', 'ngFileUpload','ui.calendar','ui.bootstrap'
 	//'ionic','pascalprecht.translate','ui.router', 'ngCordova','ngCordova.plugins.ble'
 ]);
 
@@ -250,7 +251,8 @@ controllerProvider: function ($stateParams)
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/NewTask.html',
-			controller: 'NewTaskCtrl'
+			controller: 'NewTaskCtrl',
+          css:'lib/angular-bootstrap/bootstrap.min.css',
 	      }
 	    },
 	    //templateUrl: 'app/templates/oa/NewTask.html',
@@ -297,9 +299,11 @@ controllerProvider: function ($stateParams)
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/WorkTask.html',
-			controller: 'WorkTaskCtrl'
+			    controller: 'WorkTaskCtrl',
+
 	      }
 	    },
+
 	    //templateUrl: 'app/templates/oa/NewTask.html',
 	    //controller: 'NewTaskCtrl',
 	    //路由前执行如下
@@ -333,7 +337,8 @@ controllerProvider: function ($stateParams)
 	                            name: 'css',
 	                            //insertBefore: '#xxx',
 	                            files: [
-                                'app/controllers/oa/staff.js'
+                                'app/controllers/oa/staff.js',
+                                //'lib/angular-bootstrap/bootstrap.min.css'
 	                                //'lib/angular-lazy-image/lazy-image-style.css',
 	                                //'app/controllers/discuss/DsMainController.js'
 	                            ]
