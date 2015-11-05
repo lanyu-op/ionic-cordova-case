@@ -22,7 +22,8 @@ require.config({
     'angular-ui-calendar':'../lib/angular-ui-calendar/src/calendar',
     'fullcalendar':'../lib/fullcalendar/dist/fullcalendar.min',
     'gcal':'../lib/fullcalendar/dist/gcal',
-    'angular-bootstrap':'../lib/angular-bootstrap/ui-bootstrap-tpls'
+    'angular-bootstrap':'../lib/angular-bootstrap/ui-bootstrap-tpls',
+    'httpostService':'services/httpostService'
   },
   // if you are using jquery you have to add a shim for ionic and add jquery as deps
   shim: {

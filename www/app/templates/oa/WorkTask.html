@@ -48,8 +48,11 @@
   <ion-content class="padding">
 
     <ion-refresher
-            pulling-text="Pull to refresh..."
-            on-refresh="onRefresh()">
+            on-refresh="onRefresh()"
+            pulling-text="下拉更新"   
+            refreshing-text="更新中。。。"
+            refreshing-icon="circles"
+            >
     </ion-refresher>
     <div class="item item-divider">
       我关注

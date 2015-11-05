@@ -14,7 +14,7 @@ define([
   'angular-ui-calendar',
   'fullcalendar',
   'gcal',
-  'angular-bootstrap'
+  'angular-bootstrap',
 	//'angularUiRouterExtra',
 ], function (angular,angularAMD) {
 'use strict';
@@ -322,8 +322,9 @@ controllerProvider: function ($stateParams)
 				//requirejs+angularAMD可以整合ionic框架，所以按需加载都用requestjs。
 				//由于不能加载js以外文件，$ocLazyLoad来加载其他。
 		        var load1 = "app/controllers/oa/WorkTaskController.js";
+		        var load2 = "app/services/WorkTaskService.js";
 	            var deferred = $q.defer();
-	            require([load1], function () {
+	            require([load1,load2], function () {
                 $ionicLoading.hide();
 	            	//加载css,requirejs,html等。
 	            	$ocLazyLoad.load(

@@ -1,5 +1,5 @@
 define(['app'], function (app) {
-app.controller('WorkTaskCtrl', function($ionicLoading,$scope,$rootScope,$ionicPopup,$http,$cordovaSQLite,$state) {
+app.controller('WorkTaskCtrl', function($ionicLoading,$scope,$rootScope,$ionicPopup,$http,$cordovaSQLite,$state,WorkTaskService,$q) {
 
 
   //每次进入页面执行
@@ -75,35 +75,19 @@ app.controller('WorkTaskCtrl', function($ionicLoading,$scope,$rootScope,$ionicPo
 	                    "saylink":'imgurl'
 	                }];
 	    $scope.runtimeImageSrc="img/ionic.png";
-	   // var arr1=[{"manid":12,"st":23,"spu":3,"svu":4,"ssu":5,"sbj":6,"zan":0,"random":0.505913405213505}];
-       // $scope.title   = "工作任务";
-       // $scope.list = arr1;
+
         // pull to refresh
         $scope.onRefresh = function() {
-
-			$http({
-			   url:window.siteurl+'sms/QueryWorkTask',
-			   method:"POST",
-			   headers: {
-					'Content-Type': 'application/x-www-form-urlencoded'
-			   },
-			   data: {
-	           // map: params,
-	            //test: 'test_lwp'
-			   }
-			}).success(function(data){
-				//$scope.list=data.concat($scope.list);
-        $ionicLoading.hide();
-				$scope.list=data;
-				//alert(data);
-				//console.log($scope.list);
-				//alert(JSON.stringify(data));
-	            //window.location.href = "Gulugulus/subMenu";
-	        }).error(function(error){
-				alert(error);
-	        }).finally(function() {
-	                    $scope.$broadcast('scroll.refreshComplete');
-	        })
+        	//$scope.list=[];
+        	//刷新实现添加在service里通用方法，在其他controler可以调用。
+	        var promise=WorkTaskService.worktasklist();
+	        promise.then(function(items) {
+	        	//list赋值时会卡UI动画效果，这里去掉UI动画
+	        	$scope.list=items.data;
+	        	//console.log(items.data);
+	        	$scope.$broadcast('scroll.refreshComplete');
+	        });
+     
         };
 
 
