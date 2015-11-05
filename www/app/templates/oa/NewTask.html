@@ -1,4 +1,7 @@
 <style>
+  input[type="text"]{
+    padding: 6px 12px;
+  }
 	img{
 		border-radius: 60px;
 		max-width: 65px;
@@ -12,6 +15,12 @@
 		margin-left: 20px;
 		line-height: 50px;
 	}
+  .btn-default {
+    clear:both;
+    color: #333;
+    background-color: #fff;
+    border-color: #fff;
+  }
 </style>
 
 
@@ -30,37 +39,38 @@
 
   <ion-content class="padding">
 
-   <div class="card">
-        <div class="item item-text-wrap">
+
+
             <div class="form-group">
                 <div class="fg-line">
                     <textarea class="form-control" ng-model="xxx.tasktext" ng-change="checkText()"   rows="5" placeholder="请输入文字..."></textarea>
                 </div>
             </div>
-        </div>
-     <div class="item item-text-wrap">
+    
 
-			    <a class="button button-icon button-clear ion-android-add"  ngf-select="uploadFiles($files)" multiple >附件</a>
 
-			    <ul>
-			        <li ng-repeat="f in files" style="font:smaller" >
-			            {{f.name}}
-			        </li>
-			    </ul>
+  <div class="card">
+    <div class="item item-text-wrap">
+
+      <a class="button button-icon button-clear ion-android-add"  ngf-select="uploadFiles($files)" multiple >附件</a>
+
+      <ul>
+        <li ng-repeat="f in files" style="font:smaller" >
+          {{f.name}}
+        </li>
+      </ul>
 			    <span class="progress" ng-show="progress >= 0">
 			        <div style="width:{{progress}}%" ng-bind="progress + '%'"></div>
 			    </span>
-			    {{errorMsg}}
+      {{errorMsg}}
 
-        </div>
-   </div>
-  <div class="card">
-
+    </div>
 
 			<div class="item item-divider">截至日期</div>
     <!--<div ui-calendar ng-model="eventSources"></div>-->
 
       <div class="input-group">
+
         <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
               <span class="input-group-btn">
                 <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>

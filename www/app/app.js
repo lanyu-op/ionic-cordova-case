@@ -546,7 +546,7 @@ controllerProvider: function ($stateParams)
 	                            name: 'css',
 	                            //insertBefore: '#xxx',
 	                            files: [
-	                                'lib/angular-lazy-image/lazy-image-style.css'
+	                                //'lib/angular-lazy-image/lazy-image-style.css'
 	                                //'app/controllers/discuss/DsMainController.js'
 	                            ]
 	                        }

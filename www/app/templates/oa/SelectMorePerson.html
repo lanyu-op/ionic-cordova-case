@@ -53,16 +53,16 @@
         collection-item-width="getItemWidth(item)"
         ng-style="{'line-height': getItemLHeight(item) + 'px'}"
         ng-class="{'item-divider': item.isLetter}"
-
+                style="z-index: 9999;"
         >
         {{item.letter }}
-     <label ng-if="!item.isLetter" class="checkbox">
-       <input type="checkbox" id={{item.id}} name="{{item.first_name}}" ng-checked="isSelected(item.id)" ng-click="updateSelection($event,item.id)">
-     </label>
-
-          <div ng-if="!item.isLetter" afkl-lazy-image="http://placekitten.com/60/{{55 + ($index % 10)}}" style="padding: 5px;">
+         <label ng-if="!item.isLetter" class="checkbox">
+           <input type="checkbox" id={{item.id}} name="{{item.first_name}}" ng-checked="isSelected(item.id)" ng-click="updateSelection($event,item.id)">
+         </label>
+          <img ng-if="!item.isLetter" src="//placekitten.com/60/{{55 + ($index % 10)}}" onerror="this.src='img/ionic.png'" >
+         <!-- <div ng-if="!item.isLetter" afkl-lazy-image="//placekitten.com/60/{{55 + ($index % 10)}}" onerror="this.src='img/ionic.png'" style="padding: 5px;">-->
             {{(item.first_name+' '+item.last_name)}}
-          </div>
+          <!-- </div>-->
 
 
           <!--

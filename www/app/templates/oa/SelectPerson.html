@@ -55,12 +55,14 @@
         ng-style="{'line-height': getItemLHeight(item) + 'px'}"
         ng-class="{'item-divider': item.isLetter}"
         ng-click="selectitem(item.id,item.first_name,'/img/aaa.png')"
+                style="z-index: 9999;"
         >
           {{item.letter}}
-          <div ng-if="!item.isLetter" afkl-lazy-image="http://placekitten.com/60/{{55 + ($index % 10)}}" style="padding: 5px;">
+        <img ng-if="!item.isLetter" src="//placekitten.com/60/{{55 + ($index % 10)}}" onerror="this.src='img/ionic.png'" >
+         <!-- <div ng-if="!item.isLetter" afkl-lazy-image="http://placekitten.com/60/{{55 + ($index % 10)}}" style="padding: 5px;">-->
           {{(item.first_name+' '+item.last_name)}}
           <i class="ion-checkmark" ng-show="item.id==isselect" ></i>
-          </div>
+          <!--</div>-->
           <!--
           <label class="item item-radio">
               <input type="radio" name="group">
