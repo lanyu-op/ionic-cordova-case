@@ -130,8 +130,8 @@ controllerProvider: function ($stateParams)
 }))
   .state('first', angularAMD.route({
   url: '/first',
-  templateUrl: 'app/templates/first.html'
-
+  templateUrl: 'app/templates/first.html',
+    css:'lib/angular-bootstrap/bootstrap.min.css',
   }))
 //首页
 .state('app.index', angularAMD.route({
