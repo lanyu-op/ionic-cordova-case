@@ -1,0 +1,52 @@
+<style>
+	img{
+		border-radius: 60px;
+		max-width: 65px;
+		max-height: 65px;
+		float: left;
+		left: 20px;
+		top: initial;
+	}
+	.titl{
+		float: left;
+		margin-left: 20px;
+		line-height: 50px;
+	}
+</style>
+
+
+<ion-view >
+
+	<ion-header-bar align-title="center" class="bar-stable">
+  <div class="buttons">
+     <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </div>
+  <h1 class="title">高德地图</h1>
+  <div class="buttons">
+
+  </div>
+</ion-header-bar>
+
+  <ion-content class="padding" scroll="false" data-tap-disabled="true">
+    <div ng-click="gogo()" >高德是中国领先的数字地图内容、导航和位置服务解决方案提供商。</div>
+<a href="http://www.baidu.com">haha</a>
+
+    <div id="mapContainer" style="height: 444px;"
+         amap-map >
+    </div>
+
+  <!--
+  <ion-content class="padding">
+    <div style="height: 444px;"
+         amap-map
+         amap-map-options="object.mapOptions">
+    </div>
+    <div amap-map
+         amap-toolbar="controller.mapToolbarOptions"
+         amap-toolbars="ruler, direction, location, labels">
+    </div>
+    -->
+  </ion-content>
+</ion-view>
+

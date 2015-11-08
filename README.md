@@ -65,5 +65,10 @@ cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
         3.$scope.list=items.data;注入会造成UI锁导致下拉图标动画卡顿,去掉下拉图标.
 
 -------------------------------------------------------------------------------
+        v0.0213-OA分支：(2015-11月08号)
+        1、新增高德地图,解决弹窗连接不生效问题。
+
+
+-------------------------------------------------------------------------------
 As AngularJS itself, this module is released under the permissive MIT license.
 by lanyu bsui.

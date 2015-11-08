@@ -23,7 +23,10 @@ require.config({
     'fullcalendar':'../lib/fullcalendar/dist/fullcalendar.min',
     'gcal':'../lib/fullcalendar/dist/gcal',
     'angular-bootstrap':'../lib/angular-bootstrap/ui-bootstrap-tpls',
-    'angularCss':'../lib/angular-css/angular-css.min'
+    'angularCss':'../lib/angular-css/angular-css.min',
+    'angular-amap':'../lib/angular-amap/angular-amap',//高德地图
+    'angular-amap-map':'../lib/angular-amap/angular-amap-map',//高德地图
+    'angular-amap-toolbar':'../lib/angular-amap/angular-amap-toolbar',//高德地图
 
   },
   // if you are using jquery you have to add a shim for ionic and add jquery as deps
@@ -45,6 +48,9 @@ require.config({
     //'ngload':{
     //    deps:['angularAMD']
     //},
+    'angular-amap':['ionic'],
+    'angular-amap-map':['angular-amap'],
+    'angular-amap-toolbar':['angular-amap'],
     'ngCordova':['ionic'],//需要依赖ionic中的angularjs
     'angular-translate':['ionic'],//需要依赖ionic中的angularjs
     'lazy-image':['ionic']

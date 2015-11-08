@@ -16,12 +16,15 @@ define([
   'fullcalendar',
   'gcal',
   'angular-bootstrap',
+  'angular-amap',
+  'angular-amap-map',
+  'angular-amap-toolbar'
 	//'angularUiRouterExtra',
 ], function (angular,angularAMD) {
 'use strict';
 // the app with its used plugins
 var app = angular.module('app', [
-'ionic', 'ngCordova', 'ngCordova.plugins.ble','door3.css','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage', 'ngFileUpload','ui.calendar','ui.bootstrap'
+'ionic', 'ngCordova', 'l42y.amap','l42y.amap.map','ngCordova.plugins.ble','door3.css','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage', 'ngFileUpload','ui.calendar','ui.bootstrap'
 	//'ionic','pascalprecht.translate','ui.router', 'ngCordova','ngCordova.plugins.ble'
 ]);
 
@@ -75,6 +78,12 @@ app.config(function($httpProvider) {
 });
 //全局常量
 app.constant('glables',{service: '1', measurement: '2'});
+app.config(function (AmapProvider) {
+    AmapProvider.config = {
+      key: '7bfcd30c635a10c1a290b0d9963a2bff', // Amap API key, see http://api.amap.com/key
+      version: '1.3' // which Amap API version to use, see http://lbs.amap.com/api/javascript-api/changelog/
+    };
+});
 // config
 app.config(function($stateProvider, $urlRouterProvider, $translateProvider,$httpProvider){
 
@@ -155,6 +164,27 @@ controllerProvider: function ($stateParams)
             }]
     }
 }))
+  .state('app.amap', angularAMD.route({
+    url: '/amap',
+    views: {
+      'menuContent': {
+        templateUrl: 'app/templates/oa/amap.html',
+        controller: 'amapCtrl'
+      }
+    },
+    resolve: {
+      loadController: ['$q', '$stateParams',
+        function ($q, $stateParams)
+        {
+          // get the controller name === here as a path to Controller_Name.js
+          // which is set in main.js path {}
+          var controllerName = "app/controllers/oa/AmapController.js";
+          var deferred = $q.defer();
+          require([controllerName], function () { deferred.resolve(); });
+          return deferred.promise;
+        }]
+    }
+  }))
 //图表列表
 .state('app.chartslist', angularAMD.route({
 	url: '/chartslist',
