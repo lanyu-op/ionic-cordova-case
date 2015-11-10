@@ -224,10 +224,10 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
 		}
 
        }
-        /*
+        
         if (files && files.length) {
             Upload.upload({
-                url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
+                url: window.siteurl+'sms/UploadFiles',
                 data: {
                     files: files
                 }
@@ -244,7 +244,7 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
                     Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
             });
         }
-        */
+        
     };
 
 
