@@ -61,11 +61,13 @@
       <ion-item class="item-icon-right" ng-click="onRecordBluetoothId(device.id, device.rssi, device.name)"  ng-repeat="item in list"  type="item-text-wrap">
         <div afkl-image-container><div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
         </div>
-				<div class="titl">
+				<div class="titl" style="font-size: 14px;color:#454545;">
 					{{item.tasktxt}}
 				</div>
-				<div style="clear:both">{{item.taskleader[0].username}}</div>
-       	<!--<i class="icon ion-chevron-right icon-accessory"></i>-->
+				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">负责人：{{item.taskleader[0].username}}</div>
+				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">参与人：{{item.taskleader[0].username}}</div>
+            
+      <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>
     <div class="item item-divider">

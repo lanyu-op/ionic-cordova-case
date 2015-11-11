@@ -5,10 +5,13 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
   $scope.xxx = $scope;
   //每次进入页面执行
   $scope.$on('$ionicView.enter',function(){
+  	
     $scope.tasktext=$rootScope.tasktext;
     $scope.personone = $rootScope.personone;
     $scope.personmore=$rootScope.personmore;
     $scope.files=$rootScope.files;
+    $scope.progress =-1;
+    console.log($scope.personone);
   });
 //bootstrap日历
   $scope.today = function() {
@@ -98,6 +101,7 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
 	$scope.submitWork = function () {
 		var tasktxt=	$scope.tasktext;
 		var taskleader=	$scope.personone;
+		var taskpersonmore=	$scope.personmore;
 		console.log("------------:"+tasktxt);
 			$http({
 			   url:window.siteurl+'sms/BaseAddWorkTask',
@@ -108,9 +112,12 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
 			   data: {
 	            tasktxt: tasktxt,
 	            taskleader:taskleader,
+	            taskpersonmore:taskpersonmore,
 	            random:Math.random()
 			   }
 			}).success(function(data){
+				/////上传图片
+				$scope.upload($scope.files);
 				//$scope.list=data.concat($scope.list);
 				//alert(data);
 				console.log(data);
@@ -121,7 +128,9 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
 				alert(error);
 	        }).finally(function() {
 	                    $scope.$broadcast('scroll.refreshComplete');
-	        })
+	        });
+	        
+	        
     }
 
     //负责指定完跳转
@@ -130,6 +139,10 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
       $rootScope.tasktext=$scope.tasktext;
 
         $state.go(target,{});
+    }
+    $scope.clearfile= function (f) {
+    	$index=$scope.files.indexOf(f);
+ 			$scope.files.splice($index,1);
     }
     $scope.checkText = function () {
         //if ($scope.tasktext.length > 5) {
@@ -197,39 +210,14 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
       }
     };
     // upload on file select or drop
-    $scope.upload = function (file) {
-    	 if (files && files.length) {
-    	 	for (var i = 0; i < files.length; i++) {
-		        Upload.upload({
-		            url: 'upload/url',
-		            data: {file: file, 'username': $scope.username}
-		        }).then(function (resp) {
-		            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-		        }, function (resp) {
-		            console.log('Error status: ' + resp.status);
-		        }, function (evt) {
-		            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-		            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-		        });
-	        }
-        }
-    };
-    $scope.uploadFiles = function (files) {
-		//console.log(files);
-		if(files!=null){
-		if(typeof($scope.files)!='undefined'){
-			$scope.files = $scope.files.concat(files);
-		}else{
-			$scope.files = (files);
-		}
-
-       }
-        
+    $scope.upload = function (files) {
         if (files && files.length) {
+        	for (var i = 0; i < files.length; i++) {
             Upload.upload({
                 url: window.siteurl+'sms/UploadFiles',
                 data: {
-                    files: files
+                    Filedata: files[i],
+                    //'username': 'file'
                 }
             }).then(function (response) {
                 $timeout(function () {
@@ -243,7 +231,21 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
                 $scope.progress =
                     Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
             });
+            }
         }
+    };
+    $scope.uploadFiles = function (files) {
+		console.log(files);
+		if(files!=null){
+				if(typeof($scope.files)!='undefined'){
+					$scope.files = $scope.files.concat(files);
+				}else{
+					$scope.files = (files);
+				}
+
+    }
+        
+
         
     };
 
