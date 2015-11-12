@@ -16,19 +16,8 @@
 
 
 <ion-view >
-  <div data-ng-init="onRefresh()" ></div>
-	<ion-header-bar align-title="center" class="bar-stable">
-  <div class="buttons">
-     <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-    </button>
-  </div>
-  <h1 class="title">工作交办(18)</h1>
-  <div class="buttons">
-  	<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: white;" 000;" ng-click="GoPage('app.newTask','')"></a>
-  </div>
-</ion-header-bar>
-<!--
-<ion-nav-bar class="bar-stable" >
+  <!--<div data-ng-init="onRefresh()" ></div>
+  	<ion-nav-bar class="bar-stable" >
 
   <ion-nav-buttons side="left">
     <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
@@ -44,7 +33,19 @@
 
   </ion-nav-buttons>
 </ion-nav-bar>
--->
+  	
+  -->
+<ion-header-bar align-title="center" class="bar-stable">
+  <div class="buttons">
+     <a class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </a>
+  </div>
+  <h1 class="title">工作交办(18)</h1>
+  <div class="buttons">
+  	<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: white;" 000;" ng-click="GoPage('app.newTask','')"></a>
+  </div>
+</ion-header-bar>
+
   <ion-content class="padding">
 
     <ion-refresher
@@ -64,10 +65,33 @@
 				<div class="titl" style="font-size: 14px;color:#454545;">
 					{{item.tasktxt}}
 				</div>
+				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">
+		
+					<div style="float: left;">
+							 <ul>
+							 	<li  style="float: left; margin-right: 20px;" ng-if="item.creatime!=null" style="font:smaller">
+				                   <span class="ion-ios-clock-outline" style="font-size: 18px;"></span> {{item.creatime}}
+				                </li>
+				                <li  style="float: left; margin-right: 20px;" ng-if="item.fujian.length>0" style="font:smaller">
+				                   <span class="ion-paperclip" style="font-size: 22px;"></span> {{item.fujian.length}}
+				                </li>
+			           		 </ul>
+					</div>
+				</div>
 				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">负责人：{{item.taskleader[0].username}}</div>
-				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">参与人：{{item.taskleader[0].username}}</div>
+				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">
+					<div style="float: left;">参与人：</div>
+					<div style="float: left;">
+							 <ul>
+				                <li style="float: left; margin-right: 20px;" ng-repeat="z in item.taskpersonmore" style="font:smaller">
+				                    {{z.username}}
+				                </li>
+			           		 </ul>
+					</div>
+				</div>
             
-      <i class="icon ion-chevron-right icon-accessory"></i>
+  
+      <i class="icon ion-chevron-right  icon-accessory"></i>
       </ion-item>
     </ion-list>
     <div class="item item-divider">

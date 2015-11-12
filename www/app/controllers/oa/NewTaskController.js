@@ -1,5 +1,5 @@
 define(['app'], function (app) {
-app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
+app.controller('NewTaskCtrl', function($q,$ionicLoading,$scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
   //document.getElementById('global-css').setAttribute('href',themeFile);
   //2级域定义
   $scope.xxx = $scope;
@@ -11,7 +11,7 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
     $scope.personmore=$rootScope.personmore;
     $scope.files=$rootScope.files;
     $scope.progress =-1;
-    console.log($scope.personone);
+    console.log($scope.dt.Format("yyyy-MM-dd"));
   });
 //bootstrap日历
   $scope.today = function() {
@@ -97,41 +97,15 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
       	//$scope.files={};
         $state.go(target,{});
     }
-	//提交
+	//提交工作单
 	$scope.submitWork = function () {
-		var tasktxt=	$scope.tasktext;
-		var taskleader=	$scope.personone;
-		var taskpersonmore=	$scope.personmore;
-		console.log("------------:"+tasktxt);
-			$http({
-			   url:window.siteurl+'sms/BaseAddWorkTask',
-			   method:"POST",
-			   headers: {
-					'Content-Type': 'application/x-www-form-urlencoded'
-			   },
-			   data: {
-	            tasktxt: tasktxt,
-	            taskleader:taskleader,
-	            taskpersonmore:taskpersonmore,
-	            random:Math.random()
-			   }
-			}).success(function(data){
-				/////上传图片
-				$scope.upload($scope.files);
-				//$scope.list=data.concat($scope.list);
-				//alert(data);
-				console.log(data);
-				//alert(JSON.stringify(data));
-	            //window.location.href = "Gulugulus/subMenu";
-	             $state.go("app.workTask",{});
-	        }).error(function(error){
-				alert(error);
-	        }).finally(function() {
-	                    $scope.$broadcast('scroll.refreshComplete');
-	        });
-	        
-	        
-    }
+		
+		if($scope.tasktext&&$scope.tasktext!=""){
+			//console.log("------------:"+$scope.tasktxt);
+			$scope.upload($scope.files); 
+		}
+		      
+  }
 
     //负责指定完跳转
     $scope.GoPage = function (target,param) {
@@ -211,6 +185,13 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
     };
     // upload on file select or drop
     $scope.upload = function (files) {
+    var tasktxt=	$scope.tasktext;
+		var taskleader=	$scope.personone;
+		var taskpersonmore=	$scope.personmore;
+    		//上传文件先定义异步坑
+    	var deferred=$q.defer();
+    	var z=0;
+    	var arr=new Array();
         if (files && files.length) {
         	for (var i = 0; i < files.length; i++) {
             Upload.upload({
@@ -220,6 +201,16 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
                     //'username': 'file'
                 }
             }).then(function (response) {
+            	z++;
+            	console.log("循环"+z);
+            	arr.push(response.data);
+            	//打包数组
+            	if(z==files.length){
+            		console.log("成功了，则填充坑");
+            		//console.log(arr);
+            		deferred.resolve(arr);
+            	}
+            	  
                 $timeout(function () {
                     $scope.result = response.data;
                 });
@@ -232,7 +223,60 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
                     Math.min(100, parseInt(100.0 * evt.loaded / evt.total));
             });
             }
+        }else{
+        	deferred.resolve(arr);
         }
+        //上传完毕后，判断坑里是否有蛋
+        //console.log(deferred.promise);
+
+        	var promise=deferred.promise;
+	        promise.then(function(items) {
+	 				var fujiantmp=new Array();
+	       	        //如果返回值不是0，则说明至少有一个上传成功，更新后台数据
+					        if(items.length>0){
+					        	fujiantmp=items
+								  } 	else{
+								  	
+								  }
+					        	console.log(items);
+					        	//console.log("要更新的工作id："+id);
+					        	
+											$http({
+											   url:window.siteurl+'sms/BaseAddWorkTask',
+											   method:"POST",
+											   headers: {
+													'Content-Type': 'application/x-www-form-urlencoded'
+											   },
+											   data: {
+									            tasktxt: tasktxt,
+									            creatime:$scope.dt.Format("yyyy-MM-dd"),
+									            taskleader:taskleader,
+									            taskpersonmore:taskpersonmore,
+									            fujian:fujiantmp,
+									            random:Math.random()
+											   }
+											}).success(function(data){
+												/////上传图片
+												$state.go("app.workTask",{});
+												//$scope.list=data.concat($scope.list);
+												//alert(data);
+												//console.log("===============:::"+data.createid);
+												//alert(JSON.stringify(data));
+									            //window.location.href = "Gulugulus/subMenu";
+								
+									    }).error(function(error){
+												alert(error);
+									    }).finally(function() {
+									                   // $scope.$broadcast('scroll.refreshComplete');
+									    });
+	        
+					        		
+					      
+	     
+	        });
+
+       
+        
     };
     $scope.uploadFiles = function (files) {
 		console.log(files);
@@ -255,3 +299,22 @@ app.controller('NewTaskCtrl', function($ionicLoading,$scope,$ionicPopup,$http,$c
 
    });
 });
+//时间格式化函数
+Date.prototype.Format =  function(fmt)   
+{ //author: meizz   
+  var o = {   
+    "M+" : this.getMonth()+1,                 //月份   
+    "d+" : this.getDate(),                    //日   
+    "h+" : this.getHours(),                   //小时   
+    "m+" : this.getMinutes(),                 //分   
+    "s+" : this.getSeconds(),                 //秒   
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+    "S"  : this.getMilliseconds()             //毫秒   
+  };   
+  if(/(y+)/.test(fmt))   
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+  for(var k in o)   
+    if(new RegExp("("+ k +")").test(fmt))   
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+  return fmt;   
+}  

@@ -277,7 +277,7 @@ controllerProvider: function ($stateParams)
 //新建工作任务
 .state('app.newTask', angularAMD.route({
 	    url: '/newTask?:userid:username:img:isclear:arr1:arr2:arr3',
-	    //cache:'false',
+	    cache:'false',
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/NewTask.html',
@@ -326,6 +326,7 @@ controllerProvider: function ($stateParams)
 //工作交办
 .state('app.workTask', angularAMD.route({
 	    url: '/workTask',
+	    cache:'false',
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/WorkTask.html',
