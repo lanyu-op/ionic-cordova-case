@@ -326,7 +326,7 @@ controllerProvider: function ($stateParams)
 		        var load1 = "app/controllers/oa/WorkTaskController.js";//加载工作任务首页控制器
 		        var load2 = "app/controllers/oa/NewTaskController.js";//加载创建工作单控制器
 		        var load3 = "app/services/WorkTaskService.js";//加载服务
-		        var load4='app/controllers/oa/staff.js';//加载成员列表
+		        var load4="app/controllers/oa/staff.js";//加载成员列表
 		        var load5 = "app/controllers/oa/SelectPersonController.js";//加载负责人控制器
 		        var load6 = "app/controllers/oa/SelectMorePersonController.js";//加载参与者控制器
 		        
