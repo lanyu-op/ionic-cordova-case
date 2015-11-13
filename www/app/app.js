@@ -142,7 +142,7 @@ controllerProvider: function ($stateParams)
   .state('first', angularAMD.route({
   url: '/first',
   templateUrl: 'app/templates/first.html',
-    css:'lib/angular-bootstrap/bootstrap.min.css',
+    css:{href:'lib/angular-bootstrap/bootstrap.min.css',bustCache:true},
   }))
 //首页
 .state('app.index', angularAMD.route({
@@ -280,12 +280,13 @@ controllerProvider: function ($stateParams)
 .state('app.newTask', angularAMD.route({
 	    url: '/newTask',
 	    //cache:'false',
+	     css:[{href:'lib/angular-bootstrap/bootstrap.min.css',bustCache: true},'css/newTask.css'],
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/NewTask.html',
 			controller: 'NewTaskCtrl',
-            css:'lib/angular-bootstrap/bootstrap.min.css',
-	      }
+	      },
+	     
 	    },
 
 
@@ -298,7 +299,7 @@ controllerProvider: function ($stateParams)
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/WorkTask.html',
 			    controller: 'WorkTaskCtrl',
-
+				css:'css/WorkTask.css'
 	      }
 	    },
 
@@ -363,7 +364,8 @@ controllerProvider: function ($stateParams)
 	    views: {
 	      'menuContent': {
           templateUrl: 'app/templates/oa/SelectPerson.html',
-			  controller: 'SelectPersonCtrl'
+			  controller: 'SelectPersonCtrl',
+			  css:'css/selectPerson.css',
 	      }
 	    },
 
@@ -377,7 +379,8 @@ controllerProvider: function ($stateParams)
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/SelectMorePerson.html',
-			controller: 'SelectMorePersonCtrl'
+			controller: 'SelectMorePersonCtrl',
+			css:'css/selectMorePerson.css',
 	      }
 	    },
 	   

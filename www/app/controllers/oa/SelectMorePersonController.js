@@ -3,7 +3,7 @@ app.controller('SelectMorePersonCtrl', function($ionicLoading,$timeout,$scope,$r
 
    $scope.$on('$ionicView.beforeEnter',function(){
     $scope.selected = [];
-
+$rootScope.personmore=[];
   });
   //复选框处理
  		 $scope.selected = [];//选择的用户id
