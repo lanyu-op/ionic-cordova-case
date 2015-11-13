@@ -70,5 +70,14 @@ cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
 
 
 -------------------------------------------------------------------------------
+        v0.0214-OA分支：(2015-11月14号)
+        1、完成工作交办功能，附件上传、负责人、参与人等。
+        2、优化按需加载，解决切换页面卡问题。
+        3、参与人列表、负责人列表，头像无效默认显示。
+        4、增加bootstrap支持，工作单创建时间加入日历选择日期。
+        5、APP整体开启缓存方式，由于去掉cache ionic性能急剧下降，从这个版本后保留cache。
+
+
+-------------------------------------------------------------------------------
 As AngularJS itself, this module is released under the permissive MIT license.
 by lanyu bsui.
