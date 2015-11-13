@@ -28,7 +28,9 @@ var app = angular.module('app', [
 	//'ionic','pascalprecht.translate','ui.router', 'ngCordova','ngCordova.plugins.ble'
 ]);
 
-app.config(function($httpProvider) {
+app.config(function($httpProvider,$ionicConfigProvider) {
+	$ionicConfigProvider.views.forwardCache(true);//开启全局缓存
+	//$ionicConfigProvider.views.maxCache(0);//关闭缓存
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
@@ -276,7 +278,7 @@ controllerProvider: function ($stateParams)
 
 //新建工作任务
 .state('app.newTask', angularAMD.route({
-	    url: '/newTask?:userid:username:img:isclear:arr1:arr2:arr3',
+	    url: '/newTask',
 	    //cache:'false',
 	    views: {
 	      'menuContent': {
@@ -285,23 +287,7 @@ controllerProvider: function ($stateParams)
             css:'lib/angular-bootstrap/bootstrap.min.css',
 	      }
 	    },
-		resolve: {
-            loadController: ['$q','$ionicLoading',
-		    function ($q,$ionicLoading)
-		    {
-	          $ionicLoading.show({
-	            template: 'Loading...'
-	          });
-		        var load1 = "app/controllers/oa/NewTaskController.js";
-	            var deferred = $q.defer();
-	            require([load1], function () {
-					$ionicLoading.hide();
 
-	            	deferred.resolve();
-	            });
-	            return deferred.promise;
-		    }]
-		}
 
 }))
 //工作交办
@@ -337,12 +323,18 @@ controllerProvider: function ($stateParams)
 				//angularAMD：它的作用把angularjs和requirejs结合在一起。
 				//requirejs+angularAMD可以整合ionic框架，所以按需加载都用requestjs。
 				//由于不能加载js以外文件，$ocLazyLoad来加载其他。
-		        var load1 = "app/controllers/oa/WorkTaskController.js";
-		        var load2 = "app/services/WorkTaskService.js";
+		        var load1 = "app/controllers/oa/WorkTaskController.js";//加载工作任务首页控制器
+		        var load2 = "app/controllers/oa/NewTaskController.js";//加载创建工作单控制器
+		        var load3 = "app/services/WorkTaskService.js";//加载服务
+		        var load4='app/controllers/oa/staff.js';//加载成员列表
+		        var load5 = "app/controllers/oa/SelectPersonController.js";//加载负责人控制器
+		        var load6 = "app/controllers/oa/SelectMorePersonController.js";//加载参与者控制器
+		        
 	            var deferred = $q.defer();
-	            require([load1,load2], function () {
+	            require([load1,load2,load3,load4,load5,load6], function () {
                 $ionicLoading.hide();
 	            	//加载css,requirejs,html等。
+	            	/*
 	            	$ocLazyLoad.load(
 						[
 	                        {
@@ -357,6 +349,7 @@ controllerProvider: function ($stateParams)
 	                        }
 	                    ]
 					);
+					*/
 	            	deferred.resolve();
 	            });
 	            return deferred.promise;
@@ -365,123 +358,29 @@ controllerProvider: function ($stateParams)
 }))
 //选择一个成员
 .state('app.selectPerson', angularAMD.route({
-	    url: '/selectPerson?:a',
-      cache: false,
+	    url: '/selectPerson',
+      //cache: false,
 	    views: {
 	      'menuContent': {
           templateUrl: 'app/templates/oa/SelectPerson.html',
 			  controller: 'SelectPersonCtrl'
 	      }
 	    },
-	    //templateUrl: 'app/templates/oa/NewTask.html',
-	    //controller: 'NewTaskCtrl',
-	    //路由前执行如下
-
-		resolve: {
-		    loadcss: ['$q','$ocLazyLoad','$ionicLoading',
-		    function ($q,$ocLazyLoad,$ionicLoading)
-		    {
-          $ionicLoading.show({
-            //content: 'Loading',
-            //animation: 'fade-in',
-            //showBackdrop: true,
-            //maxWidth: 200,
-            //showDelay: 0
-            template: 'Loading...'
-          });
-		        // get the controller name === here as a path to Controller_Name.js
-		        // which is set in main.js path {}
-				//JS加载交给requirejs管理。ionic框架底层对route进行了绑定，不能oclazyload来加载页面。
-				//angularAMD：它的作用把angularjs和requirejs结合在一起。
-				//requirejs+angularAMD可以整合ionic框架，所以按需加载都用requestjs。
-				//由于不能加载js以外文件，$ocLazyLoad来加载其他。
-		      var load2='app/controllers/oa/staff.js';
-		          var load1 = "app/controllers/oa/SelectPersonController.js";
-
-	            var deferred = $q.defer();
-	            require([load2,load1], function () {
-                $ionicLoading.hide();
-	            	//加载css,requirejs,html等。
-	            	$ocLazyLoad.load(
-						[
-	                        {
-	                            name: 'css',
-	                            //insertBefore: '#xxx',
-	                            files: [
 
 
-                                //'lib/angular-lazy-image/lazy-image-style.css',
-	                                //'app/controllers/discuss/DsMainController.js'
-	                            ]
-	                        }
-	                    ]
-					);
-	            	deferred.resolve();
-	            });
-	            return deferred.promise;
-		    }]
-		}
 
 }))
 //选择多个成员
 .state('app.selectMorePerson', angularAMD.route({
-	    url: '/selectMorePerson?:a',
-      cache: false,
+	    url: '/selectMorePerson',
+      //cache: false,
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/SelectMorePerson.html',
 			controller: 'SelectMorePersonCtrl'
 	      }
 	    },
-	    //templateUrl: 'app/templates/oa/NewTask.html',
-	    //controller: 'NewTaskCtrl',
-	    //路由前执行如下
-
-		resolve: {
-		    loadcss: ['$q','$ocLazyLoad','$ionicLoading',
-		    function ($q,$ocLazyLoad,$ionicLoading)
-		    {
-          $ionicLoading.show({
-            //content: 'Loading',
-            //animation: 'fade-in',
-            //showBackdrop: true,
-            //maxWidth: 200,
-            //showDelay: 0
-            template: 'Loading...'
-          });
-		        // get the controller name === here as a path to Controller_Name.js
-		        // which is set in main.js path {}
-				//JS加载交给requirejs管理。ionic框架底层对route进行了绑定，不能oclazyload来加载页面。
-				//angularAMD：它的作用把angularjs和requirejs结合在一起。
-				//requirejs+angularAMD可以整合ionic框架，所以按需加载都用requestjs。
-				//由于不能加载js以外文件，$ocLazyLoad来加载其他。
-          var load2='app/controllers/oa/staff.js';
-		        var load1 = "app/controllers/oa/SelectMorePersonController.js";
-	            var deferred = $q.defer();
-	            require([load2,load1], function () {
-                $ionicLoading.hide();
-
-	            	//加载css,requirejs,html等。
-	            	$ocLazyLoad.load(
-						[
-	                        {
-	                            name: 'css',
-	                            //insertBefore: '#xxx',
-	                            files: [
-                                'app/controllers/oa/staff.js'
-
-                                //'lib/angular-lazy-image/lazy-image-style.css',
-	                                //'app/controllers/discuss/DsMainController.js'
-	                            ]
-	                        }
-	                    ]
-					);
-	            	deferred.resolve();
-	            });
-	            return deferred.promise;
-		    }]
-		}
-
+	   
 }))
 //圈子
 .state('app.discuss', angularAMD.route({
@@ -607,7 +506,7 @@ controllerProvider: function ($stateParams)
 	'zh-*':'zh'
 	});
 });
-app.run(function($ionicPlatform, $ionicPopup,$rootScope, $location,$timeout, $ionicHistory) {
+app.run(function($ionicPlatform, $ionicPopup,$rootScope, $location,$timeout, $ionicHistory,$cordovaToast) {
 	function showConfirm() {
     var confirmPopup = $ionicPopup.confirm({
         title: '<strong>退出应用?</strong>',
@@ -630,7 +529,7 @@ app.run(function($ionicPlatform, $ionicPopup,$rootScope, $location,$timeout, $io
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
 
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+      //cordova.plugins.Keyboard.disableScroll(true);
 
     }
     if (window.StatusBar) {
@@ -643,16 +542,32 @@ app.run(function($ionicPlatform, $ionicPopup,$rootScope, $location,$timeout, $io
 	});
 	//双击退出
 	$ionicPlatform.registerBackButtonAction(function (e) {
+
+            //判断处于哪个页面时双击退出
+            if ($location.path() == '/app/index') {
+                if ($rootScope.backButtonPressedOnceToExit) {
+                    ionic.Platform.exitApp();
+                } else {
+                    $rootScope.backButtonPressedOnceToExit = true;
+                    $cordovaToast.showShortTop('再按一次退出系统');
+                    setTimeout(function () {
+                        $rootScope.backButtonPressedOnceToExit = false;
+                    }, 2000);
+                }
+            }
+            else if ($ionicHistory.backView()) {
+                $ionicHistory.goBack();
+            } else {
+                $rootScope.backButtonPressedOnceToExit = true;
+                $cordovaToast.showShortTop('再按一次退出系统');
+                setTimeout(function () {
+                    $rootScope.backButtonPressedOnceToExit = false;
+                }, 2000);
+            }
 		e.preventDefault();
-	    //判断处于哪个页面时退出
-	  	//if($location.path()=='/app/index'){
-	  	showConfirm();
-	  	//}else
-	  	//if($rootScope.$viewHistory.backView){
-		//	$rootScope.$viewHistory.backView.go();
-	  	//}else{
-	  	//	showConfirm();
-	  	//}
+	
+	  	//showConfirm();
+
 	    return false;
 	}, 101);
   });

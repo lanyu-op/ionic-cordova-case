@@ -4,7 +4,7 @@ app.controller('NewTaskCtrl', function($q,$ionicLoading,$scope,$ionicPopup,$http
   //2级域定义
   $scope.xxx = $scope;
   //每次进入页面执行
-  $scope.$on('$ionicView.enter',function(){
+  $scope.$on('$ionicView.beforeEnter',function(){
   	
     $scope.tasktext=$rootScope.tasktext;
     $scope.personone = $rootScope.personone;

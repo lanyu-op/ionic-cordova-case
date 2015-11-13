@@ -3,7 +3,7 @@ app.controller('WorkTaskCtrl', function($ionicLoading,$scope,$rootScope,$ionicPo
 
 
   //每次进入页面执行
-  $scope.$on('$ionicView.enter',function(){
+  $scope.$on('$ionicView.beforeEnter',function(){
 
     var arr=new Array();
     $rootScope.tasktext='';

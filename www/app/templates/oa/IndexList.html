@@ -1,22 +1,15 @@
 
 <ion-view  >
-<ion-nav-bar class="bar-stable" >
-  <ion-nav-back-button>
-  </ion-nav-back-button>
-
-  <ion-nav-buttons side="left">
-    <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-    </button>
-
-  </ion-nav-buttons>
-    	<ion-nav-title>
-      	首页
-    </ion-nav-title>
-  <ion-nav-buttons side="right">
-    <a class="button button-icon button-clear ion-android-sync">
+<ion-header-bar align-title="center" class="bar-stable">
+  <div class="buttons">
+     <a class="button button-icon button-clear ion-navicon" menu-toggle="left">
     </a>
-  </ion-nav-buttons>
-</ion-nav-bar>
+  </div>
+  <h1 class="title">首页</h1>
+  <div class="buttons">
+  	<a class="button button-icon button-clear ion-android-sync" style="font-size: 24px;color: white;"></a>
+  </div>
+</ion-header-bar>
 
   <ion-content >
     <h1>{{SelectLanguage_Lang|translate}}</h1>

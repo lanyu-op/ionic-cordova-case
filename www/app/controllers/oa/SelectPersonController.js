@@ -11,11 +11,13 @@ app.controller('SelectPersonCtrl', function($ionicLoading,$timeout,$scope,$rootS
     });
 
   });
-  $scope.$on('$ionicView.enter',function(){
-    //$scope.selected = [];
-    $ionicLoading.hide();
-  });
+
   */
+   $scope.$on('$ionicView.beforeEnter',function(){
+    $scope.selected = [];
+    $scope.isselect= -1;
+    $rootScope.personone=[];
+  });
   var letters = $scope.letters = [];
 		  var contacts = $scope.contacts = [];
 

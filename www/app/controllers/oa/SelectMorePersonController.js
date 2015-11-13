@@ -1,29 +1,10 @@
 define(['app'], function (app) {
 app.controller('SelectMorePersonCtrl', function($ionicLoading,$timeout,$scope,$rootScope,$ionicPopup,$http,$ionicScrollDelegate,$state, filterFilter) {
-  /*
-  $ionicHistory.nextViewOptions({
-    historyRoot: true,
-    disableAnimate: true,
-    expire: 300
-   });
-   */
-  /*
-  $scope.$on('$ionicView.loaded',function(){
-    $ionicLoading.show({
-      content: 'Loading',
-      animation: 'fade-in',
-      showBackdrop: true,
-      maxWidth: 200,
-      showDelay: 0
-    });
+
+   $scope.$on('$ionicView.beforeEnter',function(){
+    $scope.selected = [];
 
   });
-  $scope.$on('$ionicView.enter',function(){
-    //$scope.selected = [];
-    $ionicLoading.hide();
-  });
-*/
-
   //复选框处理
  		 $scope.selected = [];//选择的用户id
      $scope.selectedTags = [];//选择的用户名称
@@ -33,8 +14,8 @@ app.controller('SelectMorePersonCtrl', function($ionicLoading,$timeout,$scope,$r
 
          if(action == 'add'){
              $scope.selected.push({'userid':id,'username':name,'img':name});
-             console.log("添加："+$scope.selected.length);
-             console.log($scope.selected);
+             //console.log("添加："+$scope.selected.length);
+             //console.log($scope.selected);
              //$scope.selectedTags.push(name);
          }
 
@@ -44,7 +25,7 @@ app.controller('SelectMorePersonCtrl', function($ionicLoading,$timeout,$scope,$r
 								//console.log("删除："+$scope.selected[i].userid+"="+id);
 
 								$scope.selected.splice(i,1);
-								console.log($scope.selected);
+								//console.log($scope.selected);
 							}
          		}
 
