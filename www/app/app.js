@@ -166,7 +166,8 @@ controllerProvider: function ($stateParams)
             }]
     }
 }))
-  .state('app.amap', angularAMD.route({
+//高德地图
+.state('app.amap', angularAMD.route({
     url: '/amap',
     views: {
       'menuContent': {
@@ -211,7 +212,7 @@ controllerProvider: function ($stateParams)
 }))
 //highchart图
 .state('app.highchart',angularAMD.route({
-	url: '/highchart/:params:xxx:zzz',
+	url: '/highchart:params:xxx:zzz',
 	views: {
 	  'menuContent': {
 		templateUrl: 'app/templates/charts/highcharts.html',
@@ -491,6 +492,7 @@ controllerProvider: function ($stateParams)
 	        // get the controller name === here as a path to Controller_Name.js
 	        // which is set in main.js path {}
 	        var load1 = "app/controllers/demo/FunctionController.js";
+	 
             var deferred = $q.defer();
             require([load1], function () { deferred.resolve(); });
             return deferred.promise;

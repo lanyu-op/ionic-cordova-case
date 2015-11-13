@@ -1,17 +1,18 @@
 
-<ion-view view-title="{{title | translate}}" cache-view="false" >
-	<!--
-    	作者：157595075@qq.com
-    	时间：2015-09-16
-    	描述：重载上方导航条
-		<ion-nav-bar ng-controller="BackCtrl" class="menu-color" >
-		  <ion-nav-back-button class="button-clear"
-		    ng-click="myGoBack()">
-		    <i class="ion-chevron-left" style="color: white;"></i>{{}}
-		  </ion-nav-back-button>
+    
+<ion-view >
 
-		</ion-nav-bar>
-    -->
+	<ion-header-bar align-title="center" class="bar-stable">
+  <div class="buttons">
+  	<a class="button button-icon button-clear ion-chevron-left" href="#/app/functionlist" style="display: block;" style="font-size: 18px;color: white;"></a>
+
+  </div>
+  </div>
+  <h1 class="title">{{title | translate}}</h1>
+  <div class="buttons">
+
+  </div>
+</ion-header-bar>    
 <ion-content >
 	<button class="button" ng-click="insert(model)">sqlite测试</button>
 </ion-content>
