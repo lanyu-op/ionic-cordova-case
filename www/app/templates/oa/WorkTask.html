@@ -8,14 +8,14 @@
 		top: initial;
 	}
 	.titl{
-		float: left;
-		margin-left: 20px;
-		line-height: 50px;
+	padding: 15px;
+    margin-left: 60px;
+
 	}
 </style>
 
 
-<ion-view >
+<ion-view data-ng-init="onRefresh()">
   <!--<div data-ng-init="onRefresh()" ></div>
   	<ion-nav-bar class="bar-stable" >
 
@@ -42,7 +42,7 @@
   </div>
   <h1 class="title">工作交办(18)</h1>
   <div class="buttons">
-  	<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: white;" 000;" ng-click="GoPage('app.newTask','')"></a>
+  	<a class="button button-icon button-clear ion-android-add" style="font-size: 24px;color: white;" menu-close href="#"  ng-click="GoPage('app.newTask','')"></a>
   </div>
 </ion-header-bar>
 
@@ -59,10 +59,10 @@
       我关注
     </div>
     <ion-list >
-      <ion-item class="item-icon-right" ng-click="onRecordBluetoothId(device.id, device.rssi, device.name)"  ng-repeat="item in list"  type="item-text-wrap">
+      <ion-item class="item item-icon-right" ng-click="onRecordBluetoothId(device.id, device.rssi, device.name)"  ng-repeat="item in list"  type="item-text-wrap">
         <div afkl-image-container><div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
         </div>
-				<div class="titl" style="font-size: 14px;color:#454545;">
+				<div class="titl item-text-wrap" style="font-size: 14px;color:#454545;">
 					{{item.tasktxt}}
 				</div>
 				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">

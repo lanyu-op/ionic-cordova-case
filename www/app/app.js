@@ -277,45 +277,26 @@ controllerProvider: function ($stateParams)
 //新建工作任务
 .state('app.newTask', angularAMD.route({
 	    url: '/newTask?:userid:username:img:isclear:arr1:arr2:arr3',
-	    cache:'false',
+	    //cache:'false',
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/NewTask.html',
 			controller: 'NewTaskCtrl',
-          css:'lib/angular-bootstrap/bootstrap.min.css',
+            css:'lib/angular-bootstrap/bootstrap.min.css',
 	      }
 	    },
-	    //templateUrl: 'app/templates/oa/NewTask.html',
-	    //controller: 'NewTaskCtrl',
-	    //路由前执行如下
-
 		resolve: {
-            loadController: ['$q','$ocLazyLoad',
-		    function ($q,$ocLazyLoad)
+            loadController: ['$q','$ionicLoading',
+		    function ($q,$ionicLoading)
 		    {
-
+	          $ionicLoading.show({
+	            template: 'Loading...'
+	          });
 		        var load1 = "app/controllers/oa/NewTaskController.js";
 	            var deferred = $q.defer();
 	            require([load1], function () {
+					$ionicLoading.hide();
 
-	            	$ocLazyLoad.load(
-						[
-	                        {
-	                            name: 'css',
-	                            //insertBefore: '#xxx',
-	                            files: [
-                                //'lib/fullcalendar/dist/fullcalendar.css',
-                                //'lib/angular-bootstrap/bootstrap.min.css'
-	                            ]
-	                        },
-              {
-                name: 'vendors',
-                files: [
-
-                ]
-              }
-            ]
-					);
 	            	deferred.resolve();
 	            });
 	            return deferred.promise;
@@ -326,7 +307,7 @@ controllerProvider: function ($stateParams)
 //工作交办
 .state('app.workTask', angularAMD.route({
 	    url: '/workTask',
-	    cache:'false',
+	    //cache:'false',
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/WorkTask.html',

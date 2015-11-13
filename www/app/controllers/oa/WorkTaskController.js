@@ -10,7 +10,7 @@ app.controller('WorkTaskCtrl', function($ionicLoading,$scope,$rootScope,$ionicPo
     $rootScope.files=arr;
     $rootScope.personone=arr;
     $rootScope.personmore=arr;
-    $scope.onRefresh();
+    //$scope.onRefresh();
   });
 	//页头跳转
 
