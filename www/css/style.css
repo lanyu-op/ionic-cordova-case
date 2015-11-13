@@ -1,4 +1,8 @@
 
+.bar-stable .button.button-clear{
+	color: white;
+}
+
 /* Empty. Add your own CSS if you like */
 .scroll-bar-v {
 top: 2px;
@@ -73,12 +77,11 @@ margin: 8px;
 }
 
 
-/*����ionic css*/
 .slider-pager .slider-pager-page {
     color:#fff;
 }
 
-/*������*/
+
 .menu-color{
     background-color:#2dabb6;
     border-bottom:10px;

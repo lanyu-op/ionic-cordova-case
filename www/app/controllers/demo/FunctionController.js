@@ -1,6 +1,5 @@
 define([
-  'app',
-  'services/service'
+  'app'
 ], function (app) {
   'use strict';
 //设备列表

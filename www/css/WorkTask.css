@@ -1,0 +1,14 @@
+
+	img{
+		border-radius: 60px;
+		max-width: 65px;
+		max-height: 65px;
+		float: left;
+		left: 20px;
+		top: initial;
+	}
+	.titl{
+	padding: 15px;
+    margin-left: 60px;
+
+	}

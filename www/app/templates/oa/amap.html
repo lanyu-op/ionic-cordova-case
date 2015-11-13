@@ -1,0 +1,37 @@
+
+
+<ion-view >
+
+	<ion-header-bar align-title="center" class="bar-stable">
+  <div class="buttons">
+     <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+    </button>
+  </div>
+  <h1 class="title">高德地图</h1>
+  <div class="buttons">
+
+  </div>
+</ion-header-bar>
+
+  <ion-content class="padding" scroll="false" data-tap-disabled="true" >
+    <div ng-click="gogo()" >高德是中国领先的数字地图内容、导航和位置服务解决方案提供商。</div>
+<a href="{{url}}">打开地图。。。。</a>
+<button onclick="location='http://www.baidu.com'">9999</button>
+    <div id="mapContainer" style="height: 444px;width: 400px;"
+         amap-map >
+    </div>
+
+  <!--
+  <ion-content class="padding">
+    <div style="height: 444px;"
+         amap-map
+         amap-map-options="object.mapOptions">
+    </div>
+    <div amap-map
+         amap-toolbar="controller.mapToolbarOptions"
+         amap-toolbars="ruler, direction, location, labels">
+    </div>
+    -->
+  </ion-content>
+</ion-view>
+

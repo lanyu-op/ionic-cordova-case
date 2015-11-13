@@ -73,20 +73,8 @@
 	}
 </style>
 <ion-side-menus enable-menu-with-back-views="false">
-  <ion-side-menu-content>
 
-    <ion-nav-bar class="bar-stable" >
-      <ion-nav-back-button>
-      </ion-nav-back-button>
-      <ion-nav-buttons side="left">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
-        </button>
-      </ion-nav-buttons>
-      <ion-nav-buttons side="right">
-        <button class="button button-icon button-clear ion-navicon" menu-toggle="right">
-        </button>
-      </ion-nav-buttons>
-    </ion-nav-bar>
+  <ion-side-menu-content >
 
 	<ion-nav-view name="menuContent" >
 
@@ -96,28 +84,28 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-stable">
-      <h1 class="title">目录</h1>
+      <h1 class="title">{{"Catalog_Lang"| translate}}</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
         <ion-item nav-clear menu-close href="#/app/index">
-				首页
+			{{"Index_Lang"| translate}}
         </ion-item>
-        <ion-item nav-clear menu-close ng-click="login()">
-				登录
+       <ion-item nav-clear menu-close href="#/app/workTask">
+			{{"WorkTask_Lang"| translate}}
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/chartslist">
-				图表
+        <ion-item nav-clear menu-close href="#/app/amap">
+			{{"Amap_Lang"| translate}}
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/devicelist">
-				设备
+        <ion-item nav-clear menu-close href="#/app/scancode">
+			{{"Scan_Lang"| translate}}
         </ion-item>
+        <ion-item nav-clear menu-close href="#/app/highchart">
+			highchart
+        </ion-item>      
         <ion-item nav-clear menu-close href="#/app/functionlist">
-				功能
-        </ion-item>
-       <ion-item nav-clear menu-close href="#/app/discuss">
-				圈子
-        </ion-item>
+			{{"FunctionList_Lang"| translate}}
+        </ion-item>   
       </ion-list>
     </ion-content>
   </ion-side-menu>

@@ -1,0 +1,36 @@
+{
+  "name": "angular-amap-map",
+  "main": "angular-amap-map.js",
+  "version": "0.2.1",
+  "authors": [
+    "L42y <423300@gmail.com>"
+  ],
+  "description": "Amap (高德地图) AngularJS component",
+  "keywords": [
+    "angular",
+    "amap",
+    "map"
+  ],
+  "license": "WTFPL",
+  "homepage": "https://github.com/L42y/angular-amap-map",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-amap": "L42y/angular-amap#~0.1.0"
+  },
+  "_release": "0.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.1",
+    "commit": "968e60705c2c9bec286387a3852e4d387e2da334"
+  },
+  "_source": "git://github.com/L42y/angular-amap-map.git",
+  "_target": "~0.2.1",
+  "_originalSource": "L42y/angular-amap-map",
+  "_direct": true
+}

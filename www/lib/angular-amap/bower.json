@@ -1,0 +1,23 @@
+{
+  "name": "angular-amap",
+  "main": "angular-amap.js",
+  "version": "0.1.0",
+  "authors": [
+    "L42y <423300@gmail.com>"
+  ],
+  "description": "Amap JavaScript API integrate with AngularJS",
+  "keywords": [
+    "angular",
+    "amap",
+    "map"
+  ],
+  "license": "WTFPL",
+  "homepage": "https://github.com/L42y/angular-amap",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

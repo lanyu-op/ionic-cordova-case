@@ -1,0 +1,35 @@
+
+<ion-view  >
+
+  <ion-header-bar align-title="center" class="bar-stable">
+    <div class="buttons">
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+      </button>
+    </div>
+    <h1 class="title">扫一扫</h1>
+    <div class="buttons">
+
+    </div>
+  </ion-header-bar>
+  <ion-content >
+    <h1>{{SelectLanguage_Lang|translate}}</h1>
+    <ion-list>
+      <ion-item class="item-icon-right"  type="item-text-wrap" href="#">
+			加好友
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item-icon-right"  type="item-text-wrap" href="#">
+        	收藏夹
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item-icon-right"  type="item-text-wrap" href="#" ng-click="scanBarcode()">
+        	扫一下
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item-icon-right"  type="item-text-wrap" href="#" ng-click="scanBarcode()">
+        	批量扫
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

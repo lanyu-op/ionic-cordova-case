@@ -1,0 +1,67 @@
+
+
+
+<ion-view >
+<ion-header-bar align-title="center" class="bar-stable">
+  <div class="buttons">
+
+
+  </div>
+  <h1 class="title">选择组织成员</h1>
+  <div class="buttons">
+	  	<a class="button button-icon button-clear ion-android-sync" menu-close href="#"></a>
+	  	<a class="button button-icon button-clear ion-android-done" style="font-size: 24px;color: white;" href="#/app/newTask" ></a>
+</div>
+</ion-header-bar>
+
+  <ion-content>
+
+    <div class="list">
+    	    <input type="search"
+      placeholder="关键字"
+      ng-model="ctrlScope.search"
+      ng-focus="searchFocused = true"
+      ng-blur="searchFocused = false"
+      ng-change="scrollTop()">
+    <button ng-if="search.length"
+      class="button button-icon ion-android-close input-button"
+      ng-click="clearSearch()">
+    </button>
+    <ion-list>
+      <ion-item class="item item-checkbox" afkl-image-container
+        collection-repeat="item in getContacts()"
+        collection-item-height="getItemHeight(item)"
+        collection-item-width="getItemWidth(item)"
+        ng-style="{'line-height': getItemLHeight(item) + 'px'}"
+        ng-class="{'item-divider': item.isLetter}"
+                style="z-index: 9999;"
+        >
+        {{item.letter }}
+         <label ng-if="!item.isLetter" class="checkbox">
+           <input type="checkbox" id={{item.id}} name="{{item.first_name}}" ng-checked="isSelected(item.id)" ng-click="updateSelection($event,item.id)">
+         </label>
+          <img ng-if="!item.isLetter" src="http://placekitten.com/60/{{55 + ($index % 10)}}" onerror="this.src='img/ionic.png'" >
+         <!-- <div ng-if="!item.isLetter" afkl-lazy-image="//placekitten.com/60/{{55 + ($index % 10)}}" onerror="this.src='img/ionic.png'" style="padding: 5px;">-->
+            {{(item.first_name+' '+item.last_name)}}
+          <!-- </div>-->
+
+
+          <!--
+          <label class="item item-radio">
+              <input type="radio" name="group">
+              <div class="item-content">
+                  <img ng-if="!item.isLetter" ng-src="http://placekitten.com/60/{{55 + ($index % 10)}}">
+                  {{item.letter || (item.first_name+' '+item.last_name)}}
+              </div>
+              <i class="radio-icon ion-checkmark"></i>
+          </label>
+            -->
+      </ion-item>
+
+
+    </ion-list>
+
+    </div>
+  </ion-content>
+
+</ion-view>

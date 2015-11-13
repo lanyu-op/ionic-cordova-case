@@ -5,6 +5,7 @@ android安装方式：
 2、运行以下命令：
 $ npm install -g cordova ionic
 $ ionic platform add android
+$ ionic serve（调试命令）
 $ ionic build android
 在以下目录生成apk安装包,在手机安装运行：
 D:\ionic_jg\ionic-cordova-case\ionic-cordova-case\platforms\android\build\outputs\apk
@@ -15,6 +16,8 @@ ios安装方式：
 3. 编译成功后，在当前目录下的platform/ios/xxx.xcodeproj，确认一下xxx的名字是什么。执行open platform/ios/xxx.xcodeproj
 4. 此时xcode会打开，然后连接手机，运行项目在手机上就可以了。
 
+二维码插件:
+cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
 ---------------------------------------------------------------------
           v0.0.1：（2015-9-16）
           1、增加左侧滑动ui
@@ -46,4 +49,26 @@ ios安装方式：
         1、增加afklm/ng-lazy-image,圈子中使用异步加载图片。
         2、增加App导航页
 -------------------------------------------------------------------------------
+        v0.0213-OA分支：(2015-11月02号)
+        1、新建工作单功能，完成查看、新建、选择负责人、选择参与者、日期、工作单内容。demo
+        2、修正样式和性能。
+        3、后台数据库yii+redis，表结构已设计。
+-------------------------------------------------------------------------------
+        v0.0213-OA分支：(2015-11月02号)
+        1、增加二维码扫描demo。
+
+-------------------------------------------------------------------------------
+
+        v0.0213-OA分支：(2015-11月06号)
+        1、增加angularcss动态加载CSS文件,实现每个单页单独的CSS样式。
+        2.工作交办页面下拉列表,更改为后台访问服务器.
+        3.$scope.list=items.data;注入会造成UI锁导致下拉图标动画卡顿,去掉下拉图标.
+
+-------------------------------------------------------------------------------
+        v0.0213-OA分支：(2015-11月08号)
+        1、新增高德地图,解决弹窗连接不生效问题。
+
+
+-------------------------------------------------------------------------------
 As AngularJS itself, this module is released under the permissive MIT license.
+by lanyu bsui.
