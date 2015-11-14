@@ -1,11 +1,13 @@
 define(['app'], function (app) {
-app.controller('NewTaskCtrl', function($q,$ionicLoading,$scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
+app.controller('NewTaskCtrl', function($css,$q,$ionicLoading,$scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
   //document.getElementById('global-css').setAttribute('href',themeFile);
+
+
   //2级域定义
   $scope.xxx = $scope;
   //每次进入页面执行
   $scope.$on('$ionicView.beforeEnter',function(){
-  	
+    $css.add('lib/angular-bootstrap/bootstrap.min.css');
     $scope.tasktext=$rootScope.tasktext;
     $scope.personone = $rootScope.personone;
     $scope.personmore=$rootScope.personmore;
@@ -13,6 +15,11 @@ app.controller('NewTaskCtrl', function($q,$ionicLoading,$scope,$ionicPopup,$http
     $scope.progress =-1;
     console.log($scope.dt.Format("yyyy-MM-dd"));
   });
+  //
+  $scope.$on('$ionicView.leave',function() {
+    $css.remove('lib/angular-bootstrap/bootstrap.min.css');
+  });
+
 //bootstrap日历
   $scope.today = function() {
     $scope.dt = new Date();
@@ -99,12 +106,12 @@ app.controller('NewTaskCtrl', function($q,$ionicLoading,$scope,$ionicPopup,$http
     }
 	//提交工作单
 	$scope.submitWork = function () {
-		
+
 		if($scope.tasktext&&$scope.tasktext!=""){
 			//console.log("------------:"+$scope.tasktxt);
-			$scope.upload($scope.files); 
+			$scope.upload($scope.files);
 		}
-		      
+
   }
 
     //负责指定完跳转
@@ -210,7 +217,7 @@ app.controller('NewTaskCtrl', function($q,$ionicLoading,$scope,$ionicPopup,$http
             		//console.log(arr);
             		deferred.resolve(arr);
             	}
-            	  
+
                 $timeout(function () {
                     $scope.result = response.data;
                 });
@@ -236,11 +243,11 @@ app.controller('NewTaskCtrl', function($q,$ionicLoading,$scope,$ionicPopup,$http
 					        if(items.length>0){
 					        	fujiantmp=items
 								  } 	else{
-								  	
+
 								  }
 					        	console.log(items);
 					        	//console.log("要更新的工作id："+id);
-					        	
+
 											$http({
 											   url:window.siteurl+'sms/BaseAddWorkTask',
 											   method:"POST",
@@ -263,20 +270,20 @@ app.controller('NewTaskCtrl', function($q,$ionicLoading,$scope,$ionicPopup,$http
 												//console.log("===============:::"+data.createid);
 												//alert(JSON.stringify(data));
 									            //window.location.href = "Gulugulus/subMenu";
-								
+
 									    }).error(function(error){
 												alert(error);
 									    }).finally(function() {
 									                   // $scope.$broadcast('scroll.refreshComplete');
 									    });
-	        
-					        		
-					      
-	     
+
+
+
+
 	        });
 
-       
-        
+
+
     };
     $scope.uploadFiles = function (files) {
 		console.log(files);
@@ -288,9 +295,9 @@ app.controller('NewTaskCtrl', function($q,$ionicLoading,$scope,$ionicPopup,$http
 				}
 
     }
-        
 
-        
+
+
     };
 
 
@@ -300,21 +307,21 @@ app.controller('NewTaskCtrl', function($q,$ionicLoading,$scope,$ionicPopup,$http
    });
 });
 //时间格式化函数
-Date.prototype.Format =  function(fmt)   
-{ //author: meizz   
-  var o = {   
-    "M+" : this.getMonth()+1,                 //月份   
-    "d+" : this.getDate(),                    //日   
-    "h+" : this.getHours(),                   //小时   
-    "m+" : this.getMinutes(),                 //分   
-    "s+" : this.getSeconds(),                 //秒   
-    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
-    "S"  : this.getMilliseconds()             //毫秒   
-  };   
-  if(/(y+)/.test(fmt))   
-    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
-  for(var k in o)   
-    if(new RegExp("("+ k +")").test(fmt))   
-  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
-  return fmt;   
-}  
+Date.prototype.Format =  function(fmt)
+{ //author: meizz
+  var o = {
+    "M+" : this.getMonth()+1,                 //月份
+    "d+" : this.getDate(),                    //日
+    "h+" : this.getHours(),                   //小时
+    "m+" : this.getMinutes(),                 //分
+    "s+" : this.getSeconds(),                 //秒
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度
+    "S"  : this.getMilliseconds()             //毫秒
+  };
+  if(/(y+)/.test(fmt))
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+  for(var k in o)
+    if(new RegExp("("+ k +")").test(fmt))
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+  return fmt;
+}

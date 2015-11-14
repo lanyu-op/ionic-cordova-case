@@ -1,5 +1,9 @@
 define(['app'], function (app) {
-app.controller('amapCtrl', function(Amap,$sce,$ionicLoading,$scope,$rootScope,$ionicPopup,$http,$q) {
+app.controller('amapCtrl', function($css,Amap,$sce,$ionicLoading,$scope,$rootScope,$ionicPopup,$http,$q) {
+  //清空所有样式
+  $css.removeAll();
+  //加载工作交办样式
+  $css.add('css/WorkTask.css');
   $scope.gogo=function(){
     alert(8);
    // $sce.trustAsResourceUrl('http://www.baidu.com');

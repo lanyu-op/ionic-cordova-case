@@ -142,7 +142,7 @@ controllerProvider: function ($stateParams)
   .state('first', angularAMD.route({
   url: '/first',
   templateUrl: 'app/templates/first.html',
-    css:{href:'lib/angular-bootstrap/bootstrap.min.css',bustCache:true},
+    //css:{href:'lib/angular-bootstrap/bootstrap.min.css',bustCache:true},
   }))
 //首页
 .state('app.index', angularAMD.route({
@@ -281,13 +281,13 @@ controllerProvider: function ($stateParams)
 .state('app.newTask', angularAMD.route({
 	    url: '/newTask',
 	    //cache:'false',
-	     css:[{href:'lib/angular-bootstrap/bootstrap.min.css',bustCache: true},'css/newTask.css'],
+	     //css:[{href:'lib/angular-bootstrap/bootstrap.min.css',bustCache: true}],
 	    views: {
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/NewTask.html',
 			controller: 'NewTaskCtrl',
 	      },
-	     
+
 	    },
 
 
@@ -300,7 +300,7 @@ controllerProvider: function ($stateParams)
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/WorkTask.html',
 			    controller: 'WorkTaskCtrl',
-				css:'css/WorkTask.css'
+				//css:'css/WorkTask.css'
 	      }
 	    },
 
@@ -311,14 +311,14 @@ controllerProvider: function ($stateParams)
 		    loadcss: ['$q','$ocLazyLoad','$ionicLoading',
 		    function ($q,$ocLazyLoad,$ionicLoading)
 		    {
-          $ionicLoading.show({
+          //$ionicLoading.show({
             //content: 'Loading',
             //animation: 'fade-in',
             //showBackdrop: true,
             //maxWidth: 200,
             //showDelay: 0
-            template: 'Loading...'
-          });
+           // template: 'Loading...'
+          //});
 		        // get the controller name === here as a path to Controller_Name.js
 		        // which is set in main.js path {}
 				//JS加载交给requirejs管理。ionic框架底层对route进行了绑定，不能oclazyload来加载页面。
@@ -331,10 +331,10 @@ controllerProvider: function ($stateParams)
 		        var load4="app/controllers/oa/staff.js";//加载成员列表
 		        var load5 = "app/controllers/oa/SelectPersonController.js";//加载负责人控制器
 		        var load6 = "app/controllers/oa/SelectMorePersonController.js";//加载参与者控制器
-		        
+
 	            var deferred = $q.defer();
 	            require([load1,load2,load3,load4,load5,load6], function () {
-                $ionicLoading.hide();
+               // $ionicLoading.hide();
 	            	//加载css,requirejs,html等。
 	            	/*
 	            	$ocLazyLoad.load(
@@ -366,7 +366,7 @@ controllerProvider: function ($stateParams)
 	      'menuContent': {
           templateUrl: 'app/templates/oa/SelectPerson.html',
 			  controller: 'SelectPersonCtrl',
-			  css:'css/selectPerson.css',
+			  //css:'css/selectPerson.css',
 	      }
 	    },
 
@@ -381,10 +381,10 @@ controllerProvider: function ($stateParams)
 	      'menuContent': {
 	        templateUrl: 'app/templates/oa/SelectMorePerson.html',
 			controller: 'SelectMorePersonCtrl',
-			css:'css/selectMorePerson.css',
+			//css:'css/selectMorePerson.css',
 	      }
 	    },
-	   
+
 }))
 //圈子
 .state('app.discuss', angularAMD.route({
@@ -492,7 +492,7 @@ controllerProvider: function ($stateParams)
 	        // get the controller name === here as a path to Controller_Name.js
 	        // which is set in main.js path {}
 	        var load1 = "app/controllers/demo/FunctionController.js";
-	 
+
             var deferred = $q.defer();
             require([load1], function () { deferred.resolve(); });
             return deferred.promise;
@@ -570,7 +570,7 @@ app.run(function($ionicPlatform, $ionicPopup,$rootScope, $location,$timeout, $io
                 }, 2000);
             }
 		e.preventDefault();
-	
+
 	  	//showConfirm();
 
 	    return false;
