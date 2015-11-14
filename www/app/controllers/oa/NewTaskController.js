@@ -7,7 +7,7 @@ app.controller('NewTaskCtrl', function($css,$q,$ionicLoading,$scope,$ionicPopup,
   $scope.xxx = $scope;
   //每次进入页面执行
   $scope.$on('$ionicView.beforeEnter',function(){
-    $css.add('lib/angular-bootstrap/bootstrap.min.css');
+
     $scope.tasktext=$rootScope.tasktext;
     $scope.personone = $rootScope.personone;
     $scope.personmore=$rootScope.personmore;
@@ -17,7 +17,7 @@ app.controller('NewTaskCtrl', function($css,$q,$ionicLoading,$scope,$ionicPopup,
   });
   //
   $scope.$on('$ionicView.leave',function() {
-    $css.remove('lib/angular-bootstrap/bootstrap.min.css');
+    //$css.remove('lib/angular-bootstrap/bootstrap.min.css');
   });
 
 //bootstrap日历

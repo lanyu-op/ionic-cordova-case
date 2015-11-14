@@ -50,3 +50,8 @@
     padding-top: 0;
     padding-bottom: 0;
   }
+  input[type=checkbox]:focus {
+    outline: none;
+    outline: none;
+
+  }

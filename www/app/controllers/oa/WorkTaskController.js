@@ -9,6 +9,7 @@ app.controller('WorkTaskCtrl', function($css,$ionicLoading,$scope,$rootScope,$io
     //清空所有样式
     $css.removeAll();
     //加载工作交办样式
+    $css.add('lib/angular-bootstrap/bootstrap.min.css');
     $css.add('css/WorkTask.css');
     var arr=new Array();
     $rootScope.tasktext='';

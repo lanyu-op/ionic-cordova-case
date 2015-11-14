@@ -1,9 +1,13 @@
 define(['app'], function (app) {
-app.controller('SelectMorePersonCtrl', function($ionicLoading,$timeout,$scope,$rootScope,$ionicPopup,$http,$ionicScrollDelegate,$state, filterFilter) {
+app.controller('SelectMorePersonCtrl', function($css,$ionicLoading,$timeout,$scope,$rootScope,$ionicPopup,$http,$ionicScrollDelegate,$state, filterFilter) {
 
    $scope.$on('$ionicView.beforeEnter',function(){
+
     $scope.selected = [];
 $rootScope.personmore=[];
+  });
+  $scope.$on('$ionicView.leave',function() {
+
   });
   //复选框处理
  		 $scope.selected = [];//选择的用户id
