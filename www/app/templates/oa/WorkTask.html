@@ -2,7 +2,7 @@
 <ion-view data-ng-init="onRefresh()">
 <ion-header-bar align-title="center" class="bar-stable">
   <div class="buttons">
-     <a class="button button-icon button-clear ion-navicon" style="display: block;" menu-toggle="left">
+     <a class="button button-icon button-clear ion-navicon isshow" style="display: block;" menu-toggle="left">
     </a>
   </div>
   <h1 class="title">工作交办(18)</h1>
@@ -31,7 +31,7 @@
 					{{item.tasktxt}}
 				</div>
 				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">
-		
+
 					<div style="float: left;">
 							 <ul>
 							 	<li  style="float: left; margin-right: 20px;" ng-if="item.creatime!=null" style="font:smaller">
@@ -54,8 +54,8 @@
 			           		 </ul>
 					</div>
 				</div>
-            
-  
+
+
       <i class="icon ion-chevron-right  icon-accessory"></i>
       </ion-item>
     </ion-list>

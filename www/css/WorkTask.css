@@ -12,3 +12,49 @@
     margin-left: 60px;
 
 	}
+
+  input[type="text"]{
+    padding: 6px 12px;
+  }
+  img{
+    border-radius: 60px;
+    max-width: 65px;
+    max-height: 65px;
+    float: left;
+    left: 20px;
+    top: initial;
+  }
+
+  .btn-default {
+    clear:both;
+    color: #333;
+    background-color: #fff;
+    border-color: #fff;
+  }
+  .button {
+    min-height: inherit;
+    line-height: inherit;
+  }
+
+
+  .item img {
+    height: 60px;
+    width: 60px;
+    float: left;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  .list .my-item.item {
+    left: 0;
+    right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  input[type=checkbox]:focus {
+    outline: none;
+    outline: none;
+
+  }
+  .isshow{
+    display: block;
+  }

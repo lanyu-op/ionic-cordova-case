@@ -1,16 +1,25 @@
 define(['app'], function (app) {
-app.controller('WorkTaskCtrl', function($ionicLoading,$scope,$rootScope,$ionicPopup,$http,$cordovaSQLite,$state,WorkTaskService,$q) {
+app.controller('WorkTaskCtrl', function($css,$ionicLoading,$scope,$rootScope,$ionicPopup,$http,$cordovaSQLite,$state,WorkTaskService,$q) {
+  // Simply add stylesheet(s)
+
 
 
   //每次进入页面执行
   $scope.$on('$ionicView.beforeEnter',function(){
-
+    //清空所有样式
+    $css.removeAll();
+    //加载工作交办样式
+    $css.add('lib/angular-bootstrap/bootstrap.min.css');
+    $css.add('css/WorkTask.css');
     var arr=new Array();
     $rootScope.tasktext='';
     $rootScope.files=arr;
     $rootScope.personone=arr;
     $rootScope.personmore=arr;
     //$scope.onRefresh();
+  });
+  $scope.$on('$ionicView.leave',function() {
+    //$css.removeAll();
   });
 	//页头跳转
 
@@ -88,7 +97,7 @@ app.controller('WorkTaskCtrl', function($ionicLoading,$scope,$rootScope,$ionicPo
 	        	//console.log(items.data);
 	        	$scope.$broadcast('scroll.refreshComplete');
 	        });
-     
+
         };
 
 
