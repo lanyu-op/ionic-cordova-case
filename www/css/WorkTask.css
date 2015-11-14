@@ -35,7 +35,9 @@
     min-height: inherit;
     line-height: inherit;
   }
-
+  .checkbox input[type=checkbox]{
+    margin-left: 0px;
+  }
 
   .item img {
     height: 60px;
@@ -54,7 +56,4 @@
     outline: none;
     outline: none;
 
-  }
-  .isshow{
-    display: block;
   }

@@ -120,14 +120,31 @@ $stateProvider
 .state('boot', angularAMD.route({
 url: '/boot',
 resolve: {
-    loadController: ['$q', '$stateParams',
-        function ($q, $stateParams)
+    loadController: ['$q', '$stateParams','$ocLazyLoad',
+        function ($q, $stateParams,$ocLazyLoad)
         {
             // get the controller name === here as a path to Controller_Name.js
             // which is set in main.js path {}
             var load1 = "app/controllers/common/BootController.js";
             var deferred = $q.defer();
-            require([load1], function () { deferred.resolve(); });
+            require([load1], function () {
+              $ocLazyLoad.load(
+                [
+                  {
+                    name: 'css',
+                    //insertBefore: '#xxx',
+                    files: [
+                      //'app/controllers/oa/staff.js',
+                      //'lib/angular-bootstrap/bootstrap.min.css'
+                      //'lib/angular-lazy-image/lazy-image-style.css',
+                      //'app/controllers/discuss/DsMainController.js'
+                    ]
+                  }
+                ]
+              );
+
+
+              deferred.resolve(); });
             return deferred.promise;
         }]
 },
