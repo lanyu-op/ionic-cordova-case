@@ -6,7 +6,8 @@ define([
   app.factory('WorkTaskService', function ($http) {
 
      return {
-    	 worktasklist:function(){
+    	 worktasklist:function(len){
+
     		 return $http({
  			   url:window.siteurl+'sms/QueryWorkTask',
  			   method:"POST",
@@ -14,6 +15,9 @@ define([
  					'Content-Type': 'application/x-www-form-urlencoded'
  			   },
  			   data: {
+ 			   	rowstart:len,
+ 			   	rowcounts:10
+ 			   	
  	           // map: params,
  	            //test: 'test_lwp'
  			   }

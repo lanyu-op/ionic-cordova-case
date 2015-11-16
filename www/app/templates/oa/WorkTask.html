@@ -28,27 +28,27 @@
         <div afkl-image-container><div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
         </div>
 				<div class="titl item-text-wrap" style="font-size: 14px;color:#454545;">
-					{{item.tasktxt}}
+					{{item.data.tasktxt}}--{{item.workid}}
 				</div>
 				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">
 
 					<div style="float: left;">
 							 <ul>
 							 	<li  style="float: left; margin-right: 20px;" ng-if="item.creatime!=null" style="font:smaller">
-				                   <span class="ion-ios-clock-outline" style="font-size: 18px;"></span> {{item.creatime}}
+				                   <span class="ion-ios-clock-outline" style="font-size: 18px;"></span> {{item.data.creatime}}
 				                </li>
-				                <li  style="float: left; margin-right: 20px;" ng-if="item.fujian.length>0" style="font:smaller">
-				                   <span class="ion-paperclip" style="font-size: 22px;"></span> {{item.fujian.length}}
+				                <li  style="float: left; margin-right: 20px;" ng-if="item.data.fujian.length>0" style="font:smaller">
+				                   <span class="ion-paperclip" style="font-size: 22px;"></span> {{item.data.fujian.length}}
 				                </li>
 			           		 </ul>
 					</div>
 				</div>
-				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">负责人：{{item.taskleader[0].username}}</div>
+				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">负责人：{{item.data.taskleader[0].username}}</div>
 				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">
 					<div style="float: left;">参与人：</div>
 					<div style="float: left;">
 							 <ul>
-				                <li style="float: left; margin-right: 20px;" ng-repeat="z in item.taskpersonmore" style="font:smaller">
+				                <li style="float: left; margin-right: 20px;" ng-repeat="z in item.data.taskpersonmore" style="font:smaller">
 				                    {{z.username}}
 				                </li>
 			           		 </ul>
