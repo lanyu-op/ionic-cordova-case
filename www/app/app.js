@@ -1,4 +1,5 @@
 window.siteurl="http://www.360lzy.com/markethelper/lanyu_sport/";
+window.siteResurl="http://www.360lzy.com/markethelper/";
 define([
 	'angular',
 	'angularAMD',

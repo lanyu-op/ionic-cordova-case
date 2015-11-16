@@ -14,7 +14,7 @@
 </div>
 </ion-header-bar>
 
-  <ion-content>
+  <ion-content afkl-image-container>
 
     <div class="list">
     	    <input type="search"
@@ -28,7 +28,7 @@
       ng-click="clearSearch()">
     </button>
     <ion-list>
-      <ion-item class="item item-checkbox" afkl-image-container
+      <ion-item class="item item-checkbox" 
         collection-repeat="item in getContacts()"
         collection-item-height="getItemHeight(item)"
         collection-item-width="getItemWidth(item)"
@@ -40,10 +40,9 @@
          <label ng-if="!item.isLetter" class="checkbox">
            <input type="checkbox" id={{item.id}} name="{{item.first_name}}" ng-checked="isSelected(item.id)" ng-click="updateSelection($event,item.id)">
          </label>
-          <img ng-if="!item.isLetter" src="http://placekitten.com/60/{{55 + ($index % 10)}}" onerror="this.src='img/ionic.png'" >
-         <!-- <div ng-if="!item.isLetter" afkl-lazy-image="//placekitten.com/60/{{55 + ($index % 10)}}" onerror="this.src='img/ionic.png'" style="padding: 5px;">-->
+          <div ng-if="!item.isLetter" afkl-lazy-image="//placekitten.com/60/{{55 + ($index % 10)}}" onerror="this.src='img/ionic.png'" style="padding: 5px;">
             {{(item.first_name+' '+item.last_name)}}
-          <!-- </div>-->
+           </div>
 
 
           <!--
