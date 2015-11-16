@@ -28,7 +28,7 @@
         <div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
    
 				<div class="titl item-text-wrap" style="font-size: 14px;color:#454545;">
-					{{item.workdata.tasktxt}}
+					{{item.workdata.tasktxt| limitTo:100}}
 				</div>
 				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">
 
@@ -71,5 +71,13 @@
     <div class="item item-divider">
       已关闭
     </div>
+    <ion-infinite-scroll
+        icon="ion-loading-c"
+				ng-if="!moredata"
+        on-infinite="loadMore()"
+        distance="1%"
+        immediate-check=false
+        >
+      </ion-infinite-scroll>
   </ion-content>
 </ion-view>

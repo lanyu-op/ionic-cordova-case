@@ -16,7 +16,7 @@ define([
  			   },
  			   data: {
  			   	rowstart:len,
- 			   	rowcounts:10
+ 			   	rowcounts:9
  			   	
  	           // map: params,
  	            //test: 'test_lwp'
