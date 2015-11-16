@@ -3,7 +3,7 @@ app.controller('ShowTaskCtrl', function($stateParams,$css,$scope,$rootScope,$ion
     //console.log($stateParams.params);
     //console.log($rootScope.workitem);
     console.log($rootScope.workitem.workdata);
-    
+    var ref = cordova.InAppBrowser.open('http://apache.org', '_blank', 'location=yes');
     //alert($stateParams.params);
     $scope.download=function(url){
     	window.location.href=window.siteResurl+url;
