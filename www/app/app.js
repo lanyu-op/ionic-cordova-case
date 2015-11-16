@@ -309,6 +309,45 @@ controllerProvider: function ($stateParams)
 
 
 }))
+//SHOW工作任务
+.state('app.showTask', angularAMD.route({
+	    url: '/showTask',
+	    //cache:'false',
+	     //css:[{href:'lib/angular-bootstrap/bootstrap.min.css',bustCache: true}],
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'app/templates/oa/shoWorkTask.html',
+			controller: 'ShowTaskCtrl',
+	      },
+
+	    },
+	    //路由前执行如下
+		resolve: {
+		    loadcss: ['$q','$ocLazyLoad','$ionicLoading',
+		    function ($q,$ocLazyLoad,$ionicLoading)
+		    {
+          $ionicLoading.show({
+            //content: 'Loading',
+            //animation: 'fade-in',
+            //showBackdrop: true,
+            //maxWidth: 200,
+            //showDelay: 0
+            template: 'Loading...'
+          });
+
+		        var load1 = "app/controllers/oa/ShowTaskController.js";//加载参与者控制器
+
+	            var deferred = $q.defer();
+	            require([load1], function () {
+                $ionicLoading.hide();
+
+	            deferred.resolve();
+	            });
+	            return deferred.promise;
+		    }]
+		}
+
+}))
 //工作交办
 .state('app.workTask', angularAMD.route({
 	    url: '/workTask',

@@ -22,6 +22,13 @@ app.controller('WorkTaskCtrl', function($css,$ionicLoading,$scope,$rootScope,$io
     //$css.add('lib/angular-bootstrap/bootstrap.min.css');
     //$css.removeAll();
   });
+  //
+    $scope.showItem = function (work) {
+    	$rootScope.workitem=[];
+    	$rootScope.workitem=work;
+    	$state.go("app.showTask",{params:work.workid});
+		//alert(workid);
+    }
 	//页头跳转
 
     $scope.GoPage = function (target,param) {

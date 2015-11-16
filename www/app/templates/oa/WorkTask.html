@@ -11,7 +11,7 @@
   </div>
 </ion-header-bar>
 
-  <ion-content class="padding">
+  <ion-content class="padding" afkl-image-container>
 
     <ion-refresher
             on-refresh="onRefresh()"
@@ -25,30 +25,30 @@
     </div>
     <ion-list >
       <ion-item class="item item-icon-right" ng-click="showItem(item)"  ng-repeat="item in list"  type="item-text-wrap">
-        <div afkl-image-container><div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
-        </div>
+        <div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
+   
 				<div class="titl item-text-wrap" style="font-size: 14px;color:#454545;">
-					{{item.data.tasktxt}}--{{item.workid}}
+					{{item.workdata.tasktxt}}
 				</div>
 				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">
 
 					<div style="float: left;">
 							 <ul>
 							 	<li  style="float: left; margin-right: 20px;" ng-if="item.creatime!=null" style="font:smaller">
-				                   <span class="ion-ios-clock-outline" style="font-size: 18px;"></span> {{item.data.creatime}}
+				                   <span class="ion-ios-clock-outline" style="font-size: 18px;"></span> {{item.workdata.creatime}}
 				                </li>
-				                <li  style="float: left; margin-right: 20px;" ng-if="item.data.fujian.length>0" style="font:smaller">
-				                   <span class="ion-paperclip" style="font-size: 22px;"></span> {{item.data.fujian.length}}
+				                <li  style="float: left; margin-right: 20px;" ng-if="item.workdata.fujian.length>0" style="font:smaller">
+				                   <span class="ion-paperclip" style="font-size: 22px;"></span> {{item.workdata.fujian.length}}
 				                </li>
 			           		 </ul>
 					</div>
 				</div>
-				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">负责人：{{item.data.taskleader[0].username}}</div>
+				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">负责人：{{item.workdata.taskleader[0].username}}</div>
 				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">
 					<div style="float: left;">参与人：</div>
 					<div style="float: left;">
 							 <ul>
-				                <li style="float: left; margin-right: 20px;" ng-repeat="z in item.data.taskpersonmore" style="font:smaller">
+				                <li style="float: left; margin-right: 20px;" ng-repeat="z in item.workdata.taskpersonmore" style="font:smaller">
 				                    {{z.username}}
 				                </li>
 			           		 </ul>
