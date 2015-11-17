@@ -1,5 +1,5 @@
 define(['app'], function (app) {
-app.controller('NewTaskCtrl', function($css,$q,$ionicLoading,$scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
+app.controller('NewTaskCtrl', function($cordovaToast,$css,$q,$ionicLoading,$scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
   //document.getElementById('global-css').setAttribute('href',themeFile);
 
 
@@ -292,6 +292,12 @@ app.controller('NewTaskCtrl', function($css,$q,$ionicLoading,$scope,$ionicPopup,
     //附件选择
     $scope.uploadFiles = function (files) {
     if(files!=null){
+    										if(typeof($scope.files)!='undefined'){
+										$scope.files = $scope.files.concat(files);
+									}else{
+										$scope.files = (files);
+									}
+			/*						
     	for (var i = 0; i < files.length; i++) {
 				//console.log(files[i].name);
 				var url=files[i].name;
@@ -317,7 +323,7 @@ app.controller('NewTaskCtrl', function($css,$q,$ionicLoading,$scope,$ionicPopup,
 						$cordovaToast.showShortTop('不支持该类型附件！');
 					}
 			}
-
+*/
 		}
     };
 
