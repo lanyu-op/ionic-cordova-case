@@ -15,7 +15,7 @@
 </div>
 </ion-header-bar>
 
-  <ion-content>
+  <ion-content afkl-image-container>
 
     <div class="list">
     <input type="search"
@@ -39,8 +39,8 @@
                 style="z-index: 9999;"
         >
           {{item.letter}}
-        <img ng-if="!item.isLetter" src="http://placekitten.com/60/{{55 + ($index % 10)}}" onerror="this.src='img/ionic.png'" >
-         <!-- <div ng-if="!item.isLetter" afkl-lazy-image="http://placekitten.com/60/{{55 + ($index % 10)}}" style="padding: 5px;">-->
+         <!--<img ng-if="!item.isLetter" onerror="this.src='img/ionic.png'" src="http://placekitten.com/60/{{55 + ($index % 10)}}"  >-->
+         <div ng-if="!item.isLetter" afkl-lazy-image="http://placekitten.com/55/{{56 + ($index % 10)}}" style="padding: 5px;">
           {{(item.first_name+' '+item.last_name)}}
           <i class="ion-checkmark" ng-show="item.id==isselect" ></i>
           <!--</div>-->

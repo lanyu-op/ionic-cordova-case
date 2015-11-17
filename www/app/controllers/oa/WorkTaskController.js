@@ -6,7 +6,7 @@ $scope.moredata = false;
 
   //每次进入页面执行
   $scope.$on('$ionicView.beforeEnter',function(){
-  	// $scope.onRefresh();
+  	
     //清空所有样式
     $css.removeAll();
     //加载工作交办样式
@@ -114,7 +114,8 @@ $scope.moredata = false;
 	        });
 
         };
-        //上拉刷新
+       $scope.onRefresh();
+       //上拉刷新
         $scope.loadMore= function() {
         	//moredata
         	//$scope.moredata = true;

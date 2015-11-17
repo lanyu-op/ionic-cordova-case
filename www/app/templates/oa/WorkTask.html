@@ -1,5 +1,13 @@
-
-<ion-view data-ng-init="onRefresh()">
+<!--data-ng-init="onRefresh()" -->
+<style>
+	.lb-worktask{
+		clear:both;font-size: 8px;color: #696969;
+	}
+		.lbtx-worktask{
+		float: left; margin-right: 20px;
+	}
+</style>
+<ion-view >
 <ion-header-bar align-title="center" class="bar-stable">
   <div class="buttons">
      <a class="button button-icon button-clear ion-navicon"  menu-toggle="left">
@@ -30,25 +38,25 @@
 				<div class="titl item-text-wrap" style="font-size: 14px;color:#454545;">
 					{{item.workdata.tasktxt| limitTo:100}}
 				</div>
-				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">
+				<div class="lb-worktask">
 
 					<div style="float: left;">
 							 <ul>
-							 	<li  style="float: left; margin-right: 20px;" ng-if="item.creatime!=null" style="font:smaller">
+							 	<li  class="lbtx-worktask" ng-if="item.creatime!=null" style="font:smaller">
 				                   <span class="ion-ios-clock-outline" style="font-size: 18px;"></span> {{item.workdata.creatime}}
 				                </li>
-				                <li  style="float: left; margin-right: 20px;" ng-if="item.workdata.fujian.length>0" style="font:smaller">
+				                <li class="lbtx-worktask" ng-if="item.workdata.fujian.length>0" style="font:smaller">
 				                   <span class="ion-paperclip" style="font-size: 22px;"></span> {{item.workdata.fujian.length}}
 				                </li>
 			           		 </ul>
 					</div>
 				</div>
-				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">负责人：{{item.workdata.taskleader[0].username}}</div>
-				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">
+				<div class="lb-worktask">负责人：{{item.workdata.taskleader[0].username}}</div>
+				<div class="lb-worktask">
 					<div style="float: left;">参与人：</div>
 					<div style="float: left;">
 							 <ul>
-				                <li style="float: left; margin-right: 20px;" ng-repeat="z in item.workdata.taskpersonmore" style="font:smaller">
+				                <li class="lbtx-worktask" ng-repeat="z in item.workdata.taskpersonmore" style="font:smaller">
 				                    {{z.username}}
 				                </li>
 			           		 </ul>
