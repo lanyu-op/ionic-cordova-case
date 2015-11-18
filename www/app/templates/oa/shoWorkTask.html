@@ -20,6 +20,12 @@
 	.divpinglun{
 	clear:both;font-size: 8px;padding: 4px;color: #696969;line-height: 28px;s
 	}
+	.isclick{
+		color:#AC2925;
+	}
+	.offclick{
+		color: #0A68B4;
+	}
 </style>
 <ion-view >
 
@@ -60,7 +66,7 @@
      <div class="item shoWorkTaskitemall">
     
 				<div ng-repeat="z in workdata.fujian" style="clear:both;font-size: 8px;padding: 4px;color: #696969;"><span class="ion-ios-paper-outline" style="font-size: 18px;"></span>&nbsp;
-					<span ng-click="download('{{z}}')">{{z}}</span>
+					<span ng-class="{true: 'isclick', false: 'offclick'}['{{z}}'==isclik]" ng-click="download('{{z}}')">{{z}}</span>
 				</div>
 
 				
