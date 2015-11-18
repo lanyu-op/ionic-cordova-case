@@ -17,7 +17,7 @@ $scope.moredata = false;
     $rootScope.files=arr;
     $rootScope.personone=arr;
     $rootScope.personmore=arr;
-    //$scope.onRefresh();
+    $scope.onRefresh();
   });
   $scope.$on('$ionicView.afterEnter',function() {
     //$css.add('lib/angular-bootstrap/bootstrap.min.css');
@@ -114,7 +114,7 @@ $scope.moredata = false;
 	        });
 
         };
-       $scope.onRefresh();
+
        //上拉刷新
         $scope.loadMore= function() {
         	//moredata
