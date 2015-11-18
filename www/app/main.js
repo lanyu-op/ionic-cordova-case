@@ -9,6 +9,7 @@ require.config({
     //'iuChart':"../lib/iu-echarts/src/iuChart",
     //'echarts':"../lib/iu-echarts/example/libs/echarts.min",
     'jquery': '../lib/jquery/jquery',
+    'angularzh':'../lib/angular/angular-locale_zh-ch',
     //
     'angularAMD':'../lib/angularAMD/angularAMD.min', //for lazy load
     'ngload':'../lib/angularAMD/ngload.min', //for lazy load
@@ -35,6 +36,7 @@ require.config({
     'angular-bootstrap':['ionic'],
     'gcal':['fullcalendar'],
     'angularCss':['ionic'],
+    'angularzh':['ionic'],
     //'ionic': {deps: ['jquery']},
     //'ngCordova':['ionic'],//需要依赖ionic中的angularjs
 		'ocLazyLoad': ['ionic'],//需要依赖ionic中的angularjs
