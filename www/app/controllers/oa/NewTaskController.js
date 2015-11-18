@@ -199,6 +199,7 @@ app.controller('NewTaskCtrl', function($cordovaToast,$css,$q,$ionicLoading,$scop
     	var deferred=$q.defer();
     	var z=0;
     	var arr=new Array();
+    	Upload.setDefaults({ngfMaxSize:"10MB"});
         if (files && files.length) {
         	for (var i = 0; i < files.length; i++) {
             Upload.upload({
