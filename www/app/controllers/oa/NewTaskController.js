@@ -292,14 +292,15 @@ app.controller('NewTaskCtrl', function($cordovaToast,$css,$q,$ionicLoading,$scop
     //附件选择
     $scope.uploadFiles = function (files) {
     if(files!=null){
-    										if(typeof($scope.files)!='undefined'){
+    							
+									if(typeof($scope.files)!='undefined'){
 										$scope.files = $scope.files.concat(files);
 									}else{
 										$scope.files = (files);
 									}
-			/*						
+									/*
     	for (var i = 0; i < files.length; i++) {
-				//console.log(files[i].name);
+				console.log(files[i].type);
 				var url=files[i].name;
 					if(url.lastIndexOf('.jpg')!=-1||url.lastIndexOf('.jpeg')!=-1||url.lastIndexOf('.bmp')!=-1
 					||url.lastIndexOf('.png')!=-1||
