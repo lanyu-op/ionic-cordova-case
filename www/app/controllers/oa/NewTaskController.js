@@ -1,5 +1,5 @@
 define(['app'], function (app) {
-app.controller('NewTaskCtrl', function($css,$q,$ionicLoading,$scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
+app.controller('NewTaskCtrl', function($cordovaToast,$css,$q,$ionicLoading,$scope,$ionicPopup,$http,$cordovaSQLite,$state,Upload,$rootScope,$stateParams,$timeout) {
   //document.getElementById('global-css').setAttribute('href',themeFile);
 
 
@@ -199,6 +199,7 @@ app.controller('NewTaskCtrl', function($css,$q,$ionicLoading,$scope,$ionicPopup,
     	var deferred=$q.defer();
     	var z=0;
     	var arr=new Array();
+    	Upload.setDefaults({ngfMaxSize:"10MB"});
         if (files && files.length) {
         	for (var i = 0; i < files.length; i++) {
             Upload.upload({
@@ -210,7 +211,10 @@ app.controller('NewTaskCtrl', function($css,$q,$ionicLoading,$scope,$ionicPopup,
             }).then(function (response) {
             	z++;
             	console.log("循环"+z);
+            	if(response.data!="0"){
             	arr.push(response.data);
+            	
+            	}
             	//打包数组
             	if(z==files.length){
             		console.log("成功了，则填充坑");
@@ -285,19 +289,44 @@ app.controller('NewTaskCtrl', function($css,$q,$ionicLoading,$scope,$ionicPopup,
 
 
     };
+    
+    //附件选择
     $scope.uploadFiles = function (files) {
-		console.log(files);
-		if(files!=null){
-				if(typeof($scope.files)!='undefined'){
-					$scope.files = $scope.files.concat(files);
-				}else{
-					$scope.files = (files);
-				}
+    if(files!=null){
+    							
+									if(typeof($scope.files)!='undefined'){
+										$scope.files = $scope.files.concat(files);
+									}else{
+										$scope.files = (files);
+									}
+									/*
+    	for (var i = 0; i < files.length; i++) {
+				console.log(files[i].type);
+				var url=files[i].name;
+					if(url.lastIndexOf('.jpg')!=-1||url.lastIndexOf('.jpeg')!=-1||url.lastIndexOf('.bmp')!=-1
+					||url.lastIndexOf('.png')!=-1||
+					url.lastIndexOf('.gif')!=-1||
+					url.lastIndexOf('.txt')!=-1||
+					url.lastIndexOf('.doc')!=-1||
+					url.lastIndexOf('.docx')!=-1||
+					url.lastIndexOf('.xls')!=-1
+					
+					){
 
-    }
-
-
-
+						
+									if(typeof($scope.files)!='undefined'){
+										$scope.files = $scope.files.concat(files[i]);
+									}else{
+										$scope.files = (files);
+									}
+					
+					    
+					}else{
+						$cordovaToast.showShortTop('不支持该类型附件！');
+					}
+			}
+*/
+		}
     };
 
 

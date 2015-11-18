@@ -1,0 +1,87 @@
+
+
+
+<style>
+
+	.shoWorkTaskitemall{
+		
+    border-left: none;
+    border-top: none;
+    border-right: none;
+	margin:0px;
+	margin-left: 20px;
+	margin-right: 20px;
+
+	}
+	.imgpinglun{
+	max-width: 31px;
+    max-height: 31px;
+	}
+	.divpinglun{
+	clear:both;font-size: 8px;padding: 4px;color: #696969;line-height: 28px;s
+	}
+</style>
+<ion-view >
+
+  <ion-header-bar align-title="center" class="bar-stable">
+    <div class="buttons">
+      <a class="button button-icon button-clear ion-chevron-left" href="#/app/workTask" style="font-size: 18px;color: white;"></a>
+
+    </div>
+    <h1 class="title">工作单</h1>
+    <div class="buttons">
+  </div>
+  </ion-header-bar>
+
+  <ion-content >
+
+    <div class="list">
+      <div class="item shoWorkTaskitemall">
+      	
+      		TO :SUIBIN
+
+     </div>
+      <div class="item shoWorkTaskitemall">
+				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">负责人：{{workdata.taskleader[0].username}}</div>
+				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">
+					<div style="float: left;">参与人：</div>
+					<div style="float: left;">
+							 <ul>
+				                <li style="float: left; margin-right: 20px;" ng-repeat="z in workdata.taskpersonmore" style="font:smaller">
+				                    {{z.username}}
+				                </li>
+			           		 </ul>
+					</div>
+				</div>
+				<div class="item-text-wrap" style="clear:both;font-size: 8px;padding: 4px;color: #696969;padding-top: 30px;">{{workdata.tasktxt}}</div>
+      	
+     </div>
+
+     <div class="item shoWorkTaskitemall">
+    
+				<div ng-repeat="z in workdata.fujian" style="clear:both;font-size: 8px;padding: 4px;color: #696969;"><span class="ion-ios-paper-outline" style="font-size: 18px;"></span>&nbsp;
+					<span ng-click="download('{{z}}')">{{z}}</span>
+				</div>
+
+				
+     </div>
+     <div afkl-image-container class="item shoWorkTaskitemall">
+				<div class="divpinglun">
+				<div afkl-lazy-image="img/ionic.png" afkl-lazy-image-options='{"className": "imgpinglun"}' ></div>
+					评论</div>
+				<div class="divpinglun">
+					<div afkl-lazy-image="img/ionic.png" afkl-lazy-image-options='{"className": "imgpinglun"}' ></div>
+					评论</div>
+				<div class="divpinglun">
+					<div afkl-lazy-image="img/ionic.png" afkl-lazy-image-options='{"className": "imgpinglun"}' ></div>
+					评论</div>
+				<input type="text" />
+     </div>     
+     
+     
+     
+     
+     
+    </div>
+  </ion-content>
+</ion-view>

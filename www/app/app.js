@@ -1,4 +1,5 @@
 window.siteurl="http://www.360lzy.com/markethelper/lanyu_sport/";
+window.siteResurl="http://www.360lzy.com/markethelper/";
 define([
 	'angular',
 	'angularAMD',
@@ -90,7 +91,7 @@ app.config(function (AmapProvider) {
 app.config(function($stateProvider, $urlRouterProvider, $translateProvider,$httpProvider){
 
 // default
-$urlRouterProvider.otherwise("boot");
+$urlRouterProvider.otherwise("first");
 $stateProvider
 //入口
 .state('app', angularAMD.route({
@@ -309,6 +310,45 @@ controllerProvider: function ($stateParams)
 
 
 }))
+//SHOW工作任务
+.state('app.showTask', angularAMD.route({
+	    url: '/showTask',
+	    //cache:'false',
+	     //css:[{href:'lib/angular-bootstrap/bootstrap.min.css',bustCache: true}],
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'app/templates/oa/shoWorkTask.html',
+			controller: 'ShowTaskCtrl',
+	      },
+
+	    },
+	    //路由前执行如下
+		resolve: {
+		    loadcss: ['$q','$ocLazyLoad','$ionicLoading',
+		    function ($q,$ocLazyLoad,$ionicLoading)
+		    {
+          $ionicLoading.show({
+            //content: 'Loading',
+            //animation: 'fade-in',
+            //showBackdrop: true,
+            //maxWidth: 200,
+            //showDelay: 0
+            template: 'Loading...'
+          });
+
+		        var load1 = "app/controllers/oa/ShowTaskController.js";//加载参与者控制器
+
+	            var deferred = $q.defer();
+	            require([load1], function () {
+                $ionicLoading.hide();
+
+	            deferred.resolve();
+	            });
+	            return deferred.promise;
+		    }]
+		}
+
+}))
 //工作交办
 .state('app.workTask', angularAMD.route({
 	    url: '/workTask',
@@ -328,14 +368,14 @@ controllerProvider: function ($stateParams)
 		    loadcss: ['$q','$ocLazyLoad','$ionicLoading',
 		    function ($q,$ocLazyLoad,$ionicLoading)
 		    {
-          //$ionicLoading.show({
+          $ionicLoading.show({
             //content: 'Loading',
             //animation: 'fade-in',
             //showBackdrop: true,
             //maxWidth: 200,
             //showDelay: 0
-           // template: 'Loading...'
-          //});
+            template: 'Loading...'
+          });
 		        // get the controller name === here as a path to Controller_Name.js
 		        // which is set in main.js path {}
 				//JS加载交给requirejs管理。ionic框架底层对route进行了绑定，不能oclazyload来加载页面。
@@ -351,7 +391,7 @@ controllerProvider: function ($stateParams)
 
 	            var deferred = $q.defer();
 	            require([load1,load2,load3,load4,load5,load6], function () {
-               // $ionicLoading.hide();
+                $ionicLoading.hide();
 	            	//加载css,requirejs,html等。
 	            	/*
 	            	$ocLazyLoad.load(
@@ -580,11 +620,13 @@ app.run(function($ionicPlatform, $ionicPopup,$rootScope, $location,$timeout, $io
             else if ($ionicHistory.backView()) {
                 $ionicHistory.goBack();
             } else {
-                $rootScope.backButtonPressedOnceToExit = true;
-                $cordovaToast.showShortTop('再按一次退出系统');
-                setTimeout(function () {
-                    $rootScope.backButtonPressedOnceToExit = false;
-                }, 2000);
+     
+                    //$rootScope.backButtonPressedOnceToExit = true;
+                    //$cordovaToast.showShortTop('再按一次退出系统');
+                    //setTimeout(function () {
+                    //    $rootScope.backButtonPressedOnceToExit = false;
+                    //}, 2000);
+                
             }
 		e.preventDefault();
 

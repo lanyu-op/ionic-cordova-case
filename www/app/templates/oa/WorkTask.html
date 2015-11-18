@@ -1,8 +1,16 @@
-
-<ion-view data-ng-init="onRefresh()">
+<!--data-ng-init="onRefresh()" -->
+<style>
+	.lb-worktask{
+		clear:both;font-size: 8px;color: #696969;
+	}
+		.lbtx-worktask{
+		float: left; margin-right: 20px;
+	}
+</style>
+<ion-view >
 <ion-header-bar align-title="center" class="bar-stable">
   <div class="buttons">
-     <a class="button button-icon button-clear ion-navicon "  menu-toggle="left">
+     <a class="button button-icon button-clear ion-navicon"  menu-toggle="left">
     </a>
   </div>
   <h1 class="title">工作交办(18)</h1>
@@ -11,7 +19,7 @@
   </div>
 </ion-header-bar>
 
-  <ion-content class="padding">
+  <ion-content class="padding" afkl-image-container>
 
     <ion-refresher
             on-refresh="onRefresh()"
@@ -24,31 +32,31 @@
       我关注
     </div>
     <ion-list >
-      <ion-item class="item item-icon-right" ng-click=""  ng-repeat="item in list"  type="item-text-wrap">
-        <div afkl-image-container><div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
-        </div>
+      <ion-item class="item item-icon-right" ng-click="showItem(item)"  ng-repeat="item in list"  type="item-text-wrap">
+        <div afkl-lazy-image="{{runtimeImageSrc}}" ></div>
+   
 				<div class="titl item-text-wrap" style="font-size: 14px;color:#454545;">
-					{{item.tasktxt}}
+					{{item.workdata.tasktxt| limitTo:100}}
 				</div>
-				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">
+				<div class="lb-worktask">
 
 					<div style="float: left;">
 							 <ul>
-							 	<li  style="float: left; margin-right: 20px;" ng-if="item.creatime!=null" style="font:smaller">
-				                   <span class="ion-ios-clock-outline" style="font-size: 18px;"></span> {{item.creatime}}
+							 	<li  class="lbtx-worktask" ng-if="item.creatime!=null" style="font:smaller">
+				                   <span class="ion-ios-clock-outline" style="font-size: 18px;"></span> {{item.workdata.creatime}}
 				                </li>
-				                <li  style="float: left; margin-right: 20px;" ng-if="item.fujian.length>0" style="font:smaller">
-				                   <span class="ion-paperclip" style="font-size: 22px;"></span> {{item.fujian.length}}
+				                <li class="lbtx-worktask" ng-if="item.workdata.fujian.length>0" style="font:smaller">
+				                   <span class="ion-paperclip" style="font-size: 22px;"></span> {{item.workdata.fujian.length}}
 				                </li>
 			           		 </ul>
 					</div>
 				</div>
-				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">负责人：{{item.taskleader[0].username}}</div>
-				<div style="clear:both;font-size: 8px;padding: 4px;color: #696969;">
+				<div class="lb-worktask">负责人：{{item.workdata.taskleader[0].username}}</div>
+				<div class="lb-worktask">
 					<div style="float: left;">参与人：</div>
 					<div style="float: left;">
 							 <ul>
-				                <li style="float: left; margin-right: 20px;" ng-repeat="z in item.taskpersonmore" style="font:smaller">
+				                <li class="lbtx-worktask" ng-repeat="z in item.workdata.taskpersonmore" style="font:smaller">
 				                    {{z.username}}
 				                </li>
 			           		 </ul>
@@ -71,5 +79,13 @@
     <div class="item item-divider">
       已关闭
     </div>
+    <ion-infinite-scroll
+        icon="ion-loading-c"
+				ng-if="!moredata"
+        on-infinite="loadMore()"
+        distance="1%"
+        immediate-check=false
+        >
+      </ion-infinite-scroll>
   </ion-content>
 </ion-view>
