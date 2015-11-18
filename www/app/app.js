@@ -1,5 +1,6 @@
 window.siteurl="http://www.360lzy.com/markethelper/lanyu_sport/";
 window.siteResurl="http://www.360lzy.com/markethelper/";
+
 define([
 	'angular',
 	'angularAMD',
@@ -567,6 +568,13 @@ controllerProvider: function ($stateParams)
 	'en-*':'en',
 	'zh-*':'zh'
 	});
+});
+//自定义过滤器
+app.filter('tozh',function(){
+    return function(zzz){
+
+        return zzz;
+    }
 });
 app.run(function($ionicPlatform, $ionicPopup,$rootScope, $location,$timeout, $ionicHistory,$cordovaToast) {
 	function showConfirm() {
