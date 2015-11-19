@@ -5,6 +5,7 @@ app.controller('ShowTaskCtrl', function($stateParams,$css,$scope,$rootScope,$ion
     //console.log($rootScope.workitem.workdata);
     //alert($stateParams.params);
     $scope.download=function(url){
+    	$scope.isclik=url;
     	//console.log(url);
     	//console.log(url.indexOf('.jpg'));
     	if(url.lastIndexOf('.jpg')!=-1||url.lastIndexOf('.jpeg')!=-1||url.lastIndexOf('.bmp')!=-1||url.lastIndexOf('.png')!=-1||url.lastIndexOf('.gif')!=-1){

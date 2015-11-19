@@ -1,5 +1,6 @@
 window.siteurl="http://www.360lzy.com/markethelper/lanyu_sport/";
 window.siteResurl="http://www.360lzy.com/markethelper/";
+
 define([
 	'angular',
 	'angularAMD',
@@ -12,6 +13,7 @@ define([
 	'ocLazyLoad',
 	'lazy-image',
 	'file-upload',
+	'angularzh',
   'moment',
   'angular-ui-calendar',
   'fullcalendar',
@@ -25,7 +27,7 @@ define([
 'use strict';
 // the app with its used plugins
 var app = angular.module('app', [
-'ionic', 'ngCordova', 'l42y.amap','l42y.amap.map','ngCordova.plugins.ble','door3.css','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage', 'ngFileUpload','ui.calendar','ui.bootstrap'
+'ionic', 'ngCordova','ngLocale', 'l42y.amap','l42y.amap.map','ngCordova.plugins.ble','door3.css','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage', 'ngFileUpload','ui.calendar','ui.bootstrap'
 	//'ionic','pascalprecht.translate','ui.router', 'ngCordova','ngCordova.plugins.ble'
 ]);
 
@@ -567,6 +569,13 @@ controllerProvider: function ($stateParams)
 	'en-*':'en',
 	'zh-*':'zh'
 	});
+});
+//自定义过滤器
+app.filter('tozh',function(){
+    return function(zzz){
+
+        return zzz;
+    }
 });
 app.run(function($ionicPlatform, $ionicPopup,$rootScope, $location,$timeout, $ionicHistory,$cordovaToast) {
 	function showConfirm() {

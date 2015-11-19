@@ -32,7 +32,7 @@
 
       <ul>
         <li ng-repeat="f in files" style="font:smaller" >
-          {{f.name}}
+          {{f.name|tozh}}
       <button ng-if="files.length"
       class="button button-icon ion-android-close input-button"
       ng-click="clearfile(f)">

@@ -293,7 +293,7 @@ app.controller('NewTaskCtrl', function($cordovaToast,$css,$q,$ionicLoading,$scop
     //附件选择
     $scope.uploadFiles = function (files) {
     if(files!=null){
-    							
+    							console.log(files);
 									if(typeof($scope.files)!='undefined'){
 										$scope.files = $scope.files.concat(files);
 									}else{
