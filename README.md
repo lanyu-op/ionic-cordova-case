@@ -19,6 +19,8 @@ ios安装方式：
 二维码插件:
 cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
 ---------------------------------------------------------------------
+![image](https://github.com/lanyu-op/ionic-cordova-case/blob/master/demo1.png)
+![image](https://github.com/lanyu-op/ionic-cordova-case/blob/master/demo2.png)
 安卓演示demo下载：https://github.com/lanyu-op/play_demo/blob/master/android-debug.apk?raw=true
 ---------------------------------------------------------------------
           v0.0.1：（2015-9-16）
