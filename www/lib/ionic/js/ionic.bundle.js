@@ -58085,8 +58085,15 @@ function($timeout, $ionicGesture, $window) {
             return $scope.sideMenuContentTranslateX || 0;
           },
           setTranslateX: ionic.animationFrameThrottle(function(amount) {
+          	console.log(amount);
+          	var yTransform=(amount/275)*50;
             var xTransform = content.offsetX + amount;
-            $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + xTransform + 'px,0,0)';
+            if(xTransform==0){
+            	 $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + xTransform + 'px,0,0)';
+            }else{
+            	 $element[0].style[ionic.CSS.TRANSFORM] = 'translate3d(' + xTransform + 'px,'+yTransform+'px,0)';
+            }
+           
             $timeout(function() {
               $scope.sideMenuContentTranslateX = amount;
             });
