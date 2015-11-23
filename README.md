@@ -90,6 +90,9 @@ cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
         1、增加左侧菜单侧滑效果.
         2、增加左侧菜单背景样式。
 
+-------------------------------------------------------------------------------
+        v0.0214-OA分支：(2015-11月23号)
+        1、amap地图结合定位插件https://github.com/apache/cordova-plugin-geolocation.git
 
 
 
