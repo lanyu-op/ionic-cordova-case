@@ -93,6 +93,7 @@ cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
 -------------------------------------------------------------------------------
         v0.0214-OA分支：(2015-11月23号)
         1、amap地图结合定位插件https://github.com/apache/cordova-plugin-geolocation.git
+        【代码位置：AmapController.js】
 
 
 
