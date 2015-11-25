@@ -296,7 +296,37 @@ controllerProvider: function ($stateParams)
 		    }]
 		}
 }))
+//DOM操作
+.state('app.domcase', angularAMD.route({
+	    url: '/domcase',
+	    //cache:'false',
+	     //css:[{href:'lib/angular-bootstrap/bootstrap.min.css',bustCache: true}],
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'app/templates/function/domcase.html',
+			controller: 'DomcaseCtrl',
+	      },
 
+	    },
+	    //路由前执行如下
+		resolve: {
+		    loadcss: ['$q','$ocLazyLoad','$ionicLoading',
+		    function ($q,$ocLazyLoad,$ionicLoading)
+		    {
+
+
+		        var load1 = "app/controllers/demo/DomcaseController.js";//加载参与者控制器
+
+	            var deferred = $q.defer();
+	            require([load1], function () {
+
+	            deferred.resolve();
+	            });
+	            return deferred.promise;
+		    }]
+		}
+
+}))
 //新建工作任务
 .state('app.newTask', angularAMD.route({
 	    url: '/newTask',
