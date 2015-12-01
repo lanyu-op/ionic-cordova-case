@@ -82,6 +82,11 @@
 	.bar.bar-stable .title {
 	color: #ffffff;
 	}
+	.item-input-z {
+
+    overflow: hidden;
+    padding: 6px 0 5px 16px;
+}
 </style>
 <ion-side-menus enable-menu-with-back-views="true" style="background: url('img/left.jpg') repeat;" >
 
@@ -97,7 +102,24 @@
     <!--<ion-header-bar class="bar-stable">
       <h1 class="title">{{"Catalog_Lang"| translate}}</h1>
     </ion-header-bar>-->
-    <img src="img/ionic.png"  ng-click="login()">
+    <div style="margin: 20px;">
+ 
+
+	  <div class=" item-input item-select ">
+		     <img src="img/wulogo.jpeg" style="max-height: 50px;border-radius: 15px;" ng-click="login()">
+		    	<span style="color: white;margin-left: 10px;">{{userinfo.username}}</span>  	
+		    	<!--<span class="ion-gear-b" style="color:#A29292" ng-click="iset()"></span>  	-->
+					    <select style="background: transparent;color: white;" ng-model="x" ng-change="selectAction(x)">
+					      <option selected style="color:#000000;" value="1">在线</option>
+					      <option style="color:#000000;" value="2">离开</option>
+					      <option style="color:#000000;" value="3">忙碌</option>
+					      <option style="color:#000000;" value="4">隐身</option>
+					      <option style="color:#000000;" value="5">注销</option>
+					    </select>
+	  </div>
+  
+    </div>
+
     <ion-content has-bouncing="true" style="top:100px">
       <ion-list>
         <ion-item nav-clear menu-close href="#/app/index" class="leftMenuborder item-icon-right">

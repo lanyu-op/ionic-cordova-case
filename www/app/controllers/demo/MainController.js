@@ -1,20 +1,27 @@
 define(['app'], function (app) {
     // controller
-    app.controller('MainCtrl', function ($scope,$ionicModal,$http, $timeout,$ionicPopup) {
+    app.controller('MainCtrl', function ($scope,$ionicModal,$rootScope,$http, $timeout,$ionicPopup,$cordovaSQLite) {
   // properties
 		$scope.loginData = {};
 
 		  // Create the login modal that we will use later
-
+			//登录
 		  $ionicModal.fromTemplateUrl('app/templates/user/login.html', {
 		    scope: $scope
 		  }).then(function(modal) {
 		    $scope.modal = modal;
 		  });
+		  //注册
 		  $ionicModal.fromTemplateUrl('app/templates/user/reg.html', {
 		    scope: $scope
 		  }).then(function(modal) {
 		    $scope.regmodal = modal;
+		  });
+		  //修改个人资料
+		  $ionicModal.fromTemplateUrl('app/templates/user/myinfo.html', {
+		    scope: $scope
+		  }).then(function(modal) {
+		    $scope.myinfomodal = modal;
 		  });
 		  // Triggered in the login modal to close it
 		  $scope.closeLogin = function() {
@@ -23,17 +30,102 @@ define(['app'], function (app) {
 		  $scope.closeReg = function() {
 		    $scope.regmodal.hide();
 		  };		  
+		  $scope.closeMyinfo = function() {
+		    $scope.myinfomodal.hide();
+		  };		
 		  // Triggered in the login modal to close it
 		  $scope.reguser = function() {
 	
 		    //$scope.modal.hide();
 		      $scope.regmodal.show();
 		  };
+		  //sqlite声明
+		  if (window.cordova) {
+	      // App syntax
+	      db = $cordovaSQLite.openDB("ly_oa.db");
+			} else {
+			      // Ionic serve syntax
+			      db = window.openDatabase("ly_oa.db", "1.0", "oa DB",  1024 * 1024 * 100);
+			}
+		
+		 //$cordovaSQLite.execute(db, "DROP TABLE loginuser");
+		 $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS loginuser (id integer primary key,username text,email text,nickname text, org text,staff text)");
+
+		 $scope.initdb = function() {
+	
+		 		var query2 = "SELECT * FROM loginuser";
+			    $cordovaSQLite.execute(db, query2, []).then(function(res) {
+			    	
+			        if(res.rows.length > 0) {
+			        //console.log(res.rows.item(0));
+					$rootScope.userinfo=res.rows.item(0);
+			        }
+			    }, function (err) {
+			        console.error(err);
+			    });
+
+		}
+		 $scope.initdb();
+
+		 $scope.selectAction = function(x) {
+		 	if(x==5){
+	
+		 	$cordovaSQLite.execute(db, "delete from loginuser");
+		 	$rootScope.userinfo=null;
+		 	}
+
+		}
+
+		 $scope.upuserdb = function(model) {
+		 var query2 = "SELECT id FROM loginuser";
+		$cordovaSQLite.execute(db, query2, []).then(function(res) {
+			
+			        if(res.rows.length > 0) {
+			           // for(var i = 0; i < res.rows.length; i++) {
+					        var query = "UPDATE loginuser SET username = ?,email = ?,nickname = ?,org = ?,staff = ?";
+					        $cordovaSQLite.execute(db, query, [model.username,'','','','']).then(function(res) {
+					        	//console.log(model);
+					            //console.log("INSERT ID test-> " + res.insertId);
+					        }, function (err) {
+					            console.log(err);
+					        });		
+			           // }
+			        }else{
+				       
+				        var query = "INSERT INTO loginuser(username,email,nickname,org,staff) VALUES (?,?,?,?,?)";
+				        $cordovaSQLite.execute(db, query, [model.username, model.email,'','','']).then(function(res) {
+				           // console.log("INSERT ID test-> " + res.insertId);
+				        }, function (err) {
+				        	alert(2);
+				            console.log(err);
+				        });			        	
+			        }
+			    }, function (err) {
+			        console.error(err);
+			    });
+		 	
+		 	
+		 	
+
+
+		}
 		  // Open the login modal
 		  $scope.login = function() {
+		  	if($rootScope.userinfo&&$rootScope.userinfo!=""){
+		  		//修改头像
+				
+		  		return false;
+		  	}
 		    $scope.modal.show();
 		  };
-
+		  $scope.iset = function() {
+		  	if($rootScope.userinfo&&$rootScope.userinfo!=""){
+		  		//完善资料
+		  		$scope.myinfomodal.show();
+		  		return false;
+		  	}
+		    
+		  };
 		  // Perform the login action when the user submits the login form
 		  $scope.doLogin = function() {
 		    //console.log('Doing login', $scope.loginData.password);
@@ -61,6 +153,8 @@ define(['app'], function (app) {
 				console.log(data.code);
                 if(data.code==100){
                     window.location.href = "#/app/index";
+                    $scope.upuserdb($scope.loginData);
+                    $rootScope.userinfo=$scope.loginData;
                 }else{
                     $ionicPopup.alert({
                         title:'登录失败',

@@ -1,0 +1,38 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-stable">
+    <h1 class="title">个人资料</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeMyinfo()">关闭</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doChangeInfo()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">用户名：</span>
+          <input type="text" ng-model="loginData.username" disabled="true">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">昵称：</span>
+          <input type="password" ng-model="loginData.nickname">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">电子邮箱：</span>
+          <input type="password" ng-model="loginData.email" disabled="true">
+        </label>        
+        <label class="item item-input">
+          <span class="input-label">组织：</span>
+          <input type="password" ng-model="loginData.org">
+        </label>              
+        <label class="item item-input">
+          <span class="input-label">职务：</span>
+          <input type="password" ng-model="loginData.staff">
+        </label>               
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">完善资料</button>
+ 
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

@@ -2,10 +2,10 @@ define(['app'], function (app) {
 app.controller('SqliteCtrl', function($scope,$ionicPopup,$cordovaSQLite) {
 	   	 if (window.cordova) {
 	      // App syntax
-	      db = $cordovaSQLite.openDB("g_sport.db");
+	      db = $cordovaSQLite.openDB("ly_oa.db");
 			} else {
 			      // Ionic serve syntax
-			      db = window.openDatabase("g_sport.db", "1.0", "gcwt DB",  1024 * 1024 * 100);
+			      db = window.openDatabase("ly_oa.db", "1.0", "oa DB",  1024 * 1024 * 100);
 			}
 
 		 $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS company (id integer primary key, name text, phone text, email text)");
