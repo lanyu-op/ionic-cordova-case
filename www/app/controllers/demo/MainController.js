@@ -1,9 +1,17 @@
 define(['app'], function (app) {
     // controller
-    app.controller('MainCtrl', function ($scope,$ionicModal,$rootScope,$http, $timeout,$ionicPopup,$cordovaSQLite) {
+    app.controller('MainCtrl', function ($ionicPopover,$scope,$ionicModal,$rootScope,$http, $timeout,$ionicPopup,$cordovaSQLite) {
   // properties
 		$scope.loginData = {};
-
+		
+		  $ionicPopover.fromTemplateUrl('my-popover.html', {
+		    scope: $scope
+		  }).then(function(popover) {
+		    $scope.popover = popover;
+		  });
+		  $scope.openPopover = function($event) {
+		    $scope.popover.show($event);
+		  };
 		  // Create the login modal that we will use later
 			//登录
 		  $ionicModal.fromTemplateUrl('app/templates/user/login.html', {
@@ -58,7 +66,10 @@ define(['app'], function (app) {
 			    	
 			        if(res.rows.length > 0) {
 			        //console.log(res.rows.item(0));
+			      	$scope.isshow={display:""};
 					$rootScope.userinfo=res.rows.item(0);
+			        }else{
+			        $scope.isshow={display:"none"};
 			        }
 			    }, function (err) {
 			        console.error(err);
@@ -66,12 +77,14 @@ define(['app'], function (app) {
 
 		}
 		 $scope.initdb();
+		  $scope.x='1';//默认在线
 
 		 $scope.selectAction = function(x) {
 		 	if(x==5){
-	
+			$scope.isshow={display:"none"};
 		 	$cordovaSQLite.execute(db, "delete from loginuser");
 		 	$rootScope.userinfo=null;
+		 	
 		 	}
 
 		}
@@ -112,8 +125,8 @@ define(['app'], function (app) {
 		  // Open the login modal
 		  $scope.login = function() {
 		  	if($rootScope.userinfo&&$rootScope.userinfo!=""){
-		  		//修改头像
-				
+		  		//修改资料、头像菜单
+
 		  		return false;
 		  	}
 		    $scope.modal.show();
@@ -155,6 +168,7 @@ define(['app'], function (app) {
                     window.location.href = "#/app/index";
                     $scope.upuserdb($scope.loginData);
                     $rootScope.userinfo=$scope.loginData;
+                      $scope.isshow={display:""};
                 }else{
                     $ionicPopup.alert({
                         title:'登录失败',
