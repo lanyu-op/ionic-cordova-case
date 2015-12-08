@@ -106,6 +106,10 @@ cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
         2、左侧头像设置和资料完善。
 -------------------------------------------------------------------------------
 
+        v0.0214-demo：(2015-12月3号)
+        1、修正jquery方式添加dom到指定位置，修改为按照id方式正常运行。
+        2、用户资料修改。
 -------------------------------------------------------------------------------
+
 As AngularJS itself, this module is released under the permissive MIT license.
 by lanyu bsui.
