@@ -96,13 +96,5 @@
         },
         "is_top_level": true,
         "variables": {}
-    },
-    "cordova-plugin-ble-central": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-ble-central"
-        },
-        "is_top_level": true,
-        "variables": {}
     }
 }
