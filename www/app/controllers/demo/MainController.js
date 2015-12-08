@@ -67,6 +67,7 @@ define(['app'], function (app) {
 			        if(res.rows.length > 0) {
 			        //console.log(res.rows.item(0));
 			      	$scope.isshow={display:""};
+			      	 $scope.loginData=res.rows.item(0);
 					$rootScope.userinfo=res.rows.item(0);
 			        }else{
 			        $scope.isshow={display:"none"};
@@ -86,6 +87,10 @@ define(['app'], function (app) {
 		 	$rootScope.userinfo=null;
 		 	
 		 	}
+		 	if(x==6){
+		 		$scope.iset();
+		 	}
+		 	
 
 		}
 
@@ -165,7 +170,9 @@ define(['app'], function (app) {
 				//alert(data);
 				console.log(data.code);
                 if(data.code==100){
+                	//console.log(data.username+data.email);
                     window.location.href = "#/app/index";
+                    $scope.loginData=data;
                     $scope.upuserdb($scope.loginData);
                     $rootScope.userinfo=$scope.loginData;
                       $scope.isshow={display:""};
