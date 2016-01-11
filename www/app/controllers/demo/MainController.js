@@ -21,7 +21,8 @@ define(['app'], function (app) {
 		  });
 		  //注册
 		  $ionicModal.fromTemplateUrl('app/templates/user/reg.html', {
-		    scope: $scope
+		    scope: $scope,
+		    animation: 'slide-in-up'
 		  }).then(function(modal) {
 		    $scope.regmodal = modal;
 		  });
