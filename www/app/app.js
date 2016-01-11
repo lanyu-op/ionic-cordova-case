@@ -32,6 +32,13 @@ var app = angular.module('app', [
 ]);
 
 app.config(function($httpProvider,$ionicConfigProvider) {
+	
+
+	$ionicConfigProvider.platform.ios.tabs.style('standard'); 
+	$ionicConfigProvider.platform.ios.tabs.position('bottom');
+	$ionicConfigProvider.platform.android.tabs.style('standard');
+	$ionicConfigProvider.platform.android.tabs.position('bottom');	
+	
 	$ionicConfigProvider.views.forwardCache(true);//开启全局缓存
 	//$ionicConfigProvider.views.maxCache(0);//关闭缓存
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -163,6 +170,47 @@ controllerProvider: function ($stateParams)
   url: '/first',
   templateUrl: 'app/templates/first.html',
     //css:{href:'lib/angular-bootstrap/bootstrap.min.css',bustCache:true},
+  }))
+  
+  
+//TAB部分
+  .state('app.dash', angularAMD.route({
+    url: '/dash',
+    views: {
+      'menuContent': {
+        templateUrl: 'app/templates/tabs/tab-dash.html',
+        //controller: 'DashCtrl'
+      }
+    }
+  }))
+
+  .state('app.chats', angularAMD.route({
+      url: '/chats',
+      views: {
+        'menuContent': {
+          templateUrl: 'app/templates/tabs/tab-chats.html',
+          //controller: 'ChatsCtrl'
+        }
+      }
+    }))
+    .state('app.chat-detail', angularAMD.route({
+      url: '/chats/:chatId',
+      views: {
+        'menuContent': {
+          templateUrl: 'app/templates/tabs/chat-detail.html',
+          //controller: 'ChatDetailCtrl'
+        }
+      }
+    }))
+
+  .state('app.account', angularAMD.route({
+    url: '/account',
+    views: {
+      'menuContent': {
+        templateUrl: 'app/templates/tabs/tab-account.html',
+        //controller: 'AccountCtrl'
+      }
+    }
   }))
 //首页
 .state('app.index', angularAMD.route({
