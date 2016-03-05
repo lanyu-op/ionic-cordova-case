@@ -22,6 +22,10 @@ app.controller('amapCtrl', function($css,Amap,$sce,$ionicLoading,$scope,$rootSco
 			//map.setCenter([116.480983, 39.989628]);
 			//console.log(+"----"+position.coords.longitude);
 			map.setCenter([position.coords.longitude,position.coords.latitude ]);
+			var marker = new AMap.Marker({
+      position: [116.480983, 39.989628],
+      map:map
+    });
 			/*
 		    alert('Latitude: '          + position.coords.latitude          + '\n' +
 		          'Longitude: '         + position.coords.longitude         + '\n' +

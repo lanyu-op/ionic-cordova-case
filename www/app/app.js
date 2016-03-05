@@ -21,16 +21,27 @@ define([
   'angular-bootstrap',
   'angular-amap',
   'angular-amap-map',
-  'angular-amap-toolbar'
+  'angular-amap-toolbar',
+  'socketio'
 	//'angularUiRouterExtra',
 ], function (angular,angularAMD) {
 'use strict';
+
 // the app with its used plugins
 var app = angular.module('app', [
-'ionic', 'ngCordova','ngLocale', 'l42y.amap','l42y.amap.map','ngCordova.plugins.ble','door3.css','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage', 'ngFileUpload','ui.calendar','ui.bootstrap'
+'ionic', 'ngCordova','ngLocale','btford.socket-io', 'l42y.amap','l42y.amap.map','ngCordova.plugins.ble','door3.css','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage', 'ngFileUpload','ui.calendar','ui.bootstrap'
 	//'ionic','pascalprecht.translate','ui.router', 'ngCordova','ngCordova.plugins.ble'
 ]);
+    app.factory('socket',function(socketFactory){
+        //Create socket and connect to http://chat.socket.io 
+        var myIoSocket = io.connect('http://chat.socket.io');
 
+        var mySocket = socketFactory({
+            ioSocket: myIoSocket
+        });
+
+        return mySocket;
+    });
 app.config(function($httpProvider,$ionicConfigProvider) {
 	
 
@@ -722,6 +733,8 @@ app.run(function($ionicPlatform, $ionicPopup,$rootScope, $location,$timeout, $io
 	    return false;
 	}, 101);
   });
+  
+
   return  angularAMD.bootstrap(app);     //replace angular.bootstrap(document, ['app']);
 
 });

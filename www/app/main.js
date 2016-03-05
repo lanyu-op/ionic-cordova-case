@@ -1,7 +1,7 @@
 require.config({
   baseUrl: 'app',
   paths: {
-    'ionic': '../lib/ionic/js/ionic.bundle',
+    'ionic': '../lib/ionic/js/ionic.bundle.min',
     'ngCordova':'../lib/ngCordova/dist/ng-cordova',
     'ocLazyLoad':'../lib/ocLazyLoad/dist/ocLazyLoad',
     'angular-translate':'../lib/angular-translate/angular-translate',
@@ -28,34 +28,35 @@ require.config({
     'angular-amap':'../lib/angular-amap/angular-amap',//高德地图
     'angular-amap-map':'../lib/angular-amap/angular-amap-map',//高德地图
     'angular-amap-toolbar':'../lib/angular-amap/angular-amap-toolbar',//高德地图
-
+		'socketio':'../lib/angular-socket-io/socket'
   },
   // if you are using jquery you have to add a shim for ionic and add jquery as deps
   shim: {
-    'angular-ui-calendar':['ionic'],
-    'angular-bootstrap':['ionic'],
+    'angular-ui-calendar':['angular'],
+    'angular-bootstrap':['angular'],
     'gcal':['fullcalendar'],
-    'angularCss':['ionic'],
-    'angularzh':['ionic'],
+    'angularCss':['angular'],
+    'angularzh':['angular'],
+    'socketio':['angular'],
     //'ionic': {deps: ['jquery']},
     //'ngCordova':['ionic'],//需要依赖ionic中的angularjs
-		'ocLazyLoad': ['ionic'],//需要依赖ionic中的angularjs
+		'ocLazyLoad': ['angular'],//需要依赖ionic中的angularjs
 		//'angular-translate':['ionic'],//需要依赖ionic中的angularjs
 		//'iuChart':{deps: ['jquery','ionic']},
 		//'echarts':{deps: ['jquery','ionic']},
-		'file-upload': ['ionic'],
+		'file-upload': ['angular'],
 		 "angular": {exports: "angular" },
 		//'angularAMD':["ionic"],
     //'ui-router':  ["ionic"],
     //'ngload':{
     //    deps:['angularAMD']
     //},
-    'angular-amap':['ionic'],
+    'angular-amap':['angular'],
     'angular-amap-map':['angular-amap'],
     'angular-amap-toolbar':['angular-amap'],
-    'ngCordova':['ionic'],//需要依赖ionic中的angularjs
-    'angular-translate':['ionic'],//需要依赖ionic中的angularjs
-    'lazy-image':['ionic']
+    'ngCordova':['angular'],//需要依赖ionic中的angularjs
+    'angular-translate':['angular'],//需要依赖ionic中的angularjs
+    'lazy-image':['angular']
     //'angularUiRouterExtra':{
     //    deps:['ionic']
    // }
@@ -67,3 +68,4 @@ require.config({
   //   'ionic'
   // ]
 });
+
