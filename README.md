@@ -1,5 +1,5 @@
 # ionic-cordova-case
-
+[最新版持续更新的版本在这个地址]https://github.com/lanyu-op/ionic-cordova-case/tree/oa_app
 android安装方式：
 1、安装Node.js
 2、运行以下命令：
@@ -114,5 +114,12 @@ cordova plugin add https://github.com/wildabeast/BarcodeScanner.git
         1、angular-socket-io增加IndexController.js
 
 -------------------------------------------------------------------------------
+        v0.0214：(2016-3月10号)
+        1、ionic版本升级为1.2.1
+        2、修正新版本中native scroll是默认情况下导致的各种bug。
+        3、白屏修正。
+
+-------------------------------------------------------------------------------
+
 As AngularJS itself, this module is released under the permissive MIT license.
 by lanyu bsui.
