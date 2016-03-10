@@ -1,9 +1,13 @@
 define(['app'], function (app) {
     // controller
-    app.controller('firstPageCtrl', function ($css,$scope,$ionicModal,$http, $timeout,$ionicPopup,$state) {
+    app.controller('firstPageCtrl', function (socket,$css,$scope,$ionicModal,$http, $timeout,$ionicPopup,$state) {
   // properties
 
-
+       socket.on('connect',function(){
+        //Add user called nickname
+        socket.emit('add user','nickname');
+        alert("http://chat.socket.io");
+       });
       $scope.$on('$ionicView.afterEnter',function(){
         //清空所有样式
         //$css.removeAll();

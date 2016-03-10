@@ -21,17 +21,35 @@ define([
   'angular-bootstrap',
   'angular-amap',
   'angular-amap-map',
-  'angular-amap-toolbar'
+  'angular-amap-toolbar',
+  'socketio'
 	//'angularUiRouterExtra',
 ], function (angular,angularAMD) {
 'use strict';
+
 // the app with its used plugins
 var app = angular.module('app', [
-'ionic', 'ngCordova','ngLocale', 'l42y.amap','l42y.amap.map','ngCordova.plugins.ble','door3.css','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage', 'ngFileUpload','ui.calendar','ui.bootstrap'
+'ionic', 'ngCordova','ngLocale','btford.socket-io', 'l42y.amap','l42y.amap.map','ngCordova.plugins.ble','door3.css','pascalprecht.translate','oc.lazyLoad','afkl.lazyImage', 'ngFileUpload','ui.calendar','ui.bootstrap'
 	//'ionic','pascalprecht.translate','ui.router', 'ngCordova','ngCordova.plugins.ble'
 ]);
+    app.factory('socket',function(socketFactory){
+        //Create socket and connect to http://chat.socket.io 
+        var myIoSocket = io.connect('http://chat.socket.io');
 
+        var mySocket = socketFactory({
+            ioSocket: myIoSocket
+        });
+
+        return mySocket;
+    });
 app.config(function($httpProvider,$ionicConfigProvider) {
+	
+
+	$ionicConfigProvider.platform.ios.tabs.style('standard'); 
+	$ionicConfigProvider.platform.ios.tabs.position('bottom');
+	$ionicConfigProvider.platform.android.tabs.style('standard');
+	$ionicConfigProvider.platform.android.tabs.position('bottom');	
+	
 	$ionicConfigProvider.views.forwardCache(true);//开启全局缓存
 	//$ionicConfigProvider.views.maxCache(0);//关闭缓存
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -163,6 +181,47 @@ controllerProvider: function ($stateParams)
   url: '/first',
   templateUrl: 'app/templates/first.html',
     //css:{href:'lib/angular-bootstrap/bootstrap.min.css',bustCache:true},
+  }))
+  
+  
+//TAB部分
+  .state('app.dash', angularAMD.route({
+    url: '/dash',
+    views: {
+      'menuContent': {
+        templateUrl: 'app/templates/tabs/tab-dash.html',
+        //controller: 'DashCtrl'
+      }
+    }
+  }))
+
+  .state('app.chats', angularAMD.route({
+      url: '/chats',
+      views: {
+        'menuContent': {
+          templateUrl: 'app/templates/tabs/tab-chats.html',
+          //controller: 'ChatsCtrl'
+        }
+      }
+    }))
+    .state('app.chat-detail', angularAMD.route({
+      url: '/chats/:chatId',
+      views: {
+        'menuContent': {
+          templateUrl: 'app/templates/tabs/chat-detail.html',
+          //controller: 'ChatDetailCtrl'
+        }
+      }
+    }))
+
+  .state('app.account', angularAMD.route({
+    url: '/account',
+    views: {
+      'menuContent': {
+        templateUrl: 'app/templates/tabs/tab-account.html',
+        //controller: 'AccountCtrl'
+      }
+    }
   }))
 //首页
 .state('app.index', angularAMD.route({
@@ -296,7 +355,37 @@ controllerProvider: function ($stateParams)
 		    }]
 		}
 }))
+//DOM操作
+.state('app.domcase', angularAMD.route({
+	    url: '/domcase',
+	    //cache:'false',
+	     //css:[{href:'lib/angular-bootstrap/bootstrap.min.css',bustCache: true}],
+	    views: {
+	      'menuContent': {
+	        templateUrl: 'app/templates/function/domcase.html',
+			controller: 'DomcaseCtrl',
+	      },
 
+	    },
+	    //路由前执行如下
+		resolve: {
+		    loadcss: ['$q','$ocLazyLoad','$ionicLoading',
+		    function ($q,$ocLazyLoad,$ionicLoading)
+		    {
+
+
+		        var load1 = "app/controllers/demo/DomcaseController.js";//加载参与者控制器
+
+	            var deferred = $q.defer();
+	            require([load1], function () {
+
+	            deferred.resolve();
+	            });
+	            return deferred.promise;
+		    }]
+		}
+
+}))
 //新建工作任务
 .state('app.newTask', angularAMD.route({
 	    url: '/newTask',
@@ -597,6 +686,9 @@ app.run(function($ionicPlatform, $ionicPopup,$rootScope, $location,$timeout, $io
 	$ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+        setTimeout(function () {
+            navigator.splashscreen.hide();
+        }, 5000);
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
 
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -644,6 +736,8 @@ app.run(function($ionicPlatform, $ionicPopup,$rootScope, $location,$timeout, $io
 	    return false;
 	}, 101);
   });
+  
+
   return  angularAMD.bootstrap(app);     //replace angular.bootstrap(document, ['app']);
 
 });
